@@ -1,8 +1,13 @@
+'use client';
+
+import { useModal } from '@/lib/ModalContext';
 import Link from 'next/link';
 
 const Navbar = () => {
+  const { openTrackModal } = useModal();
+
   return (
-    <nav className="fixed top-0 w-full z-50 glassmorphism border-b border-gray-100">
+    <nav className="fixed top-0 w-full z-50 glassmorphism border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0 flex items-center">
@@ -12,14 +17,19 @@ const Navbar = () => {
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <Link href="/" className="text-gray-600 hover:text-primary transition-colors font-medium">Home</Link>
-              <Link href="/about" className="text-gray-600 hover:text-primary transition-colors font-medium">About</Link>
-              <Link href="/contact" className="text-gray-600 hover:text-primary transition-colors font-medium">Contact</Link>
-              <Link href="/track" className="text-gray-600 hover:text-primary transition-colors font-medium">Track Order</Link>
+              <Link href="/" className="text-slate-300 hover:text-primary transition-colors font-medium">Home</Link>
+              <Link href="/about" className="text-slate-300 hover:text-primary transition-colors font-medium">About</Link>
+              <Link href="/contact" className="text-slate-300 hover:text-primary transition-colors font-medium">Contact</Link>
+              <button 
+                onClick={openTrackModal}
+                className="text-slate-300 hover:text-primary transition-colors font-medium text-base px-0 bg-transparent border-none cursor-pointer"
+              >
+                Track Order
+              </button>
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <Link href="/auth/login" className="text-gray-600 hover:text-primary transition-colors font-medium">Login</Link>
+            <Link href="/auth/login" className="text-slate-300 hover:text-primary transition-colors font-medium">Login</Link>
             <Link href="/auth/register" className="bg-primary text-white px-5 py-2 rounded-full font-medium hover:opacity-90 transition-opacity">
               Register
             </Link>

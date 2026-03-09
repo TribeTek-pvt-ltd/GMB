@@ -41,11 +41,11 @@ const galleryItems = [
 
 const Gallery = () => {
   return (
-    <section className="py-24 bg-gray-50/50">
+    <section className="py-24 bg-slate-900/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">Our Premium <span className="gradient-text">Gallery</span></h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+          <p className="text-slate-300 max-w-2xl mx-auto text-lg">
             Explore our curated collection of luxury curtains that define elegance and sophistication.
           </p>
         </div>
