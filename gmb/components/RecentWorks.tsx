@@ -68,8 +68,8 @@ const Gallery = () => {
           </div>
 
           <div className="shrink-0 pb-1">
-            <Link 
-              href="/products" 
+            <Link
+              href="/products"
               className="flex items-center justify-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-xl font-bold hover:bg-primary transition-all shadow-lg shadow-slate-900/10 hover:shadow-primary/20 group whitespace-nowrap"
             >
               View Gallery
@@ -85,7 +85,7 @@ const Gallery = () => {
           {displayedItems.map((item: any, index: number) => {
             const isActive = index === activeIndex;
             return (
-              <div 
+              <div
                 key={`${item.id}-${index}`}
                 onMouseEnter={() => setActiveIndex(index)}
                 className={`relative h-full rounded-[14px] md:rounded-xl overflow-hidden cursor-pointer transition-all duration-[600ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${isActive ? 'flex-[4] md:flex-[5] shadow-xl shadow-primary/10' : 'flex-[1] shadow-sm hover:flex-[1.2]'}`}
@@ -98,9 +98,9 @@ const Gallery = () => {
                   sizes={isActive ? "(max-width: 768px) 100vw, 60vw" : "(max-width: 768px) 20vw, 10vw"}
                   className={`object-cover transition-transform duration-[4000ms] ease-out origin-center ${isActive ? 'scale-105' : 'scale-100'}`}
                 />
-                
+
                 {/* Gradient Overlays */}
-                <div className={`absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-60 hover:opacity-80'}`} />
+                <div className={`absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-900/10 to-transparent transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-60 hover:opacity-80'}`} />
                 <div className={`absolute inset-0 bg-primary/20 mix-blend-overlay transition-opacity duration-500 ${isActive ? 'opacity-0' : 'opacity-100'}`} />
 
                 {/* Vertical Category Badge (When Inactive) */}
@@ -112,7 +112,7 @@ const Gallery = () => {
 
                 {/* Bottom Content Area (When Active) */}
                 <div className={`absolute bottom-0 left-0 w-full p-4 md:p-6 flex flex-col justify-end pointer-events-none transition-all duration-500 ease-out transform ${isActive ? 'opacity-100 translate-y-0 delay-100' : 'opacity-0 translate-y-6'}`}>
-                  
+
                   {/* Category Pill */}
                   <div className="mb-2 pointer-events-auto">
                     <span className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[9px] font-bold uppercase tracking-[0.2em] inline-block">
@@ -123,7 +123,7 @@ const Gallery = () => {
                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-wide drop-shadow-md leading-tight">
                     {item.title}
                   </h3>
-                  
+
                   <div className={`overflow-hidden transition-all duration-500 ease-in-out hidden sm:block ${isActive ? 'max-h-20 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'}`}>
                     <p className="text-white/80 text-[11px] md:text-xs leading-relaxed max-w-lg line-clamp-2">
                       {item.description}
@@ -131,7 +131,7 @@ const Gallery = () => {
                   </div>
 
                   <div className="pointer-events-auto mt-1">
-                    <Link 
+                    <Link
                       href={`/products?category=${item.category}`}
                       className="inline-flex items-center gap-3 text-white font-bold text-[9px] md:text-[10px] tracking-[0.2em] uppercase origin-left transition-all hover:text-primary group/link"
                     >

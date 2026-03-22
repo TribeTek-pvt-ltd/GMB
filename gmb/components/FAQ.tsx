@@ -42,8 +42,8 @@ const FAQ = () => {
 
         <div className="space-y-3">
           {faqData.map((faq, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="glassmorphism rounded-xl border border-white/40 overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md"
             >
               <button
@@ -59,8 +59,8 @@ const FAQ = () => {
                   </svg>
                 </div>
               </button>
-              
-              <div 
+
+              <div
                 className={`transition-all duration-500 ease-in-out ${openIndex === index ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}
               >
                 <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100/50 bg-white/30 backdrop-blur-sm">

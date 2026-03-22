@@ -4,9 +4,9 @@ const AboutIntro = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative h-[500px] rounded-xl overflow-hidden shadow-2xl premium-card">
-            <img 
-              src="/images/curtain1.png" 
-              alt="Company Introduction" 
+            <img
+              src="/images/curtain1.png"
+              alt="Company Introduction"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-primary/5" />
@@ -16,7 +16,7 @@ const AboutIntro = () => {
               A Legacy of <span className="gradient-text">Excellence and Trust</span>
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed">
-              GMB started as a small family-owned workshop with a single mission: to provide high-quality, bespoke window treatments that reflect the personality of every home. 
+              GMB started as a small family-owned workshop with a single mission: to provide high-quality, bespoke window treatments that reflect the personality of every home.
             </p>
             <p className="text-lg text-slate-600 leading-relaxed">
               Today, we are proud to be a industry leader, trusted by thousands of homeowners and interior designers for our commitment to quality, precision, and unparalleled customer service.

@@ -39,18 +39,18 @@ const features = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-16 bg-transparent overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-2 border-primary/30 rounded-xl p-8 bg-white/60 backdrop-blur-sm shadow-lg">
+    <section className="py-4 bg-transparent overflow-hidden">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 border-2 border-primary/30 rounded-xl p-4 bg-white/60 backdrop-blur-sm shadow-lg">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold text-slate-800">Why Choose <span className="gradient-text">GMB?</span></h2>
+          <div className="text-center mb-4">
+            <h2 className="text-3xl font-bold text-slate-800">Why Choose <span className="gradient-text">GMB?</span></h2>
             <p className="text-lg text-slate-600 leading-relaxed">
               We don't just sell curtains; we provide complete window solutions that enhance the beauty and energy efficiency of your home.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
               {features.map((feature, index) => (
                 <div key={index} className="space-y-4">
-                  <div className="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
                     {feature.icon}
                   </div>
                   <h3 className="text-xl font-bold text-slate-800">{feature.title}</h3>
@@ -59,10 +59,10 @@ const WhyChooseUs = () => {
               ))}
             </div>
           </div>
-          <div className="relative h-[450px] rounded-xl overflow-hidden shadow-2xl premium-card">
-            <img 
-              src="/images/curtain2.png" 
-              alt="Quality Craftsmanship" 
+          <div className="relative h-[250px] rounded-xl overflow-hidden shadow-2xl premium-card">
+            <img
+              src="/images/curtain2.png"
+              alt="Quality Craftsmanship"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-primary/10" />

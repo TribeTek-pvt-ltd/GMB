@@ -36,8 +36,8 @@ const BlogPreview = () => {
               Explore our latest articles on interior design, fabric care, and window treatment trends.
             </p>
           </div>
-          <Link 
-            href="/blog" 
+          <Link
+            href="/blog"
             className="flex items-center justify-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-xl font-bold hover:bg-primary transition-all shadow-lg shadow-slate-900/10 hover:shadow-primary/20 group whitespace-nowrap"
           >
             View All Articles

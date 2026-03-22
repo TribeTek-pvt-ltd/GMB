@@ -38,7 +38,7 @@ const Hero = () => {
   return (
     <div className="relative min-h-[70vh] flex items-center py-20 pt-24 overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-[#0F172A]">
       {/* Background Image Swapper Overlay */}
-      <div className="absolute inset-0 z-0 bg-[#1F2E5A]/60 lg:bg-gradient-to-r lg:from-[#1F2E5A]/90 lg:to-transparent" />
+      <div className="absolute inset-0 z-0 bg-[#1F2E5A]/60 lg:bg-gradient-to-r lg:from-[#1F2E5A]/60 lg:to-transparent" />
       <div className="absolute  inset-0 z-0 overflow-hidden pointer-events-none">
         {backgroundImages.map((img, idx) => (
           <div
@@ -56,7 +56,7 @@ const Hero = () => {
           </div>
         ))}
       </div>
-      {/* Background decoration */}
+      {/* Background decoration. */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-primary/5 rounded-xl blur-3xl" />
       <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-96 h-96 bg-primary/10 rounded-xl blur-3xl" />
 
@@ -64,7 +64,7 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 relative z-20">
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight text-white drop-shadow-2xl">
-              Elevate Your Space with <span className="text-primary drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">Premium Curtains</span>
+              Elevate Your Space with <span className="text-primary drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">Premium Curtains</span>
             </h1>
             <p className="text-xl text-white/90 max-w-lg leading-relaxed drop-shadow-lg">
               Discover our exclusive collection of window treatments designed to bring elegance and comfort to your home.
