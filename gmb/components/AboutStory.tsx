@@ -53,7 +53,7 @@ const AboutStory = () => {
 
         <div className="relative">
           {/* Year Navigation */}
-          <div className="flex justify-between items-center mb-8 relative max-w-3xl mx-auto overflow-x-auto px-1">
+          <div className="flex justify-between items-center mb-4 relative max-w-3xl mx-auto overflow-x-auto px-2 py-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {/* Progress line background */}
             <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 -translate-y-1/2" />
 
