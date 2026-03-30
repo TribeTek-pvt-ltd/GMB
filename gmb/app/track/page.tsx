@@ -27,7 +27,7 @@ export default function TrackOrderPage() {
         <div className="flex flex-col items-center gap-6">
           <button 
             onClick={openTrackModal}
-            className="bg-primary text-white px-12 py-5 rounded-xl font-bold text-xl hover:scale-105 transition-transform shadow-2xl shadow-primary/20"
+            className="bg-primary text-white px-12 py-5 rounded-xl font-bold text-xl transition-transform shadow-2xl shadow-primary/20"
           >
             Open Order Tracker
           </button>

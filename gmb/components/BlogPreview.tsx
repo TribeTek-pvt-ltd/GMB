@@ -28,7 +28,7 @@ const posts = [
 const BlogPreview = () => {
   return (
     <section className="py-16 bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
           <div className="max-w-2xl">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-4">Latest from our <span className="gradient-text italic">Blog</span></h2>
@@ -59,7 +59,7 @@ const BlogPreview = () => {
                   src={post.image}
                   alt={post.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover transition-transform duration-500 "
                 />
                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-xl text-xs font-bold text-primary">
                   {post.category}

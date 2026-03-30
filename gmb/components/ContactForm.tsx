@@ -101,13 +101,13 @@ const ContactFormContent = () => {
     <section className="pt-4 pb-12 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          {/* Tab Selection */}
-          <div className="flex p-1 bg-slate-100 rounded-xl mb-6 max-w-sm mx-auto">
+          {/* Tab Selection - Elite Scale */}
+          <div className="flex p-1.5 bg-slate-100 rounded-2xl mb-6 max-w-lg mx-auto shadow-inner">
             <button
               onClick={() => setFormType('general')}
-              className={`flex-1 py-1.5 px-4 text-sm rounded-xl font-bold transition-all ${
+              className={`flex-1 py-3 px-8 text-sm md:text-base rounded-xl font-bold transition-all duration-300 ${
                 formType === 'general' 
-                  ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20' 
+                  ? 'bg-primary text-white shadow-xl shadow-primary/30 scale-[1.02]' 
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -115,9 +115,9 @@ const ContactFormContent = () => {
             </button>
             <button
               onClick={() => setFormType('quote')}
-              className={`flex-1 py-1.5 px-4 text-sm rounded-xl font-bold transition-all ${
+              className={`flex-1 py-3 px-8 text-sm md:text-base rounded-xl font-bold transition-all duration-300 ${
                 formType === 'quote' 
-                  ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20' 
+                  ? 'bg-primary text-white shadow-xl shadow-primary/30 scale-[1.02]' 
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >

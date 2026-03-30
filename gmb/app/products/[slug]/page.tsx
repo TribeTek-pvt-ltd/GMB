@@ -216,7 +216,7 @@ function ProductsContent() {
                                        src={styleImage}
                                        alt={style}
                                        fill
-                                       className="object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                                       className="object-cover transition-transform duration-[1200ms] "
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent flex flex-col justify-end p-8 text-left">
                                        <h3 className="text-white text-2xl font-bold mb-1 group-hover:text-[#4CAF50] transition-colors">{style}</h3>
@@ -312,12 +312,12 @@ function ProductsContent() {
                               style={{ animationDelay: `${idx * 50}ms` }}
                               onClick={() => setLightboxIndex(idx)}
                            >
-                              <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm transition-all duration-700 hover:shadow-2xl hover:-translate-y-1">
+                              <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm transition-all duration-700 hover:shadow-2xl ">
                                  <Image
                                     src={p.image}
                                     alt={p.name}
                                     fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                    className="object-cover transition-transform duration-700 "
                                  />
                                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent flex flex-col justify-end p-4">
                                     <h3 className="text-white text-sm font-bold mb-2 truncate">{p.name}</h3>
@@ -345,7 +345,7 @@ function ProductsContent() {
                               className="px-8 py-3 bg-[#4CAF50] text-white rounded-full font-bold text-[10px] uppercase tracking-widest shadow-xl shadow-[#4CAF50]/20 hover:bg-[#1F2E5A] transition-all relative overflow-hidden group"
                            >
                               <span className="relative z-10">View Entire Collection</span>
-                              <div className="absolute inset-0 h-full w-full bg-white/20 scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full" />
+                              <div className="absolute inset-0 h-full w-full bg-white/20 scale-x-0 x-100 transition-transform origin-left rounded-full" />
                            </button>
                         </div>
                      )}
@@ -363,14 +363,14 @@ function ProductsContent() {
                >
                   <button
                      onClick={() => setLightboxIndex(null)}
-                     className="absolute top-6 right-6 text-slate-500 hover:text-slate-900 transition-all z-50 p-2 hover:scale-110"
+                     className="absolute top-6 right-6 text-slate-500 hover:text-slate-900 transition-all z-50 p-2 "
                   >
                      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                   </button>
 
                   <button
                      onClick={(e) => { e.stopPropagation(); setLightboxIndex((prev) => (prev! - 1 + filteredProducts.length) % filteredProducts.length); }}
-                     className="absolute left-2 sm:left-10 top-1/2 -translate-y-1/2 z-50 text-slate-400 hover:text-slate-900 transition-all hover:scale-125 p-4"
+                     className="absolute left-2 sm:left-10 top-1/2 -translate-y-1/2 z-50 text-slate-400 hover:text-slate-900 transition-all p-4"
                   >
                      <svg className="w-12 h-12 md:w-16 md:h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
                   </button>
@@ -386,7 +386,7 @@ function ProductsContent() {
 
                   <button
                      onClick={(e) => { e.stopPropagation(); setLightboxIndex((prev) => (prev! + 1) % filteredProducts.length); }}
-                     className="absolute right-2 sm:right-10 top-1/2 -translate-y-1/2 z-50 text-slate-400 hover:text-slate-900 transition-all hover:scale-125 p-4"
+                     className="absolute right-2 sm:right-10 top-1/2 -translate-y-1/2 z-50 text-slate-400 hover:text-slate-900 transition-all p-4"
                   >
                      <svg className="w-12 h-12 md:w-16 md:h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
                   </button>

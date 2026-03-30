@@ -8,7 +8,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-gradient-to-br from-[#0F172A] via-[#1F2E5A] to-[#0F172A] text-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-10">
+      <div className="container max-w-7xl mx-auto py-10">
 
         {/* Main Grid: Brand | Links | Contact */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">

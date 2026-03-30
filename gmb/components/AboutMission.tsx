@@ -1,7 +1,7 @@
 const AboutMission = () => {
   return (
     <section className="py-8 bg-transparent relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Mission Card */}
           <div className="group relative">

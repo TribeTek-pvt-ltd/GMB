@@ -124,7 +124,7 @@ const LegalModal = ({ isOpen, onClose, title, type }: LegalModalProps) => {
             <div className="p-6 bg-slate-50/50 border-t border-slate-100 flex justify-center">
               <button
                 onClick={onClose}
-                className="px-10 py-2 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-105 transition-all"
+                className="px-10 py-2 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 transition-all"
               >
                 I Understand
               </button>

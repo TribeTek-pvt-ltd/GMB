@@ -55,6 +55,30 @@ h6 {
 }
 
 @layer components {
+  /* ── Standardized site-wide container ── */
+  .container {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;   /* 16px – mobile */
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;  /* 24px – sm */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;    /* 32px – lg */
+      padding-right: 2rem;
+    }
+  }
+
   .glassmorphism {
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(16px);
@@ -74,7 +98,6 @@ h6 {
 
   .premium-card:hover {
     box-shadow: 0 25px 50px -12px rgba(31, 46, 90, 0.25);
-    transform: translateY(-8px);
     border-color: rgba(76, 175, 80, 0.3);
   }
 
@@ -91,7 +114,6 @@ h6 {
 
   .premium-card-dark:hover {
     box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6), 0 15px 40px -10px rgba(31, 46, 90, 0.9);
-    transform: translateY(-4px);
     border-color: rgba(76, 175, 80, 0.4);
   }
 }

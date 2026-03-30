@@ -142,7 +142,7 @@ export default function AdminDashboard() {
           <>
             <section className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {stats.map((stat, i) => (
-                <div key={i} className="bg-white rounded-xl p-10 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-start hover:scale-105 transition-transform">
+                <div key={i} className="bg-white rounded-xl p-10 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-start transition-transform">
                   <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-black/5" style={{ backgroundColor: `${stat.color}15` }}>
                     <div className="w-6 h-6" style={{ color: stat.color }}>
                        {stat.icon === 'shopping-bag' && <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>}
@@ -220,7 +220,7 @@ export default function AdminDashboard() {
                 <div className="md:col-span-2 text-right">
                   <button 
                     disabled={isSubmitting}
-                    className="bg-[#4CAF50] text-white px-10 py-4 rounded-xl font-bold shadow-xl shadow-[#4CAF50]/20 hover:scale-105 transition-all disabled:opacity-50"
+                    className="bg-[#4CAF50] text-white px-10 py-4 rounded-xl font-bold shadow-xl shadow-[#4CAF50]/20 transition-all disabled:opacity-50"
                   >
                     {isSubmitting ? 'Uploading...' : 'Publish to Gallery'}
                   </button>

@@ -83,15 +83,25 @@ export const PRODUCT_CATEGORIES: CategoryGroup[] = [
                 ]
             },
             {
-                title: "Roller Blinds",
-                slug: "RollerBlinds",
-                description: "Sleek, practical light control.",
+                title: "Blackout Roller Blind",
+                slug: "BlackoutRoller",
+                description: "Complete privacy and total light exclusion for bedrooms and cinemas.",
                 image: "/images/curtain1.png",
-                subCategories: [
-                    "Blackout Roller Blind / Holland Blind",
-                    "See-Through Roller Blind / Screen Blind",
-                    "Light Filtering Blind / Translucent Blind"
-                ]
+                subCategories: ["Holland Blind", "Total Blockout", "Thermal Layer"]
+            },
+            {
+                title: "See-Through Roller Blind",
+                slug: "SeeThroughRoller",
+                description: "Maintain your view while reducing glare and UV heat.",
+                image: "/images/curtain2.png",
+                subCategories: ["Screen Blind", "UV Protection", "Daytime Privacy"]
+            },
+            {
+                title: "Light Filtering Blind",
+                slug: "LightFilteringRoller",
+                description: "Soft, diffused glow that brightens spaces without compromising privacy.",
+                image: "/images/curtain3.png",
+                subCategories: ["Translucent Blind", "Ambient Light", "Soft Glow"]
             },
             {
                 title: "Plantation Shutters",

@@ -30,7 +30,7 @@ const FAQ = () => {
 
   return (
     <section className="py-16 bg-transparent">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-4">
             Frequently Asked <span className="gradient-text italic">Questions</span>
