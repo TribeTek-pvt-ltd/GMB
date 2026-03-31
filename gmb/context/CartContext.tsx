@@ -10,6 +10,7 @@ export interface CartItem {
   quantity: number;
   category?: string;
   style?: string;
+  configuration?: Record<string, any>;
 }
 
 interface CartContextType {

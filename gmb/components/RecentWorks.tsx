@@ -44,7 +44,7 @@ const Gallery = () => {
   };
 
   return (
-    <section className="py-12 md:py-16 bg-transparent relative overflow-hidden" id="recent-works">
+    <section className="py-20 md:py-28 bg-transparent relative overflow-hidden" id="recent-works">
       {/* Decorative Blur Backgrounds */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
@@ -52,7 +52,7 @@ const Gallery = () => {
       <div className="container max-w-7xl mx-auto relative z-10">
 
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
           <div className="max-w-xl">
             <div className="inline-flex items-center gap-2 mb-2">
               <div className="w-6 h-px bg-primary" />
@@ -82,7 +82,7 @@ const Gallery = () => {
         </div>
 
         {/* Bento Grid Layout - Compacted to prevent vertical scrolling off-screen */}
-        <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-4 lg:gap-5 h-auto md:h-[400px] lg:h-[480px]">
+        <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-5 lg:gap-6 h-auto md:h-[400px] lg:h-[500px]">
           {displayedItems.map((item: any, index: number) => (
             <Link
               href={`/gallery`}

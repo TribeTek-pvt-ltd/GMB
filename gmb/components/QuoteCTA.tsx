@@ -3,7 +3,7 @@ import React from 'react';
 
 const QuoteCTA = () => {
   return (
-    <section className="w-full relative overflow-hidden bg-slate-950 py-16 sm:py-24 text-center text-white border-y border-white/5 mb-12 md:mb-20">
+    <section className="w-full relative overflow-hidden bg-slate-950 py-24 sm:py-36 text-center text-white border-y border-white/5">
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[500px] h-[500px] bg-accent-yellow/5 rounded-full blur-[120px] pointer-events-none" />

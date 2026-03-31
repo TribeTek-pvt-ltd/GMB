@@ -73,7 +73,7 @@ const Testimonials = () => {
   const active = testimonials[activeIndex];
 
   return (
-    <section className="py-10 md:py-16 bg-transparent overflow-hidden">
+    <section className="py-20 md:py-28 bg-transparent overflow-hidden">
       <div className="container max-w-7xl mx-auto">
         {/* Carousel Showcase */}
         <div className="relative w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden bg-slate-900 shadow-[0_20px_50px_-15px_rgba(31,46,90,0.25)] border border-slate-800">

@@ -4,10 +4,10 @@ import { ALL_PRODUCTS } from '@/lib/categories';
 
 const ProductCategories = () => {
   return (
-    <section className="py-16 bg-transparent" id="categories">
+    <section className="py-24 md:py-32 bg-transparent" id="categories">
       <div className="container max-w-7xl mx-auto px-6">
         {/* Section Header - Signature Sync */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div className="max-w-xl">
             <div className="inline-flex items-center gap-2 mb-2">
               <div className="w-6 h-px bg-primary" />
@@ -22,7 +22,7 @@ const ProductCategories = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
           {ALL_PRODUCTS.slice(0, 6).map((category, index) => (
             <div key={index} className="premium-card relative h-[420px] overflow-hidden rounded-[1.5rem]">
               <Image

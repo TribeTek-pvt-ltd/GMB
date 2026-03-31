@@ -59,7 +59,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative min-h-[100vh] flex flex-col justify-center overflow-hidden bg-[#0a1628] pt-12 pb-32">
+    <div className="relative min-h-[100vh] flex flex-col justify-center overflow-hidden bg-[#0a1628] pt-20 pb-32">
 
       {/* Background images with crossfade */}
       <div className="absolute inset-0 z-0">

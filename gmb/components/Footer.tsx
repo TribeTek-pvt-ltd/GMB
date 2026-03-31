@@ -8,10 +8,10 @@ const Footer = () => {
 
   return (
     <footer className="bg-slate-950 text-white border-t border-white/5">
-      <div className="container max-w-7xl mx-auto py-10">
+      <div className="container max-w-7xl mx-auto py-16">
 
         {/* Main Grid: Brand | Links | Contact */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
 
           {/* Brand */}
           <div>
@@ -34,7 +34,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/60 mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               <li><Link href="/" className="text-white/40 hover:text-primary text-sm transition-colors">Home</Link></li>
               <li><Link href="/about" className="text-white/40 hover:text-primary text-sm transition-colors">About Us</Link></li>
               <li><Link href="/products" className="text-white/40 hover:text-primary text-sm transition-colors">Products</Link></li>
@@ -67,7 +67,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="h-px bg-white/10 mb-5" />
+        <div className="h-px bg-white/10 mb-8" />
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-white/30 text-xs">&copy; 2026 GMB. All rights reserved to TribeTek.</p>
           <div className="flex items-center gap-4">

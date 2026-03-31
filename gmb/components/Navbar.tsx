@@ -23,7 +23,7 @@ const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
     <>
       <nav className="fixed top-0 w-full z-50 bg-white border-b border-slate-200 shadow-sm">
         <div className="container max-w-7xl mx-auto">
-          <div className="flex justify-between h-16 items-center">
+          <div className="flex justify-between h-20 items-center">
 
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
@@ -33,7 +33,7 @@ const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
             </div>
 
             {/* Desktop Center Links */}
-            <div className="hidden md:flex flex-1 items-center justify-center space-x-8">
+            <div className="hidden md:flex flex-1 items-center justify-center space-x-10">
               <Link href="/" className="text-slate-700 hover:text-primary transition-colors font-medium">Home</Link>
 
               {/* Products Mega Menu Dropdown */}
@@ -83,6 +83,11 @@ const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
             {/* Right side utilities (Desktop + Mobile Toggle) */}
             <div className="flex items-center gap-3">
               <div className="hidden md:flex items-center gap-3">
+                <Link href="/store" className="bg-slate-100 text-slate-600 p-2.5 rounded-xl hover:bg-slate-200 transition-colors flex items-center justify-center group" title="Store">
+                  <svg className="w-5 h-5 group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72L4.318 3.44A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72m-13.5 8.65h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .415.336.75.75.75Z" />
+                  </svg>
+                </Link>
                 <button
                   onClick={openTrackModal}
                   className="bg-slate-100 text-slate-600 p-2.5 rounded-xl hover:bg-slate-200 transition-colors flex items-center justify-center"
@@ -190,6 +195,16 @@ const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
             >
               Contact
             </Link>
+            <Link
+              href="/store"
+              onClick={closeMenu}
+              className="block px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-slate-50 hover:text-primary transition-colors flex items-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72L4.318 3.44A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72m-13.5 8.65h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .415.336.75.75.75Z" />
+              </svg>
+              Store
+            </Link>
 
             <div className="pt-2 pb-2 space-y-2">
               <button
@@ -279,6 +294,16 @@ const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
                     </div>
                     <p className="text-slate-400 text-xs mt-0.5">Signature {item.category || 'Collection'}</p>
                     
+                    {item.configuration && (
+                      <div className="mt-1 flex flex-wrap gap-1">
+                        <span className="text-[9px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded truncate max-w-[80px]">
+                          {item.configuration.width}x{item.configuration.drop}mm
+                        </span>
+                        <span className="text-[9px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded truncate max-w-[80px]">
+                          {item.configuration.fabric}
+                        </span>
+                      </div>
+                    )}
                     <div className="mt-auto flex justify-between items-center">
                       <div className="flex items-center gap-3 bg-slate-50 rounded-lg p-1 border border-slate-100">
                         <button 
