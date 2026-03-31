@@ -97,7 +97,6 @@ h6 {
   }
 
   .premium-card:hover {
-    box-shadow: 0 25px 50px -12px rgba(31, 46, 90, 0.25);
     border-color: rgba(76, 175, 80, 0.3);
   }
 
@@ -113,7 +112,6 @@ h6 {
   }
 
   .premium-card-dark:hover {
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6), 0 15px 40px -10px rgba(31, 46, 90, 0.9);
     border-color: rgba(76, 175, 80, 0.4);
   }
 }

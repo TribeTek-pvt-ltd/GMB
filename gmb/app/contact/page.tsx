@@ -14,12 +14,12 @@ export default function ContactPage() {
       <Navbar />
       <ContactHero />
       <ScrollReveal delay={0.1}>
-        <div className="pt-8 md:pt-12 pb-4">
+        <div className="pt-2 md:pt-4 pb-2">
           <ContactForm />
         </div>
       </ScrollReveal>
       <ScrollReveal delay={0.2}>
-        <div className="pt-12 md:pt-16 pb-12">
+        <div className="pt-4 md:pt-8 pb-8">
           <ContactInfo />
         </div>
       </ScrollReveal>

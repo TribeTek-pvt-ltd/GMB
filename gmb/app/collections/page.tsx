@@ -105,8 +105,8 @@ export default function CollectionsPage() {
                   <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                      {PRODUCT_CATEGORIES[0].items.map((item, idx) => (
                         <ScrollReveal key={idx} delay={idx * 0.1} className={idx % 2 !== 0 ? 'md:mt-24' : ''}>
-                           <Link href={`/products/${item.slug}`} className="group block relative overflow-hidden rounded-[2.5rem] bg-slate-50 aspect-[3/4] shadow-2xl hover:shadow-[0_40px_80px_rgba(0,0,0,0.15)] transition-all duration-700">
-                              <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                           <Link href={`/products/${item.slug}`} className="group block relative overflow-hidden rounded-[2.5rem] bg-slate-50 aspect-[3/4] shadow-2xl transition-all duration-700">
+                              <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-1000" />
                               <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/80 via-transparent to-transparent flex flex-col justify-end p-8">
                                  <h3 className="text-white text-2xl font-bold font-serif">{item.title}</h3>
                                  <p className="text-white/60 text-xs uppercase tracking-widest mt-2">Explore Perspective</p>
@@ -135,9 +135,9 @@ export default function CollectionsPage() {
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                   {PRODUCT_CATEGORIES[1].items.map((item, idx) => (
                      <ScrollReveal key={idx} delay={idx * 0.1}>
-                        <Link href={`/products/${item.slug}`} className="group block relative aspect-square rounded-[2rem] overflow-hidden bg-white shadow-xl hover:shadow-2xl transition-all duration-700 border border-white">
-                           <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
-                           <div className="absolute inset-x-4 bottom-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <Link href={`/products/${item.slug}`} className="group block relative aspect-square rounded-[2rem] overflow-hidden bg-white shadow-xl transition-all duration-700 border border-white">
+                           <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-1000" />
+                           <div className="absolute inset-x-4 bottom-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 transition-transform duration-500">
                               <h3 className="text-white text-xl font-bold mb-1">{item.title}</h3>
                               <p className="text-white/40 text-[10px] uppercase font-black tracking-widest leading-none">Perspective 0{idx + 1}</p>
                            </div>
@@ -174,9 +174,9 @@ export default function CollectionsPage() {
                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   {PRODUCT_CATEGORIES[2].items.map((item, idx) => (
                      <ScrollReveal key={idx} delay={idx * 0.1}>
-                        <Link href={`/products/${item.slug}`} className="group flex flex-col md:flex-row gap-8 bg-slate-900/50 backdrop-blur-xl border border-white/5 p-8 rounded-[3rem] hover:border-primary/30 transition-all duration-700 h-full">
+                        <Link href={`/products/${item.slug}`} className="group flex flex-col md:flex-row gap-8 bg-slate-900/50 backdrop-blur-xl border border-white/5 p-8 rounded-[3rem] transition-all duration-700 h-full">
                            <div className="w-full md:w-1/2 aspect-square relative rounded-3xl overflow-hidden shadow-2xl">
-                              <Image src={item.image} alt={item.title} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" />
+                              <Image src={item.image} alt={item.title} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" />
                               {item.isNew && (
                                  <span className="absolute top-4 left-4 bg-primary text-white text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full shadow-lg">NEW</span>
                               )}
@@ -184,7 +184,7 @@ export default function CollectionsPage() {
                            <div className="w-full md:w-1/2 flex flex-col justify-center">
                               <h3 className="text-white text-3xl font-bold font-serif mb-4 group-hover:text-primary transition-colors">{item.title}</h3>
                               <p className="text-slate-400 text-base leading-relaxed mb-8 flex-grow">{item.description}</p>
-                              <div className="flex items-center gap-4 text-primary font-black text-[10px] uppercase tracking-[0.4em] group-hover:translate-x-2 transition-transform duration-500">
+                              <div className="flex items-center gap-4 text-primary font-black text-[10px] uppercase tracking-[0.4em] transition-transform duration-500">
                                  <span>The Tech</span>
                                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                               </div>
@@ -197,12 +197,16 @@ export default function CollectionsPage() {
          </section>
 
          {/* Final Narrative Closer */}
-         <section className="py-24 md:py-40 bg-white text-center">
-            <ScrollReveal>
+         <section className="py-24 md:py-40 bg-slate-950 text-center relative overflow-hidden">
+            {/* Ambient luxury glows */}
+            <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none"></div>
+            <div className="absolute bottom-0 left-10 w-64 h-64 bg-accent-yellow/5 rounded-full blur-[80px] translate-y-1/3 pointer-events-none"></div>
+
+            <ScrollReveal className="relative z-10">
                <div className="h-px w-20 bg-primary/20 mx-auto mb-10" />
-               <h2 className="text-4xl md:text-6xl font-bold text-[#1F2E5A] font-serif mb-8 italic">Ready to redefine your space?</h2>
-               <p className="text-slate-500 text-lg mb-12 max-w-xl mx-auto">Discover the perfect architectural fit for your home.</p>
-               <Link href="/contact" className="inline-flex items-center gap-4 px-12 py-6 bg-[#4CAF50] text-white text-lg font-bold rounded-2xl shadow-xl hover:shadow-[0_20px_40px_rgba(76,175,80,0.3)] hover:-translate-y-1 transition-all">
+               <h2 className="text-4xl md:text-6xl font-bold text-white font-serif mb-8 italic">Ready to redefine your space?</h2>
+               <p className="text-slate-400 text-lg mb-12 max-w-xl mx-auto">Discover the perfect architectural fit for your home.</p>
+               <Link href="/contact" className="inline-flex items-center gap-4 px-12 py-6 bg-[#4CAF50] text-white text-lg font-bold rounded-2xl shadow-xl transition-all">
                   Request Free Quote
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                </Link>

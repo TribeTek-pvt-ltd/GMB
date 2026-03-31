@@ -87,7 +87,7 @@ const Gallery = () => {
             <Link
               href={`/gallery`}
               key={`${item.id}-${index}`}
-              className={`group relative rounded-3xl overflow-hidden block bg-slate-100 shadow-md hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 ${getBentoClass(index)}`}
+              className={`group relative rounded-3xl overflow-hidden block bg-slate-100 shadow-md transition-all duration-500 ${getBentoClass(index)}`}
               style={{ minHeight: '200px' }}
             >
               <Image
@@ -102,7 +102,7 @@ const Gallery = () => {
               <div className="absolute inset-0 bg-primary/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Content */}
-              <div className={`absolute bottom-0 left-0 w-full flex flex-col justify-end translate-y-4 group-transition-transform duration-500 ${index === 0 ? 'p-6 md:p-8' : 'p-4 md:p-5'}`}>
+              <div className={`absolute bottom-0 left-0 w-full flex flex-col justify-end transition-transform duration-500 ${index === 0 ? 'p-6 md:p-8' : 'p-4 md:p-5'}`}>
                 <div className="mb-3">
                   <span className="px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-white text-[9px] font-bold uppercase tracking-[0.2em] shadow-sm">
                     {item.category}
@@ -114,13 +114,13 @@ const Gallery = () => {
 
                 {/* Description */}
                 <div className={`overflow-hidden ${index === 0 ? 'min-h-[3rem]' : 'hidden sm:block'}`}>
-                  <p className={`text-white/80 line-clamp-2 transform translate-y-8 opacity-0 group-group-hover:opacity-100 transition-all duration-500 delay-100 font-light ${index === 0 ? 'text-base' : 'text-xs'}`}>
+                  <p className={`text-white/80 line-clamp-2 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 font-light ${index === 0 ? 'text-base' : 'text-xs'}`}>
                     {item.description}
                   </p>
                 </div>
 
                 {/* Click icon */}
-                <div className={`absolute backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transform transition-all duration-500 delay-200 ${index === 0 ? 'right-10 bottom-10 w-12 h-12 rounded-full bg-white/10 translate-x-4 group-hover:translate-x-0' : 'right-4 bottom-4 w-8 h-8 rounded-full bg-white/10 scale-0 '}`}>
+                <div className={`absolute backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 ${index === 0 ? 'right-10 bottom-10 w-12 h-12 rounded-full bg-white/10 group-hover:translate-x-0' : 'right-4 bottom-4 w-8 h-8 rounded-full bg-white/10'}`}>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </div>
               </div>

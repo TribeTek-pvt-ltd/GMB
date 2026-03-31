@@ -106,93 +106,22 @@ function ProductsContent() {
 
          <ScrollReveal delay={0.1}>
             <div className="pt-16 pb-6 mt-8">
-               {/* --- SECONDARY NAVBAR: CATEGORY SELECTOR --- */}
-               {/* <div
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-               // className={`transition-all duration-500 ease-in-out ${isSecondaryNavVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}
-               > */}
-               {/* <div className="max-w-7xl mx-auto px-6 mb-8">
-                  <div className="glassmorphism rounded-xl p-4 md:p-6 border-white/40 shadow-xl shadow-slate-200/50 backdrop-blur-2xl flex flex-col gap-4">
-
-                     Level 1: Categories (Groups)
-                     <div className="flex flex-wrap justify-center gap-6 border-b border-slate-200/50 pb-3">
-                        {PRODUCT_CATEGORIES.map((group) => {
-                           const isActiveGroup = activeGroup?.title === group.title;
-                           return (
-                              <Link
-                                 key={group.title}
-                                 href={`/products/${group.items[0].slug}`}
-                                 className={`text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] transition-colors ${isActiveGroup ? 'text-[#4CAF50]' : 'text-slate-400 hover:text-slate-600'}`}
-                              >
-                                 {group.title}
-                              </Link>
-                           );
-                        })}
-                     </div>
-
-                     Level 2: Subcategories (Items in active Group)
-                     <nav className="flex flex-wrap items-center justify-center gap-3 sm:gap-6">
-                        {activeGroup?.items.map((item) => {
-                           const isActive = activeSubcategory.slug === item.slug;
-                           return (
-                              <Link
-                                 key={item.slug}
-                                 href={`/products/${item.slug}`}
-                                 className={`group relative py-2 px-4 transition-all duration-300 ${isActive ? 'text-[#1F2E5A] bg-[#4CAF50]/10 rounded-full' : 'text-slate-500 hover:text-[#1F2E5A]'}`}
-                              >
-                                 <span className="text-xs sm:text-sm font-bold uppercase tracking-widest relative z-10">{item.title}</span>
-                              </Link>
-                           )
-                        })}
-                     </nav>
-
-                     {/* Level 3: Deep Filtering (Variant Styles of Active Item) 
-               {activeSubcategory.subCategories && activeSubcategory.subCategories.length > 0 && (
-                  <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-3 border-t border-slate-200/50">
-                     <button
-                        onClick={() => { setActiveStyle('All'); setActiveRoom('All'); setSearchQuery(''); }}
-                        className={`px-4 py-1.5 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-widest transition-all shadow-sm ${activeStyle === 'All'
-                           ? 'bg-[#4CAF50] text-white shadow-md'
-                           : 'bg-white/50 text-slate-500 border border-slate-200 hover:border-[#4CAF50]/50 hover:text-[#4CAF50]'
-                           }`}
-                     >
-                        All {activeSubcategory.title}
-                     </button>
-                     {activeSubcategory.subCategories.map(sub => (
-                        <button
-                           key={sub}
-                           onClick={() => { setActiveStyle(sub); setActiveRoom('All'); setSearchQuery(''); }}
-                           className={`px-4 py-1.5 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-widest transition-all shadow-sm ${activeStyle === sub
-                              ? 'bg-[#4CAF50] text-white shadow-md'
-                              : 'bg-white/50 text-slate-500 border border-slate-200 hover:border-[#4CAF50]/50 hover:text-[#4CAF50]'
-                              }`}
-                        >
-                           {sub}
-                        </button>
-                     ))}
-                  </div>
-               )}
-            </div>
-         </div> */}
             </div>
 
-            {/* --- GALLERY HEADER --- */}
-            <div className="max-w-7xl mx-auto px-6 mb-12 mt-6 text-center">
-               <div className="inline-flex items-center gap-3 mb-2">
-                  <div className="w-12 h-px bg-[#4CAF50]" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#4CAF50]">
-                     {activeGroup?.title || "Curated Collection"}
+            {/* --- REFINED EDITORIAL HEADER --- */}
+            <div className="max-w-7xl mx-auto px-6 mb-20 mt-12 text-center relative z-10">
+               <div className="inline-flex items-center gap-3 mb-4">
+                  <div className="w-12 h-px bg-primary/30" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">
+                     Signature Collections
                   </span>
-                  <div className="w-12 h-px bg-[#4CAF50]" />
+                  <div className="w-12 h-px bg-primary/30" />
                </div>
-               <h1 className="text-3xl md:text-4xl font-bold tracking-tighter leading-tight text-[#1F2E5A] mb-4">
-                  <span className="gradient-text">{activeStyle !== 'All' ? activeStyle : activeTab || "Collection"}</span>
+               <h1 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight text-[#1F2E5A] mb-6 font-serif">
+                  The <span className="gradient-text italic font-medium pr-3">{activeSubcategory.title}</span> Collection
                </h1>
-               <p className="max-w-2xl mx-auto text-slate-500 text-sm leading-relaxed font-medium">
-                  {activeStyle !== 'All'
-                     ? `Explore our signature ${activeStyle.toLowerCase()} collection.`
-                     : (activeSubcategory.description || data.categoryMetadata[activeTab] || "Explore our exclusive collection of window treatments.")}
+               <p className="max-w-3xl mx-auto text-slate-500 text-lg md:text-xl leading-relaxed font-light">
+                  {activeSubcategory.description || "Expertly curated for modern architectural spaces, defining the intersection of light and geometry."}
                </p>
             </div>
 
@@ -201,38 +130,57 @@ function ProductsContent() {
 
                {/* STYLE FILTERS AS CARDS */}
                {activeStyle === 'All' ? (
-                  <div className="max-w-[1400px] mx-auto mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                     {displayStyles.length > 0 ? (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                           {displayStyles.map((style) => {
-                              const styleImage = data.products.find(p => p.style === style)?.image || activeSubcategory.image || '/images/curtain1.png';
-                              return (
-                                 <div 
-                                    key={style} 
-                                    className="premium-card relative h-[380px] overflow-hidden rounded-xl cursor-pointer group"
-                                    onClick={() => router.push(`/gallery?category=${encodeURIComponent(style)}`)}
-                                 >
-                                    <Image
-                                       src={styleImage}
-                                       alt={style}
-                                       fill
-                                       className="object-cover transition-transform duration-[1200ms] "
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent flex flex-col justify-end p-8 text-left">
-                                       <h3 className="text-white text-2xl font-bold mb-1 group-hover:text-[#4CAF50] transition-colors">{style}</h3>
-                                       <p className="text-white/80 text-sm leading-relaxed mb-4">Explore our curated {style.toLowerCase()} collection.</p>
-                                       
-                                       <button className="text-white font-bold flex items-center gap-2 group-hover:text-[#4CAF50] transition-colors">
-                                          Browse Style
-                                          <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                                       </button>
-                                    </div>
-                                 </div>
-                              );
-                           })}
-                        </div>
-                     ) : null}
-                  </div>
+                   <div className="max-w-[1400px] mx-auto mb-24 animate-in fade-in slide-in-from-bottom-4 duration-700 font-sans">
+                      {displayStyles.length > 0 ? (
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                            {displayStyles.map((style, sIdx) => {
+                               const productData = data.products.find(p => p.style === style);
+                               const styleImage = productData?.image || activeSubcategory.image || '/images/curtain1.png';
+                               
+                               return (
+                                  <div 
+                                     key={style} 
+                                     className="group flex flex-col xl:flex-row gap-6 lg:gap-8 bg-white/70 backdrop-blur-xl border border-slate-200 p-6 md:p-8 rounded-[3rem] hover:border-primary/40 transition-all duration-700 shadow-xl shadow-slate-200 relative overflow-hidden"
+                                     onClick={() => router.push(`/gallery?category=${encodeURIComponent(style)}`)}
+                                  >
+                                     {/* Image Section */}
+                                     <div className="w-full xl:w-[45%] aspect-square relative rounded-[2.2rem] overflow-hidden shadow-lg ring-1 ring-slate-100">
+                                        <Image
+                                           src={styleImage}
+                                           alt={style}
+                                           fill
+                                           className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+                                        />
+                                        <div className="absolute top-3 right-5 text-slate-100/50 text-5xl font-serif font-black select-none pointer-events-none group-hover:text-primary/10 transition-colors duration-700">
+                                           0{sIdx + 1}
+                                        </div>
+                                     </div>
+
+                                     {/* Content Section */}
+                                     <div className="w-full xl:w-[55%] flex flex-col justify-center py-2">
+                                        <div className="inline-flex items-center gap-2 mb-3">
+                                           <div className="w-3 h-px bg-primary/40" />
+                                           <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-primary">Masterpiece</span>
+                                        </div>
+                                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1F2E5A] font-serif mb-3 leading-tight group-hover:text-primary transition-colors">
+                                           {style}
+                                        </h3>
+                                        <p className="text-slate-500 text-xs md:text-sm leading-relaxed mb-6 opacity-90 group-hover:opacity-100 transition-opacity max-w-sm font-light">
+                                           Explore the unique architectural geometry and light-shaping capabilities of our signature {style.toLowerCase()} collection.
+                                        </p>
+                                        
+                                        <div className="flex items-center gap-3 text-primary font-black text-[9px] md:text-[10px] uppercase tracking-[0.3em] transition-transform duration-500 mt-auto cursor-pointer">
+                                           <span className="group-hover:text-primary/80 transition-colors">Browse Style Gallery</span>
+                                           <div className="w-8 h-px bg-primary/20 group-hover:bg-primary transition-all duration-500 group-hover:w-12" />
+                                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                                        </div>
+                                     </div>
+                                  </div>
+                               );
+                            })}
+                         </div>
+                      ) : null}
+                   </div>
                ) : (
                   <>
                      {/* Tiered Filters + Search (Floating UI) when deep inside a Style */}

@@ -107,7 +107,7 @@ const ContactFormContent = () => {
               onClick={() => setFormType('general')}
               className={`flex-1 py-3 px-8 text-sm md:text-base rounded-xl font-bold transition-all duration-300 ${
                 formType === 'general' 
-                  ? 'bg-primary text-white shadow-xl shadow-primary/30 scale-[1.02]' 
+                  ? 'bg-primary text-white scale-[1.02]' 
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -117,7 +117,7 @@ const ContactFormContent = () => {
               onClick={() => setFormType('quote')}
               className={`flex-1 py-3 px-8 text-sm md:text-base rounded-xl font-bold transition-all duration-300 ${
                 formType === 'quote' 
-                  ? 'bg-primary text-white shadow-xl shadow-primary/30 scale-[1.02]' 
+                  ? 'bg-primary text-white scale-[1.02]' 
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -339,7 +339,7 @@ const ContactFormContent = () => {
               <button 
                 type="submit"
                 disabled={loading || isScanning}
-                className="w-full bg-[var(--accent-yellow)] text-white py-3.5 rounded-xl font-bold text-base hover:opacity-90 transition-opacity shadow-lg shadow-[#F4A300]/20 disabled:opacity-50 flex items-center justify-center gap-2"
+                className="w-full bg-[var(--accent-yellow)] text-white py-3.5 rounded-xl font-bold text-base hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {loading && <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />}
                 {isScanning ? 'Scanning File...' : (formType === 'general' ? 'Send Message' : 'Request Free Measurement')}

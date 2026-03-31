@@ -72,9 +72,9 @@ export default function ProductsOverviewPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
                {activeGroup.items.map((item, itemIdx) => (
                   <ScrollReveal key={itemIdx + activeGroupIndex} delay={itemIdx * 0.1}>
-                     <Link
+                      <Link
                         href={`/products/${item.slug}`}
-                        className="group flex flex-col xl:flex-row gap-8 bg-white/70 backdrop-blur-xl border border-slate-200 p-6 md:p-8 rounded-[3.5rem] hover:border-primary/40 transition-all duration-700 h-full shadow-xl hover:shadow-2xl shadow-slate-200 group"
+                        className="group flex flex-col xl:flex-row gap-8 bg-white/70 backdrop-blur-xl border border-slate-200 p-6 md:p-8 rounded-[3.5rem] hover:border-primary/40 transition-all duration-700 h-full shadow-xl shadow-slate-200 group"
                      >
                         {/* Image Left Section */}
                         <div className="w-full xl:w-[45%] aspect-square relative rounded-[2.5rem] overflow-hidden shadow-lg ring-1 ring-slate-200">
@@ -82,7 +82,7 @@ export default function ProductsOverviewPage() {
                               src={item.image}
                               alt={item.title}
                               fill
-                              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
                            />
                            
                            {/* New Ribbon Badge */}
@@ -102,7 +102,7 @@ export default function ProductsOverviewPage() {
 
                         {/* Text Right Section */}
                         <div className="w-full xl:w-[55%] flex flex-col justify-center py-2">
-                           <span className="text-primary text-[10px] font-black uppercase tracking-[0.4em] mb-4 block group-hover:translate-x-1 transition-transform">Collection Detail</span>
+                           <span className="text-primary text-[10px] font-black uppercase tracking-[0.4em] mb-4 block transition-transform">Collection Detail</span>
                            <h3 className="text-2xl md:text-4xl font-bold text-[#1F2E5A] font-serif mb-4 leading-tight group-hover:text-primary transition-colors">
                               {item.title}
                            </h3>
@@ -121,7 +121,7 @@ export default function ProductsOverviewPage() {
                            </div>
 
                            {/* Interactive CTA */}
-                           <div className="flex items-center gap-4 text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] group-hover:translate-x-2 transition-transform duration-500 mt-auto">
+                           <div className="flex items-center gap-4 text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] transition-transform duration-500 mt-auto">
                               <span className="group-hover:text-primary/80 transition-colors">The Masterpiece</span>
                               <div className="w-12 h-px bg-primary/20 group-hover:bg-primary transition-all duration-500 group-hover:w-16" />
                               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>

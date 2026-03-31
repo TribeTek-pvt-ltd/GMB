@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
+import { useCart } from '@/context/CartContext';
 
 function GalleryContent() {
   const searchParams = useSearchParams();
@@ -14,6 +15,9 @@ function GalleryContent() {
   const [activeLocation, setActiveLocation] = useState('All');
   const [loading, setLoading] = useState(true);
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+  const { addToCart, cartItems } = useCart();
+
+  const isSaved = (id: string) => cartItems.some(item => item.id === id);
 
   useEffect(() => {
     async function fetchGallery() {
@@ -117,7 +121,7 @@ function GalleryContent() {
                     setSelectedIdx(null); // Reset lightbox when filter changes
                   }}
                   className={`px-6 py-2 rounded-full font-bold uppercase tracking-widest text-[9px] transition-all duration-300 shadow-sm ${activeLocation === loc
-                    ? 'bg-[#4CAF50] text-white shadow-md scale-105'
+                    ? 'bg-[#4CAF50] text-white shadow-md'
                     : 'bg-white text-slate-500 border border-slate-200 hover:border-[#4CAF50]/50 hover:text-[#4CAF50]'
                     }`}
                 >
@@ -136,24 +140,47 @@ function GalleryContent() {
                 className="group relative cursor-pointer"
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-sm transition-all duration-700 hover:shadow-2xl ring-1 ring-slate-200">
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-sm transition-all duration-700 ring-1 ring-slate-200">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <h3 className="text-white text-lg font-bold tracking-tight mb-2">{item.title}</h3>
-                    <div className="flex items-center gap-2">
-                      <span className="text-[8px] font-bold bg-[#4CAF50]/90 text-white px-2 py-1 rounded-md uppercase tracking-[0.2em] backdrop-blur-md">
-                        {item.location || item.room || 'Any Room'}
-                      </span>
-                      <span className="text-[8px] font-bold bg-white/20 text-white px-2 py-1 rounded-md uppercase tracking-[0.2em] backdrop-blur-md">
-                        {item.category || item.style || initialCategory}
-                      </span>
-                    </div>
-                  </div>
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent flex flex-col justify-end p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                     <div className="absolute top-6 right-6 translate-x-4 group-hover:translate-x-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                        <button 
+                           onClick={(e) => {
+                              e.stopPropagation();
+                              if (isSaved(item.id)) return;
+                              addToCart({
+                                 id: item.id,
+                                 name: item.title,
+                                 price: 0,
+                                 image: item.image,
+                                 category: item.category || 'Portfolio'
+                              });
+                           }}
+                           className={`w-12 h-12 rounded-full flex items-center justify-center shadow-2xl transition-all transform hover:scale-110 border border-slate-100 group/select ${
+                              isSaved(item.id) ? 'bg-primary text-white' : 'bg-white text-[#1F2E5A] hover:bg-primary hover:text-white'
+                           }`}
+                           title={isSaved(item.id) ? "Saved to Selection" : "Save to Selection"}
+                        >
+                           <svg className={`w-5 h-5 transition-all duration-300 ${isSaved(item.id) ? 'fill-current' : 'group-hover/select:fill-current'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                           </svg>
+                        </button>
+                     </div>
+                     <h3 className="text-white text-lg font-bold tracking-tight mb-2 font-serif">{item.title}</h3>
+                     <div className="flex items-center gap-2">
+                       <span className="text-[8px] font-bold bg-[#4CAF50]/90 text-white px-2 py-1 rounded-md uppercase tracking-[0.2em] backdrop-blur-md font-sans">
+                         {item.location || item.room || 'Any Room'}
+                       </span>
+                       <span className="text-[8px] font-bold bg-white/20 text-white px-2 py-1 rounded-md uppercase tracking-[0.2em] backdrop-blur-md font-sans">
+                         {item.category || item.style || initialCategory}
+                       </span>
+                     </div>
+                   </div>
                 </div>
               </div>
             ))}
@@ -176,14 +203,14 @@ function GalleryContent() {
       </section>
 
       {/* Lightbox Modal */}
-      {selectedIdx !== null && (
+       {selectedIdx !== null && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/95 backdrop-blur-2xl p-4 md:p-10 animate-in fade-in duration-300"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-200/40 backdrop-blur-3xl p-4 md:p-8 animate-in fade-in duration-500"
           onClick={() => setSelectedIdx(null)}
         >
-          {/* Close Button */}
+          {/* Close Button - Integrated with Theme */}
           <button
-            className="absolute top-6 right-6 z-[110] w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white transition-all duration-300 group"
+            className="absolute top-6 right-6 z-[110] w-12 h-12 rounded-full bg-white/80 hover:bg-white border border-slate-200 flex items-center justify-center text-[#1F2E5A] shadow-xl transition-all duration-300 group"
             onClick={() => setSelectedIdx(null)}
           >
             <svg className="w-6 h-6 group-hover:rotate-90 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -191,57 +218,87 @@ function GalleryContent() {
             </svg>
           </button>
 
-          {/* Navigation Arrows */}
+           {/* Navigation Arrows - High Contrast */}
           <button
-            className="absolute left-4 md:left-10 z-[110] w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white transition-all duration-300 disabled:opacity-30"
+            className="absolute left-4 md:left-8 z-[110] w-14 h-14 rounded-full bg-white/80 hover:bg-white border border-slate-200 flex items-center justify-center text-[#1F2E5A] shadow-xl transition-all duration-300 disabled:opacity-30 group"
             onClick={handlePrev}
           >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" /></svg>
+            <svg className="w-8 h-8 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" /></svg>
           </button>
-
+          
           <button
-            className="absolute right-4 md:right-10 z-[110] w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white transition-all duration-300 disabled:opacity-30"
+            className="absolute right-4 md:right-8 z-[110] w-14 h-14 rounded-full bg-white/80 hover:bg-white border border-slate-200 flex items-center justify-center text-[#1F2E5A] shadow-xl transition-all duration-300 disabled:opacity-30 group"
             onClick={handleNext}
           >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" /></svg>
+            <svg className="w-8 h-8 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" /></svg>
           </button>
-
-          {/* Image Wrapper */}
+          
+          {/* Card Popup Wrapper */}
           <div
-            className="relative w-full max-w-5xl h-full flex flex-col items-center justify-center pointer-events-none"
+            className="relative w-full max-w-4xl h-full max-h-[85vh] flex flex-col items-center justify-center pointer-events-none"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative w-full h-[70vh] md:h-[80vh] rounded-3xl overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.5)] border border-white/10 pointer-events-auto group">
-              <Image
-                src={filteredItems[selectedIdx].image}
-                alt={filteredItems[selectedIdx].title}
-                fill
-                className="object-contain"
-                priority
-              />
-
-              {/* Bottom Info Bar */}
-              <div className="absolute bottom-0 left-0 right-0 p-8 pt-16 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-                <div>
-                  <span className="text-[#4CAF50] text-[10px] uppercase font-black tracking-[0.3em] mb-2 block">Project Spotlight</span>
-                  <h2 className="text-white text-2xl md:text-3xl font-black">{filteredItems[selectedIdx].title}</h2>
-                </div>
-                <div className="flex gap-3">
-                  <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
-                    <span className="text-white/40 text-[9px] uppercase font-bold block mb-1">Room</span>
-                    <span className="text-white text-xs font-bold">{filteredItems[selectedIdx].location || filteredItems[selectedIdx].room || 'Any Room'}</span>
+            <div className="relative w-full h-full bg-white rounded-[3rem] overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.2)] border border-white/50 pointer-events-auto flex flex-col group">
+              <div className="relative flex-grow w-full h-full overflow-hidden">
+                <Image
+                  src={filteredItems[selectedIdx].image}
+                  alt={filteredItems[selectedIdx].title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                
+                {/* Masterpiece Info Overlay (Directly on Image) */}
+                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                  <div>
+                    <span className="text-primary text-[10px] uppercase font-black tracking-[0.4em] mb-3 block">Signature Achievement</span>
+                    <h2 className="text-white text-3xl md:text-4xl font-black font-serif leading-tight">{filteredItems[selectedIdx].title}</h2>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
-                    <span className="text-white/40 text-[9px] uppercase font-bold block mb-1">Style</span>
-                    <span className="text-white text-xs font-bold">{filteredItems[selectedIdx].category || filteredItems[selectedIdx].style || initialCategory}</span>
+                  
+                  <div className="flex flex-wrap items-end gap-6 md:gap-8">
+                    <div className="flex gap-6 md:gap-10">
+                      <div className="flex flex-col gap-1">
+                        <span className="text-white/40 text-[9px] uppercase font-black tracking-[0.2em]">Room</span>
+                        <span className="text-white text-sm font-bold tracking-wide">{filteredItems[selectedIdx].location || filteredItems[selectedIdx].room || 'Any Room'}</span>
+                      </div>
+                      <div className="flex flex-col gap-1 border-l border-white/10 pl-6 md:pl-10">
+                        <span className="text-white/40 text-[9px] uppercase font-black tracking-[0.2em]">Style</span>
+                        <span className="text-white text-sm font-bold tracking-wide">{filteredItems[selectedIdx].category || filteredItems[selectedIdx].style || initialCategory}</span>
+                      </div>
+                    </div>
+                    
+                    <button 
+                       onClick={(e) => {
+                          e.stopPropagation();
+                          const item = filteredItems[selectedIdx];
+                          if (isSaved(item.id)) return;
+                          addToCart({
+                             id: item.id,
+                             name: item.title,
+                             price: 0,
+                             image: item.image,
+                             category: item.category || 'Portfolio'
+                          });
+                       }}
+                       className={`w-14 h-14 rounded-2xl shadow-xl transition-all flex items-center justify-center pointer-events-auto group/save ml-auto ${
+                          isSaved(filteredItems[selectedIdx].id) 
+                          ? 'bg-primary text-white cursor-default' 
+                          : 'bg-white text-[#1F2E5A] hover:bg-primary hover:text-white transform hover:-translate-y-1'
+                       }`}
+                       title={isSaved(filteredItems[selectedIdx].id) ? 'Saved' : 'Save to Selection'}
+                    >
+                       <svg className={`w-6 h-6 transition-all ${isSaved(filteredItems[selectedIdx].id) ? 'fill-current' : 'group-hover/save:fill-current'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                       </svg>
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Pagination Counter */}
-            <div className="mt-8 text-white/40 text-sm font-bold tracking-widest uppercase">
-              Item <span className="text-white">{selectedIdx + 1}</span> of {filteredItems.length}
+            
+            {/* Pagination Counter - Floating Mode */}
+            <div className="mt-8 text-slate-500 text-[10px] font-black tracking-[0.4em] uppercase">
+              Masterpiece <span className="text-[#1F2E5A]">{selectedIdx + 1}</span> of {filteredItems.length}
             </div>
           </div>
         </div>

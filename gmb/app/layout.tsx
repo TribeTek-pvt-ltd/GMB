@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 };
 
 import { ModalProvider } from "@/lib/ModalContext";
+import { CartProvider } from "@/context/CartContext";
 
 export default function RootLayout({
   children,
@@ -30,7 +31,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`.trim()}
       >
         <ModalProvider>
-          {children}
+          <CartProvider>
+            {children}
+          </CartProvider>
         </ModalProvider>
       </body>
     </html>

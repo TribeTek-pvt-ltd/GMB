@@ -31,7 +31,6 @@ const Hero = () => {
     email: '',
     phone: '',
     address: '',
-    roomType: '',
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -156,21 +155,12 @@ const Hero = () => {
                  </div>
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                   <div className="space-y-4">
-                     <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="Full Name *" className="w-full px-5 py-3.5 rounded-xl bg-black/40 border border-white/10 text-white placeholder:text-white/40 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-inner" />
-                     <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} placeholder="Email Address *" className="w-full px-5 py-3.5 rounded-xl bg-black/40 border border-white/10 text-white placeholder:text-white/40 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-inner" />
-                     <input type="tel" required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} placeholder="Phone Number *" className="w-full px-5 py-3.5 rounded-xl bg-black/40 border border-white/10 text-white placeholder:text-white/40 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-inner" />
-                   </div>
-                   
-                   <div className="grid grid-cols-2 gap-4">
-                     <select value={formData.roomType} onChange={(e) => setFormData({...formData, roomType: e.target.value})} className="w-full px-4 py-3.5 rounded-xl bg-black/40 border border-white/10 text-white/80 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none cursor-pointer shadow-inner">
-                        <option value="" disabled className="bg-slate-900 text-white">Room...</option>
-                        <option value="Living Room" className="bg-slate-900 text-white">Living</option>
-                        <option value="Bedroom" className="bg-slate-900 text-white">Bedroom</option>
-                        <option value="Full Home" className="bg-slate-900 text-white">Full Home</option>
-                     </select>
-                     <input type="text" value={formData.address} onChange={(e) => setFormData({...formData, address: e.target.value})} placeholder="Area" className="w-full px-4 py-3.5 rounded-xl bg-black/40 border border-white/10 text-white placeholder:text-white/40 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-inner" />
-                   </div>
+                    <div className="space-y-4">
+                      <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="Full Name *" className="w-full px-5 py-3.5 rounded-xl bg-black/40 border border-white/10 text-white placeholder:text-white/40 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-inner" />
+                      <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} placeholder="Email Address *" className="w-full px-5 py-3.5 rounded-xl bg-black/40 border border-white/10 text-white placeholder:text-white/40 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-inner" />
+                      <input type="tel" required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} placeholder="Phone Number *" className="w-full px-5 py-3.5 rounded-xl bg-black/40 border border-white/10 text-white placeholder:text-white/40 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-inner" />
+                      <input type="text" required value={formData.address} onChange={(e) => setFormData({...formData, address: e.target.value})} placeholder="Full Address *" className="w-full px-5 py-3.5 rounded-xl bg-black/40 border border-white/10 text-white placeholder:text-white/40 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-inner" />
+                    </div>
                    
                    {formError && <p className="text-red-400 text-xs font-bold text-left px-1 tracking-wide uppercase">{formError}</p>}
                    

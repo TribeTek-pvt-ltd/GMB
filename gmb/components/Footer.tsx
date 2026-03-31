@@ -7,7 +7,7 @@ const Footer = () => {
   const { openTrackModal, openTermsModal, openPrivacyModal } = useModal();
 
   return (
-    <footer className="bg-gradient-to-br from-[#0F172A] via-[#1F2E5A] to-[#0F172A] text-white">
+    <footer className="bg-slate-950 text-white border-t border-white/5">
       <div className="container max-w-7xl mx-auto py-10">
 
         {/* Main Grid: Brand | Links | Contact */}
