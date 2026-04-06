@@ -65,7 +65,7 @@ const TrackOrderModal = ({ isOpen, onClose }: TrackOrderModalProps) => {
       />
 
       {/* Modal Content */}
-      <div className="relative w-full max-w-lg bg-slate-900/90 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+      <div className="relative w-full max-w-lg bg-slate-900/90 backdrop-blur-2xl border border-white/10 rounded-none shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
         <div className="p-8 sm:p-12">
           {/* Header */}
           <div className="flex justify-between items-start mb-8">
@@ -75,7 +75,7 @@ const TrackOrderModal = ({ isOpen, onClose }: TrackOrderModalProps) => {
             </div>
             <button 
               onClick={onClose}
-              className="p-2 hover:bg-slate-800 rounded-xl transition-colors"
+              className="p-2 hover:bg-slate-800 rounded-none transition-colors"
             >
               <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -91,7 +91,7 @@ const TrackOrderModal = ({ isOpen, onClose }: TrackOrderModalProps) => {
                   type="text" 
                   placeholder="e.g. ORD001"
                   required
-                  className="w-full px-6 py-4 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all bg-slate-900/40 text-white placeholder:text-slate-500"
+                  className="w-full px-6 py-4 rounded-none border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all bg-slate-900/40 text-white placeholder:text-slate-500"
                   value={orderNumber}
                   onChange={(e) => setOrderNumber(e.target.value.toUpperCase())}
                 />
@@ -102,14 +102,14 @@ const TrackOrderModal = ({ isOpen, onClose }: TrackOrderModalProps) => {
                   type="tel" 
                   placeholder="Enter registered mobile"
                   required
-                  className="w-full px-6 py-4 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all bg-slate-900/40 text-white placeholder:text-slate-500"
+                  className="w-full px-6 py-4 rounded-none border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all bg-slate-900/40 text-white placeholder:text-slate-500"
                   value={mobileNumber}
                   onChange={(e) => setMobileNumber(e.target.value)}
                 />
               </div>
 
               {error && (
-                <div className="bg-red-500/10 text-red-400 p-4 rounded-xl text-sm font-medium border border-red-500/20 animate-in fade-in slide-in-from-top-1">
+                <div className="bg-red-500/10 text-red-400 p-4 rounded-none text-sm font-medium border border-red-500/20 animate-in fade-in slide-in-from-top-1">
                   {error}
                 </div>
               )}
@@ -117,10 +117,10 @@ const TrackOrderModal = ({ isOpen, onClose }: TrackOrderModalProps) => {
               <button 
                 type="submit"
                 disabled={loading}
-                className="w-full bg-primary text-white py-5 rounded-xl font-bold text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-3 disabled:opacity-70"
+                className="w-full bg-primary text-white py-5 rounded-none font-bold text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-3 disabled:opacity-70"
               >
                 {loading ? (
-                  <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-xl animate-spin" />
+                  <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-none animate-spin" />
                 ) : (
                   'Track Now'
                 )}
@@ -128,10 +128,10 @@ const TrackOrderModal = ({ isOpen, onClose }: TrackOrderModalProps) => {
             </form>
           ) : (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="p-6 bg-primary/5 rounded-xl border border-primary/10">
+              <div className="p-6 bg-primary/5 rounded-none border border-primary/10">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-slate-400 text-sm">Status</span>
-                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-xl text-xs font-bold uppercase tracking-wider">
+                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-none text-xs font-bold uppercase tracking-wider">
                     {orderStatus.status}
                   </span>
                 </div>
@@ -150,7 +150,7 @@ const TrackOrderModal = ({ isOpen, onClose }: TrackOrderModalProps) => {
               </div>
 
               <div className="relative pt-6">
-                <div className="absolute top-0 left-0 w-full h-1 bg-white/10 rounded-xl overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-white/10 rounded-none overflow-hidden">
                   <div 
                     className="h-full bg-primary transition-all duration-1000 ease-out" 
                     style={{ width: 

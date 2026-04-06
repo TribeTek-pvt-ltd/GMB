@@ -122,7 +122,7 @@ export default function StoreProductSpecificationPage() {
                   <button
                     key={f.id}
                     onClick={() => setFabric(f)}
-                    className={`group relative w-16 h-16 rounded-full transition-all duration-300 ${
+                    className={`group relative w-16 h-16 rounded-none transition-all duration-300 ${
                       fabric.id === f.id ? 'ring-2 ring-offset-4 ring-primary scale-110' : 'hover:scale-105 ring-1 ring-slate-200'
                     }`}
                     style={{ backgroundColor: f.color }}
@@ -151,14 +151,14 @@ export default function StoreProductSpecificationPage() {
                   <button
                     key={type.id}
                     onClick={() => setFittingType(type.id as 'Top Fit' | 'Face Fit')}
-                    className={`relative flex flex-col items-center text-center p-6 border-2 rounded-2xl transition-all duration-300 overflow-hidden ${
+                    className={`relative flex flex-col items-center text-center p-6 border-2 rounded-none transition-all duration-300 overflow-hidden ${
                       fittingType === type.id 
                         ? 'border-primary bg-primary/5 shadow-md' 
                         : 'border-slate-100 hover:border-slate-300 bg-slate-50/50 hover:bg-slate-50'
                     }`}
                   >
                     {/* Visual Placeholder for Fitting */}
-                    <div className="w-full h-24 bg-white rounded-xl mb-4 border border-slate-200 flex items-center justify-center shadow-inner relative overflow-hidden">
+                    <div className="w-full h-24 bg-white rounded-none mb-4 border border-slate-200 flex items-center justify-center shadow-inner relative overflow-hidden">
                       {type.id === 'Top Fit' ? (
                         <div className="w-2/3 h-16 border-t-[8px] border-slate-700 relative mt-4">
                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90%] h-full bg-slate-200/50" />
@@ -189,7 +189,7 @@ export default function StoreProductSpecificationPage() {
                     value={width}
                     onChange={(e) => setWidth(e.target.value === '' ? '' : Number(e.target.value))}
                     placeholder="e.g. 2400"
-                    className="w-full bg-slate-50 border border-slate-200 px-5 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all font-bold text-lg"
+                    className="w-full bg-slate-50 border border-slate-200 px-5 py-4 rounded-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all font-bold text-lg"
                   />
                 </div>
                 <div>
@@ -199,7 +199,7 @@ export default function StoreProductSpecificationPage() {
                     value={drop}
                     onChange={(e) => setDrop(e.target.value === '' ? '' : Number(e.target.value))}
                     placeholder="e.g. 2100"
-                    className="w-full bg-slate-50 border border-slate-200 px-5 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all font-bold text-lg"
+                    className="w-full bg-slate-50 border border-slate-200 px-5 py-4 rounded-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all font-bold text-lg"
                   />
                 </div>
               </div>
@@ -214,7 +214,7 @@ export default function StoreProductSpecificationPage() {
                     <button
                       key={pos}
                       onClick={() => setPosition(pos as 'Standard' | 'Wall to Wall')}
-                      className={`relative flex flex-col items-center justify-center p-6 border-2 rounded-2xl transition-all duration-300 ${
+                      className={`relative flex flex-col items-center justify-center p-6 border-2 rounded-none transition-all duration-300 ${
                         position === pos 
                           ? 'border-primary bg-primary/5 shadow-md' 
                           : 'border-slate-100 hover:border-slate-300 bg-slate-50/50 hover:bg-slate-50'
@@ -245,7 +245,7 @@ export default function StoreProductSpecificationPage() {
                   <button
                     key={dir}
                     onClick={() => setStack(dir as 'Left' | 'Center' | 'Right')}
-                    className={`relative flex flex-col items-center justify-center p-4 border-2 rounded-2xl transition-all duration-300 ${
+                    className={`relative flex flex-col items-center justify-center p-4 border-2 rounded-none transition-all duration-300 ${
                       stack === dir 
                         ? 'border-primary bg-primary/5 shadow-md' 
                         : 'border-slate-100 hover:border-slate-300 bg-slate-50/50 hover:bg-slate-50'
@@ -269,21 +269,21 @@ export default function StoreProductSpecificationPage() {
             <div className="bg-slate-900 rounded-[2.5rem] p-8 md:p-10 text-white shadow-2xl border border-slate-800 overflow-hidden relative">
               
               {/* Decorative glows */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-none blur-[80px] pointer-events-none" />
               
               <h2 className="text-2xl font-bold font-serif border-b border-white/10 pb-6 mb-6">
                 Your Selection
               </h2>
 
               <div className="flex gap-4 mb-8">
-                <div className="w-24 h-32 rounded-xl border border-white/10 overflow-hidden relative bg-slate-800 shrink-0">
+                <div className="w-24 h-32 rounded-none border border-white/10 overflow-hidden relative bg-slate-800 shrink-0">
                   <Image src={product.image} alt={product.name} fill className="object-cover" />
-                  <div className="absolute inset-0 ring-inset ring-1 ring-white/10 rounded-xl" />
+                  <div className="absolute inset-0 ring-inset ring-1 ring-white/10 rounded-none" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white mb-1">{product.name}</h3>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="w-3 h-3 rounded-full border border-white/20" style={{ backgroundColor: fabric.color }} />
+                    <span className="w-3 h-3 rounded-none border border-white/20" style={{ backgroundColor: fabric.color }} />
                     <span className="text-sm font-light text-slate-300">{fabric.name}</span>
                   </div>
                   <p className="text-xs text-slate-400 capitalize">{fittingType} • {stack} Stack</p>
@@ -314,7 +314,7 @@ export default function StoreProductSpecificationPage() {
                     value={roomName}
                     onChange={(e) => setRoomName(e.target.value)}
                     placeholder="e.g. Master Bedroom"
-                    className="w-full bg-slate-800/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-primary text-white text-sm"
+                    className="w-full bg-slate-800/50 border border-slate-700 px-4 py-3 rounded-none focus:outline-none focus:border-primary text-white text-sm"
                   />
                 </div>
               </div>
@@ -337,7 +337,7 @@ export default function StoreProductSpecificationPage() {
                       checked={measurementsChecked}
                       onChange={(e) => setMeasurementsChecked(e.target.checked)}
                     />
-                    <div className="w-5 h-5 border-2 border-slate-600 rounded-md peer-checked:bg-primary peer-checked:border-primary transition-colors flex items-center justify-center group-hover:border-primary/50">
+                    <div className="w-5 h-5 border-2 border-slate-600 rounded-none peer-checked:bg-primary peer-checked:border-primary transition-colors flex items-center justify-center group-hover:border-primary/50">
                       <svg className={`w-3 h-3 text-white transition-opacity ${measurementsChecked ? 'opacity-100' : 'opacity-0'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
@@ -353,7 +353,7 @@ export default function StoreProductSpecificationPage() {
               <button
                 onClick={handleAddToCart}
                 disabled={!isValid || isAdding}
-                className={`w-full py-4 rounded-xl font-black tracking-widest text-sm uppercase transition-all duration-300 flex items-center justify-center gap-3 ${
+                className={`w-full py-4 rounded-none font-black tracking-widest text-sm uppercase transition-all duration-300 flex items-center justify-center gap-3 ${
                   isValid && !isAdding
                     ? 'bg-primary text-slate-900 shadow-[0_10px_30px_-10px_rgba(76,175,80,0.5)] hover:bg-[#a5f3b4] cursor-pointer' 
                     : 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700'

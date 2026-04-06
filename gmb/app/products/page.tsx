@@ -19,11 +19,11 @@ export default function ProductsOverviewPage() {
          
          {/* Page Hero Background Effects */}
          <div className="fixed inset-0 pointer-events-none overflow-hidden z-[0]">
-            <div className={`absolute top-[20%] right-[-10%] w-[600px] h-[600px] rounded-full blur-[150px] opacity-20 transition-all duration-1000 ${
+            <div className={`absolute top-[20%] right-[-10%] w-[600px] h-[600px] rounded-none blur-[150px] opacity-20 transition-all duration-1000 ${
                   activeGroupIndex === 0 ? 'bg-primary' : activeGroupIndex === 1 ? 'bg-cyan-500' : 'bg-accent-yellow'
                }`} 
             />
-            <div className={`absolute bottom-[10%] left-[-5%] w-[500px] h-[500px] rounded-full blur-[150px] opacity-10 transition-all duration-1000 ${
+            <div className={`absolute bottom-[10%] left-[-5%] w-[500px] h-[500px] rounded-none blur-[150px] opacity-10 transition-all duration-1000 ${
                   activeGroupIndex === 0 ? 'bg-emerald-500' : activeGroupIndex === 1 ? 'bg-blue-600' : 'bg-amber-600'
                }`} 
             />
@@ -74,10 +74,10 @@ export default function ProductsOverviewPage() {
                   <ScrollReveal key={itemIdx + activeGroupIndex} delay={itemIdx * 0.1}>
                       <Link
                         href={`/products/${item.slug}`}
-                        className="group flex flex-col xl:flex-row gap-8 bg-white/70 backdrop-blur-xl border border-slate-200 p-6 md:p-8 rounded-[3.5rem] hover:border-primary/40 transition-all duration-700 h-full shadow-xl shadow-slate-200 group"
+                        className="group flex flex-col xl:flex-row gap-8 bg-white/70 backdrop-blur-xl border border-slate-200 p-6 md:p-8 rounded-none hover:border-primary/40 transition-all duration-700 h-full shadow-xl shadow-slate-200 group"
                      >
                         {/* Image Left Section */}
-                        <div className="w-full xl:w-[45%] aspect-square relative rounded-[2.5rem] overflow-hidden shadow-lg ring-1 ring-slate-200">
+                        <div className="w-full xl:w-[45%] aspect-square relative rounded-none overflow-hidden shadow-lg ring-1 ring-slate-200">
                            <Image
                               src={item.image}
                               alt={item.title}
@@ -88,7 +88,7 @@ export default function ProductsOverviewPage() {
                            {/* New Ribbon Badge */}
                            {item.isNew && (
                               <div className="absolute top-4 left-4 z-10">
-                                 <span className="bg-primary text-white text-[9px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full shadow-lg aura-primary">
+                                 <span className="bg-primary text-white text-[9px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-none shadow-lg aura-primary">
                                     NEW
                                  </span>
                               </div>
@@ -114,7 +114,7 @@ export default function ProductsOverviewPage() {
                            <div className="mb-10 grid grid-cols-2 gap-x-4 gap-y-3 opacity-60 group-hover:opacity-100 transition-opacity duration-700 delay-300">
                               {item.subCategories?.slice(0, 4).map((sub, sIdx) => (
                                  <div key={sIdx} className="flex items-center gap-2">
-                                    <div className="w-1 h-1 rounded-full bg-slate-300 group-hover:bg-primary transition-colors animate-pulse" />
+                                    <div className="w-1 h-1 rounded-none bg-slate-300 group-hover:bg-primary transition-colors animate-pulse" />
                                     <span className="text-[10px] uppercase font-bold tracking-widest text-[#1F2E5A]/40 group-hover:text-[#1F2E5A]/70 truncate">{sub}</span>
                                  </div>
                               ))}

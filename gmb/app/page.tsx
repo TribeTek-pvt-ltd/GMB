@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import Marquee from '@/components/Marquee';
 import ProductCategories from '@/components/ProductCategories';
 import RecentWorks from '@/components/RecentWorks';
 import WhyChooseUs from '@/components/WhyChooseUs';
@@ -15,12 +16,13 @@ export default function Home() {
     <main className="min-h-[70vh]">
       <Navbar />
       <Hero />
+      <Marquee />
       <ScrollReveal><ProductCategories /></ScrollReveal>
-      
+
       <ScrollReveal><RecentWorks /></ScrollReveal>
       <ScrollReveal><Testimonials /></ScrollReveal>
       <ScrollReveal><WhyChooseUs /></ScrollReveal>
-      
+
       <ScrollReveal><FAQ /></ScrollReveal>
       <ScrollReveal><BlogPreview /></ScrollReveal>
       <ScrollReveal><QuoteCTA /></ScrollReveal>

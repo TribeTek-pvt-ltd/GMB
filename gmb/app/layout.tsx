@@ -19,6 +19,8 @@ export const metadata: Metadata = {
 
 import { ModalProvider } from "@/lib/ModalContext";
 import { CartProvider } from "@/context/CartContext";
+import ScrollProgress from "@/components/ScrollProgress";
+import GrainOverlay from "@/components/GrainOverlay";
 
 export default function RootLayout({
   children,
@@ -30,6 +32,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`.trim()}
       >
+        <GrainOverlay />
+        <ScrollProgress />
         <ModalProvider>
           <CartProvider>
             {children}

@@ -142,8 +142,8 @@ export default function AdminDashboard() {
           <>
             <section className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {stats.map((stat, i) => (
-                <div key={i} className="bg-white rounded-xl p-10 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-start transition-transform">
-                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-black/5" style={{ backgroundColor: `${stat.color}15` }}>
+                <div key={i} className="bg-white rounded-none p-10 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-start transition-transform">
+                  <div className="w-14 h-14 rounded-none flex items-center justify-center mb-6 shadow-lg shadow-black/5" style={{ backgroundColor: `${stat.color}15` }}>
                     <div className="w-6 h-6" style={{ color: stat.color }}>
                        {stat.icon === 'shopping-bag' && <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>}
                        {stat.icon === 'message-circle' && <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>}
@@ -153,7 +153,7 @@ export default function AdminDashboard() {
                   <h4 className="text-slate-500 font-bold uppercase tracking-widest text-xs mb-2">{stat.label}</h4>
                   <div className="flex items-baseline gap-4">
                     <span className="text-3xl font-serif font-bold text-slate-900">{stat.value}</span>
-                    <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${stat.change.toString().startsWith('+') ? 'text-green-500 bg-green-50' : 'text-red-500 bg-red-50'}`}>
+                    <span className={`text-xs font-bold px-2 py-0.5 rounded-none ${stat.change.toString().startsWith('+') ? 'text-green-500 bg-green-50' : 'text-red-500 bg-red-50'}`}>
                       {stat.change}
                     </span>
                   </div>
@@ -169,7 +169,7 @@ export default function AdminDashboard() {
         return (
           <div className="space-y-12">
             {/* Add Gallery Item Form */}
-            <section className="bg-white rounded-xl p-12 shadow-2xl border border-slate-100">
+            <section className="bg-white rounded-none p-12 shadow-2xl border border-slate-100">
               <h2 className="text-2xl font-serif font-bold text-slate-800 mb-8">Add New Gallery Item</h2>
               <form onSubmit={handleAddGalleryItem} className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
@@ -180,7 +180,7 @@ export default function AdminDashboard() {
                     value={newGalleryItem.title}
                     onChange={e => setNewGalleryItem({...newGalleryItem, title: e.target.value})}
                     placeholder="Minimalist Sheer..."
-                    className="w-full bg-slate-50 px-6 py-4 rounded-xl border border-slate-100 focus:outline-none focus:ring-2 focus:ring-[#4CAF50]/50"
+                    className="w-full bg-slate-50 px-6 py-4 rounded-none border border-slate-100 focus:outline-none focus:ring-2 focus:ring-[#4CAF50]/50"
                   />
                 </div>
                 <div className="space-y-2">
@@ -189,7 +189,7 @@ export default function AdminDashboard() {
                     required
                     value={newGalleryItem.category}
                     onChange={e => setNewGalleryItem({...newGalleryItem, category: e.target.value})}
-                    className="w-full bg-slate-50 px-6 py-4 rounded-xl border border-slate-100 focus:outline-none focus:ring-2 focus:ring-[#4CAF50]/50 appearance-none"
+                    className="w-full bg-slate-50 px-6 py-4 rounded-none border border-slate-100 focus:outline-none focus:ring-2 focus:ring-[#4CAF50]/50 appearance-none"
                   >
                     <option value="">Select Category</option>
                     {categories.map(c => <option key={c} value={c}>{c}</option>)}
@@ -203,7 +203,7 @@ export default function AdminDashboard() {
                     value={newGalleryItem.image}
                     onChange={e => setNewGalleryItem({...newGalleryItem, image: e.target.value})}
                     placeholder="/images/project.png"
-                    className="w-full bg-slate-50 px-6 py-4 rounded-xl border border-slate-100 focus:outline-none focus:ring-2 focus:ring-[#4CAF50]/50"
+                    className="w-full bg-slate-50 px-6 py-4 rounded-none border border-slate-100 focus:outline-none focus:ring-2 focus:ring-[#4CAF50]/50"
                   />
                 </div>
                 <div className="space-y-2">
@@ -214,13 +214,13 @@ export default function AdminDashboard() {
                     value={newGalleryItem.description}
                     onChange={e => setNewGalleryItem({...newGalleryItem, description: e.target.value})}
                     placeholder="Short project description..."
-                    className="w-full bg-slate-50 px-6 py-4 rounded-xl border border-slate-100 focus:outline-none focus:ring-2 focus:ring-[#4CAF50]/50"
+                    className="w-full bg-slate-50 px-6 py-4 rounded-none border border-slate-100 focus:outline-none focus:ring-2 focus:ring-[#4CAF50]/50"
                   />
                 </div>
                 <div className="md:col-span-2 text-right">
                   <button 
                     disabled={isSubmitting}
-                    className="bg-[#4CAF50] text-white px-10 py-4 rounded-xl font-bold shadow-xl shadow-[#4CAF50]/20 transition-all disabled:opacity-50"
+                    className="bg-[#4CAF50] text-white px-10 py-4 rounded-none font-bold shadow-xl shadow-[#4CAF50]/20 transition-all disabled:opacity-50"
                   >
                     {isSubmitting ? 'Uploading...' : 'Publish to Gallery'}
                   </button>
@@ -229,23 +229,23 @@ export default function AdminDashboard() {
             </section>
 
             {/* Current Gallery Grid */}
-            <section className="bg-white rounded-xl p-12 shadow-2xl border border-slate-100">
+            <section className="bg-white rounded-none p-12 shadow-2xl border border-slate-100">
                <h2 className="text-2xl font-serif font-bold text-slate-800 mb-8">Manage Gallery</h2>
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                  {gallery.map(item => (
-                   <div key={item.id} className="group relative bg-slate-50 rounded-xl overflow-hidden border border-slate-100">
+                   <div key={item.id} className="group relative bg-slate-50 rounded-none overflow-hidden border border-slate-100">
                      <div className="aspect-video bg-slate-200">
                         <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
                      </div>
                      <div className="p-6">
                         <div className="flex justify-between items-start mb-2">
                           <h3 className="font-bold text-slate-800">{item.title}</h3>
-                          <span className="text-[10px] font-bold uppercase tracking-widest text-[#4CAF50] bg-[#4CAF50]/10 px-2 py-0.5 rounded-md">{item.category}</span>
+                          <span className="text-[10px] font-bold uppercase tracking-widest text-[#4CAF50] bg-[#4CAF50]/10 px-2 py-0.5 rounded-none">{item.category}</span>
                         </div>
                         <p className="text-slate-500 text-sm line-clamp-1">{item.description}</p>
                         <button 
                           onClick={() => handleDeleteGalleryItem(item.id)}
-                          className="mt-4 w-full py-2 bg-red-50 text-red-500 rounded-xl text-xs font-bold hover:bg-red-500 hover:text-white transition-all"
+                          className="mt-4 w-full py-2 bg-red-50 text-red-500 rounded-none text-xs font-bold hover:bg-red-500 hover:text-white transition-all"
                         >
                           Remove Item
                         </button>
@@ -258,7 +258,7 @@ export default function AdminDashboard() {
         );
       case 'Inquiries':
         return (
-          <section className="bg-white rounded-xl shadow-2xl border border-slate-100 overflow-hidden">
+          <section className="bg-white rounded-none shadow-2xl border border-slate-100 overflow-hidden">
             <div className="px-12 py-10 border-b border-slate-100">
               <h2 className="text-2xl font-serif font-bold text-slate-800">Customer Inquiries</h2>
               <p className="text-slate-400 text-sm font-medium mt-1">Messages from the contact form</p>
@@ -269,9 +269,9 @@ export default function AdminDashboard() {
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {contacts.map((c, i) => (
-                    <div key={i} className="p-8 bg-slate-50 rounded-xl border border-slate-100 relative group">
+                    <div key={i} className="p-8 bg-slate-50 rounded-none border border-slate-100 relative group">
                       <div className="flex items-center gap-4 mb-6">
-                        <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#1F2E5A] font-bold shadow-sm">
+                        <div className="w-12 h-12 rounded-none bg-white flex items-center justify-center text-[#1F2E5A] font-bold shadow-sm">
                           {c.name[0]}
                         </div>
                         <div>
@@ -292,7 +292,7 @@ export default function AdminDashboard() {
         );
       case 'Users':
         return (
-          <section className="bg-white rounded-xl shadow-2xl border border-slate-100 overflow-hidden">
+          <section className="bg-white rounded-none shadow-2xl border border-slate-100 overflow-hidden">
             <div className="px-12 py-10 border-b border-slate-100">
               <h2 className="text-2xl font-serif font-bold text-slate-800">System Users</h2>
               <p className="text-slate-400 text-sm font-medium mt-1">Manage administrative and customer accounts</p>
@@ -313,7 +313,7 @@ export default function AdminDashboard() {
                       <td className="px-12 py-8 font-bold text-slate-700">{user.name}</td>
                       <td className="px-12 py-8 text-slate-500">{user.email}</td>
                       <td className="px-12 py-8">
-                        <span className={`px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest ${
+                        <span className={`px-4 py-1.5 rounded-none text-[10px] font-bold uppercase tracking-widest ${
                           user.role === 'admin' ? 'bg-[#1F2E5A] text-white' : 'bg-[#4CAF50]/10 text-[#4CAF50]'
                         }`}>
                           {user.role}
@@ -332,7 +332,7 @@ export default function AdminDashboard() {
       case 'Settings':
         return (
           <div className="space-y-12">
-            <section className="bg-white rounded-xl p-12 shadow-2xl border border-slate-100">
+            <section className="bg-white rounded-none p-12 shadow-2xl border border-slate-100">
               <h2 className="text-2xl font-serif font-bold text-slate-800 mb-8">Category Management</h2>
               <div className="flex gap-4 mb-8">
                 <input 
@@ -340,18 +340,18 @@ export default function AdminDashboard() {
                   value={newCategory}
                   onChange={e => setNewCategory(e.target.value)}
                   placeholder="New category name..."
-                  className="flex-1 bg-slate-50 px-6 py-4 rounded-xl border border-slate-100 focus:outline-none"
+                  className="flex-1 bg-slate-50 px-6 py-4 rounded-none border border-slate-100 focus:outline-none"
                 />
                 <button 
                   onClick={() => handleManageCategory('ADD', newCategory)}
-                  className="bg-[#1F2E5A] text-white px-6 py-3 rounded-xl font-bold"
+                  className="bg-[#1F2E5A] text-white px-6 py-3 rounded-none font-bold"
                 >
                   Add Category
                 </button>
               </div>
               <div className="flex flex-wrap gap-3">
                  {categories.map(c => (
-                   <div key={c} className="flex items-center gap-3 bg-slate-50 px-6 py-2 rounded-xl border border-slate-100 group">
+                   <div key={c} className="flex items-center gap-3 bg-slate-50 px-6 py-2 rounded-none border border-slate-100 group">
                       <span className="font-bold text-slate-700">{c}</span>
                       <button 
                         onClick={() => handleManageCategory('DELETE', c)}
@@ -371,15 +371,15 @@ export default function AdminDashboard() {
   };
 
   const renderOrdersTable = (title: string, subtitle: string, limit: number) => (
-    <section className="bg-white rounded-xl shadow-2xl shadow-slate-200/60 border border-slate-100 overflow-hidden">
+    <section className="bg-white rounded-none shadow-2xl shadow-slate-200/60 border border-slate-100 overflow-hidden">
       <div className="px-12 py-10 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
         <div>
           <h2 className="text-2xl font-serif font-bold text-slate-800">{title}</h2>
           <p className="text-slate-400 text-sm font-medium mt-1">{subtitle}</p>
         </div>
         <div className="flex gap-3">
-          <button className="px-6 py-2.5 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-[#F4A300] hover:text-[#F4A300] transition-all">Filter</button>
-          <button className="px-6 py-2.5 rounded-full bg-[#1F2E5A] text-white text-sm font-bold hover:shadow-lg transition-all">Export Report</button>
+          <button className="px-6 py-2.5 rounded-none border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-[#F4A300] hover:text-[#F4A300] transition-all">Filter</button>
+          <button className="px-6 py-2.5 rounded-none bg-[#1F2E5A] text-white text-sm font-bold hover:shadow-lg transition-all">Export Report</button>
         </div>
       </div>
       
@@ -402,7 +402,7 @@ export default function AdminDashboard() {
                   <div className="flex items-center gap-3">
                     <button 
                       onClick={() => handleDeleteOrder(order.id)}
-                      className="p-2 text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all opacity-0 group-hover:opacity-100"
+                      className="p-2 text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-none transition-all opacity-0 group-hover:opacity-100"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                     </button>
@@ -410,7 +410,7 @@ export default function AdminDashboard() {
                   </div>
                 </td>
                 <td className="px-12 py-8 flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold text-xs uppercase shadow-sm">
+                  <div className="w-9 h-9 rounded-none bg-slate-100 flex items-center justify-center text-slate-500 font-bold text-xs uppercase shadow-sm">
                     {order.customer?.split(' ').map((n: string) => n[0]).join('') || order.userId}
                   </div>
                   <span className="font-bold text-slate-700">{order.customer || `User ${order.userId}`}</span>
@@ -422,7 +422,7 @@ export default function AdminDashboard() {
                   <select 
                     value={order.status}
                     onChange={(e) => handleUpdateOrderStatus(order.id, e.target.value)}
-                    className={`px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest border-none focus:ring-2 focus:ring-[#1F2E5A]/20 cursor-pointer ${
+                    className={`px-4 py-1.5 rounded-none text-[10px] font-bold uppercase tracking-widest border-none focus:ring-2 focus:ring-[#1F2E5A]/20 cursor-pointer ${
                       order.status === 'Shipped' || order.status === 'Delivered' ? 'bg-green-100 text-green-600' : 
                       order.status === 'Cancelled' ? 'bg-red-100 text-red-600' :
                       'bg-amber-100 text-amber-600'
@@ -455,7 +455,7 @@ export default function AdminDashboard() {
   if (loading) {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#4CAF50]"></div>
+        <div className="animate-spin rounded-none h-12 w-12 border-t-2 border-b-2 border-[#4CAF50]"></div>
       </div>
     );
   }
@@ -465,7 +465,7 @@ export default function AdminDashboard() {
       {/* Premium Sidebar */}
       <aside className="w-72 bg-[#1F2E5A] text-white flex flex-col shadow-2xl z-20 sticky top-0 h-screen">
         <div className="p-10 flex items-center gap-4">
-          <div className="w-10 h-10 bg-[#4CAF50] rounded-xl flex items-center justify-center shadow-lg shadow-[#4CAF50]/20">
+          <div className="w-10 h-10 bg-[#4CAF50] rounded-none flex items-center justify-center shadow-lg shadow-[#4CAF50]/20">
             <span className="font-bold text-xl italic">G</span>
           </div>
           <Link href="/" className="text-2xl font-serif font-bold tracking-tight">GMB <span className="text-[#4CAF50]">Admin</span></Link>
@@ -476,13 +476,13 @@ export default function AdminDashboard() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all duration-300 font-bold text-sm group ${
+              className={`w-full flex items-center gap-4 px-6 py-4 rounded-none transition-all duration-300 font-bold text-sm group ${
                 activeTab === tab 
                 ? 'bg-[#4CAF50] text-white shadow-lg shadow-[#4CAF50]/30 scale-105' 
                 : 'text-slate-400 hover:text-white hover:bg-white/5'
               }`}
             >
-              <div className={`w-2 h-2 rounded-full transition-all ${activeTab === tab ? 'bg-white scale-150' : 'bg-transparent group-hover:bg-slate-600'}`} />
+              <div className={`w-2 h-2 rounded-none transition-all ${activeTab === tab ? 'bg-white scale-150' : 'bg-transparent group-hover:bg-slate-600'}`} />
               {tab}
             </button>
           ))}
@@ -505,8 +505,8 @@ export default function AdminDashboard() {
           </div>
           
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-4 bg-slate-100 px-4 py-2 rounded-xl border border-slate-200">
-              <div className="w-9 h-9 bg-[#1F2E5A] rounded-xl flex items-center justify-center text-[#F4A300] font-bold border border-[#F4A300]/20 shadow-inner">GA</div>
+            <div className="flex items-center gap-4 bg-slate-100 px-4 py-2 rounded-none border border-slate-200">
+              <div className="w-9 h-9 bg-[#1F2E5A] rounded-none flex items-center justify-center text-[#F4A300] font-bold border border-[#F4A300]/20 shadow-inner">GA</div>
               <div className="flex flex-col">
                 <span className="font-bold text-sm">GMB Admin</span>
                 <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">System Root</span>

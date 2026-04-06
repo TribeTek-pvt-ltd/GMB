@@ -80,7 +80,7 @@ function GalleryContent() {
   if (loading) {
     return (
       <div className="min-h-[70vh] flex items-center justify-center bg-slate-50">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+        <div className="animate-spin rounded-none h-12 w-12 border-t-2 border-b-2 border-primary"></div>
       </div>
     );
   }
@@ -120,7 +120,7 @@ function GalleryContent() {
                     setActiveLocation(loc as string);
                     setSelectedIdx(null); // Reset lightbox when filter changes
                   }}
-                  className={`px-6 py-2 rounded-full font-bold uppercase tracking-widest text-[9px] transition-all duration-300 shadow-sm ${activeLocation === loc
+                  className={`px-6 py-2 rounded-none font-bold uppercase tracking-widest text-[9px] transition-all duration-300 shadow-sm ${activeLocation === loc
                     ? 'bg-[#4CAF50] text-white shadow-md'
                     : 'bg-white text-slate-500 border border-slate-200 hover:border-[#4CAF50]/50 hover:text-[#4CAF50]'
                     }`}
@@ -140,7 +140,7 @@ function GalleryContent() {
                 className="group relative cursor-pointer"
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-sm transition-all duration-700 ring-1 ring-slate-200">
+                <div className="relative aspect-[4/5] rounded-none overflow-hidden shadow-sm transition-all duration-700 ring-1 ring-slate-200">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -161,7 +161,7 @@ function GalleryContent() {
                                  category: item.category || 'Portfolio'
                               });
                            }}
-                           className={`w-12 h-12 rounded-full flex items-center justify-center shadow-2xl transition-all transform hover:scale-110 border border-slate-100 group/select ${
+                           className={`w-12 h-12 rounded-none flex items-center justify-center shadow-2xl transition-all transform hover:scale-110 border border-slate-100 group/select ${
                               isSaved(item.id) ? 'bg-primary text-white' : 'bg-white text-[#1F2E5A] hover:bg-primary hover:text-white'
                            }`}
                            title={isSaved(item.id) ? "Saved to Selection" : "Save to Selection"}
@@ -173,10 +173,10 @@ function GalleryContent() {
                      </div>
                      <h3 className="text-white text-lg font-bold tracking-tight mb-2 font-serif">{item.title}</h3>
                      <div className="flex items-center gap-2">
-                       <span className="text-[8px] font-bold bg-[#4CAF50]/90 text-white px-2 py-1 rounded-md uppercase tracking-[0.2em] backdrop-blur-md font-sans">
+                       <span className="text-[8px] font-bold bg-[#4CAF50]/90 text-white px-2 py-1 rounded-none uppercase tracking-[0.2em] backdrop-blur-md font-sans">
                          {item.location || item.room || 'Any Room'}
                        </span>
-                       <span className="text-[8px] font-bold bg-white/20 text-white px-2 py-1 rounded-md uppercase tracking-[0.2em] backdrop-blur-md font-sans">
+                       <span className="text-[8px] font-bold bg-white/20 text-white px-2 py-1 rounded-none uppercase tracking-[0.2em] backdrop-blur-md font-sans">
                          {item.category || item.style || initialCategory}
                        </span>
                      </div>
@@ -193,7 +193,7 @@ function GalleryContent() {
               <p className="text-slate-400 italic mb-10 max-w-sm mx-auto">No projects found matching the combined Category and Location filters.</p>
               <button
                 onClick={() => setActiveLocation('All')}
-                className="px-6 py-2 bg-slate-100 text-slate-500 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-slate-200 transition-all"
+                className="px-6 py-2 bg-slate-100 text-slate-500 rounded-none font-bold text-[10px] uppercase tracking-widest hover:bg-slate-200 transition-all"
               >
                 Clear Location Filters
               </button>
@@ -210,7 +210,7 @@ function GalleryContent() {
         >
           {/* Close Button - Integrated with Theme */}
           <button
-            className="absolute top-6 right-6 z-[110] w-12 h-12 rounded-full bg-white/80 hover:bg-white border border-slate-200 flex items-center justify-center text-[#1F2E5A] shadow-xl transition-all duration-300 group"
+            className="absolute top-6 right-6 z-[110] w-12 h-12 rounded-none bg-white/80 hover:bg-white border border-slate-200 flex items-center justify-center text-[#1F2E5A] shadow-xl transition-all duration-300 group"
             onClick={() => setSelectedIdx(null)}
           >
             <svg className="w-6 h-6 group-hover:rotate-90 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -220,14 +220,14 @@ function GalleryContent() {
 
            {/* Navigation Arrows - High Contrast */}
           <button
-            className="absolute left-4 md:left-8 z-[110] w-14 h-14 rounded-full bg-white/80 hover:bg-white border border-slate-200 flex items-center justify-center text-[#1F2E5A] shadow-xl transition-all duration-300 disabled:opacity-30 group"
+            className="absolute left-4 md:left-8 z-[110] w-14 h-14 rounded-none bg-white/80 hover:bg-white border border-slate-200 flex items-center justify-center text-[#1F2E5A] shadow-xl transition-all duration-300 disabled:opacity-30 group"
             onClick={handlePrev}
           >
             <svg className="w-8 h-8 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" /></svg>
           </button>
           
           <button
-            className="absolute right-4 md:right-8 z-[110] w-14 h-14 rounded-full bg-white/80 hover:bg-white border border-slate-200 flex items-center justify-center text-[#1F2E5A] shadow-xl transition-all duration-300 disabled:opacity-30 group"
+            className="absolute right-4 md:right-8 z-[110] w-14 h-14 rounded-none bg-white/80 hover:bg-white border border-slate-200 flex items-center justify-center text-[#1F2E5A] shadow-xl transition-all duration-300 disabled:opacity-30 group"
             onClick={handleNext}
           >
             <svg className="w-8 h-8 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" /></svg>
@@ -238,7 +238,7 @@ function GalleryContent() {
             className="relative w-full max-w-4xl h-full max-h-[85vh] flex flex-col items-center justify-center pointer-events-none"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative w-full h-full bg-white rounded-[3rem] overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.2)] border border-white/50 pointer-events-auto flex flex-col group">
+            <div className="relative w-full h-full bg-white rounded-none overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.2)] border border-white/50 pointer-events-auto flex flex-col group">
               <div className="relative flex-grow w-full h-full overflow-hidden">
                 <Image
                   src={filteredItems[selectedIdx].image}
@@ -280,7 +280,7 @@ function GalleryContent() {
                              category: item.category || 'Portfolio'
                           });
                        }}
-                       className={`w-14 h-14 rounded-2xl shadow-xl transition-all flex items-center justify-center pointer-events-auto group/save ml-auto ${
+                       className={`w-14 h-14 rounded-none shadow-xl transition-all flex items-center justify-center pointer-events-auto group/save ml-auto ${
                           isSaved(filteredItems[selectedIdx].id) 
                           ? 'bg-primary text-white cursor-default' 
                           : 'bg-white text-[#1F2E5A] hover:bg-primary hover:text-white transform hover:-translate-y-1'
@@ -313,7 +313,7 @@ export default function GalleryPage() {
   return (
     <Suspense fallback={
       <div className="min-h-[70vh] flex items-center justify-center bg-slate-50">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#4CAF50]"></div>
+        <div className="animate-spin rounded-none h-12 w-12 border-t-2 border-b-2 border-[#4CAF50]"></div>
       </div>
     }>
       <GalleryContent />

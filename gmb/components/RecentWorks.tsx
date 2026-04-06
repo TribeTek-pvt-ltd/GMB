@@ -1,23 +1,142 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import StandardButton from "./StandardButton";
+import BeforeAfterSlider from "./BeforeAfterSlider";
 
-const Gallery = () => {
-  const [allGalleryItems, setAllGalleryItems] = useState<any[]>([]);
+const ProjectCard = ({ item, index, className = "" }: { item: any; index: number; className?: string }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // 3D Tilt Effect
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { stiffness: 150, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 150, damping: 20 });
+
+  const rotateX = useTransform(springY, [-0.5, 0.5], [5, -5]);
+  const rotateY = useTransform(springX, [-0.5, 0.5], [-5, 5]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+    setIsHovered(false);
+  };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => setIsHovered(true)}
+      style={{ rotateX, rotateY, perspective: 1000 }}
+      className={`relative group overflow-hidden bg-white architectural-border ${className}`}
+    >
+      {/* Background Image / Slider */}
+      <div className="absolute inset-0 w-full h-full">
+        {item.beforeImage ? (
+          <BeforeAfterSlider 
+            beforeImage={item.beforeImage} 
+            afterImage={item.image} 
+          />
+        ) : (
+          <>
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              className="object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+            />
+            {/* Deep Focus Gradient */}
+            <div className={`absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-40'}`} />
+          </>
+        )}
+      </div>
+
+      {/* Project Dossier Reveal (Top Left) */}
+      <div className="absolute top-0 left-0 p-8 z-40 pointer-events-none">
+        <motion.div
+           animate={{ 
+             opacity: isHovered ? 1 : 0, 
+             x: isHovered ? 0 : -20 
+           }}
+           className="flex flex-col gap-2"
+        >
+          <span className="text-primary text-[10px] font-black uppercase tracking-[0.4em] mb-1">
+            PROJECT DOSSIER
+          </span>
+          <div className="h-[1px] w-12 bg-white/30 mb-2" />
+          <h4 className="text-white text-xl font-bold tracking-tight">{item.title}</h4>
+          <span className="text-white/60 text-[11px] font-medium tracking-wider uppercase">
+            {item.category || "Architectural Install"} • {item.location || "Victoria, AU"}
+          </span>
+        </motion.div>
+      </div>
+
+      {/* Floating Action Button (Bottom Right) */}
+      <div className="absolute bottom-6 right-6 z-40">
+        <Link href={`/gallery/${item.id || '#'}`}>
+          <motion.div
+            animate={{ 
+              scale: isHovered ? 1 : 0.8,
+              opacity: isHovered ? 1 : 0
+            }}
+            className="w-14 h-14 bg-white flex items-center justify-center text-slate-900 shadow-2xl hover:bg-primary hover:text-white transition-colors duration-300"
+          >
+            <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </motion.div>
+        </Link>
+      </div>
+
+      {/* Transformation Marker (Bottom Left) */}
+      {item.beforeImage && (
+        <div className="absolute bottom-8 left-8 z-40">
+           <div className="flex items-center gap-3">
+              <div className="w-2 h-2 bg-primary animate-pulse" />
+              <span className="text-white text-[9px] font-black uppercase tracking-[0.3em]">
+                Interactive Transformation
+              </span>
+           </div>
+        </div>
+      )}
+    </motion.div>
+  );
+};
+
+const RecentWorks = () => {
+  const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchGallery() {
       try {
-        const res = await fetch('/api/public/gallery');
+        const res = await fetch("/api/public/gallery");
         const data = await res.json();
         if (data.gallery && data.gallery.length > 0) {
-          setAllGalleryItems(data.gallery);
+          // Limit to only 5 recent works as requested
+          setItems(data.gallery.slice(0, 5));
         }
       } catch (error) {
-        console.error('Failed to fetch gallery:', error);
+        console.error("Failed to fetch gallery:", error);
       } finally {
         setLoading(false);
       }
@@ -25,112 +144,109 @@ const Gallery = () => {
     fetchGallery();
   }, []);
 
-  // Display exactly 5 items for the Bento Grid layout
-  const displayedItems = allGalleryItems.slice(0, 5);
-
-  if (loading) {
-    return <div className="py-12 animate-pulse bg-slate-50/50 rounded-xl h-[500px] flex flex-col items-center justify-center text-slate-400 font-bold uppercase tracking-widest text-sm">Loading Recent Works...</div>;
-  }
-
-  const getBentoClass = (index: number) => {
-    switch (index) {
-      case 0: return 'col-span-2 row-span-2 md:col-span-2 md:row-span-2'; // Large 2x2
-      case 1: return 'col-span-1 row-span-1 md:col-span-1 md:row-span-1'; // Small 1x1
-      case 2: return 'col-span-1 row-span-1 md:col-span-1 md:row-span-1'; // Small 1x1
-      case 3: return 'col-span-1 row-span-1 md:col-span-1 md:row-span-1'; // Small 1x1
-      case 4: return 'col-span-1 row-span-1 md:col-span-1 md:row-span-1'; // Small 1x1
-      default: return 'col-span-1 row-span-1 md:col-span-1 md:row-span-1';
-    }
-  };
-
   return (
-    <section className="py-20 md:py-28 bg-transparent relative overflow-hidden" id="recent-works">
-      {/* Decorative Blur Backgrounds */}
-      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+    <section className="min-h-screen py-24 bg-white relative overflow-hidden flex flex-col justify-center" id="recent-works">
+      {/* Background Architectural Grid Lines */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
+        <div className="h-full w-full" style={{ backgroundImage: 'radial-gradient(#1F2E5A 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+      </div>
 
-      <div className="container max-w-7xl mx-auto relative z-10">
-
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
-          <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 mb-2">
-              <div className="w-6 h-px bg-primary" />
-              <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-primary">Portfolio</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-2">
-              Our <span className="gradient-text"><span className="italic">Recent</span> Works</span>
-            </h2>
-            <p className="mt-2 text-slate-500 text-base md:text-lg leading-relaxed font-light">
-              Explore our latest bespoke window treatments.
-            </p>
-          </div>
-
-          <div className="shrink-0 pb-1">
-            <Link
-              href="/gallery"
-              className="group inline-flex items-center gap-2 text-slate-900 font-bold text-sm uppercase tracking-widest hover:text-primary transition-colors whitespace-nowrap"
+      <div className="container max-w-7xl mx-auto px-6 relative z-10">
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8 text-left">
+          <div className="max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-4 mb-6"
             >
-              <span className="relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:origin-right group-hover:after:origin-left group-hover:after:scale-x-100 after:transition-transform after:duration-300">
-                View All Projects
+              <div className="w-12 h-[1px] bg-primary" />
+              <span className="text-primary text-[10px] font-black uppercase tracking-[0.5em]">
+                Portfolio Showcase
               </span>
-              <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-
-        {/* Bento Grid Layout - Compacted to prevent vertical scrolling off-screen */}
-        <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-5 lg:gap-6 h-auto md:h-[400px] lg:h-[500px]">
-          {displayedItems.map((item: any, index: number) => (
-            <Link
-              href={`/gallery`}
-              key={`${item.id}-${index}`}
-              className={`group relative rounded-3xl overflow-hidden block bg-slate-100 shadow-md transition-all duration-500 ${getBentoClass(index)}`}
-              style={{ minHeight: '200px' }}
+            </motion.div>
+            
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-5xl md:text-7xl font-black tracking-tighter text-[#1F2E5A] mb-0 leading-[0.95]"
             >
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover transition-transform duration-700 ease-out"
-              />
-              {/* Overlays */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/10 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500" />
-              <div className="absolute inset-0 bg-primary/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              Real Installations <br />
+              <span className="gradient-text italic font-medium pr-4">& Room Transformations</span>
+            </motion.h2>
+          </div>
 
-              {/* Content */}
-              <div className={`absolute bottom-0 left-0 w-full flex flex-col justify-end transition-transform duration-500 ${index === 0 ? 'p-6 md:p-8' : 'p-4 md:p-5'}`}>
-                <div className="mb-3">
-                  <span className="px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-white text-[9px] font-bold uppercase tracking-[0.2em] shadow-sm">
-                    {item.category}
-                  </span>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mb-2"
+          >
+            <Link href="/gallery">
+              <StandardButton variant="secondary" className="group px-8 py-5">
+                <div className="flex items-center gap-3">
+                  <span>View Archive</span>
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </div>
-                <h3 className={`${index === 0 ? 'text-2xl md:text-4xl' : 'text-lg md:text-xl'} font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300 drop-shadow-md`}>
-                  {item.title}
-                </h3>
-
-                {/* Description */}
-                <div className={`overflow-hidden ${index === 0 ? 'min-h-[3rem]' : 'hidden sm:block'}`}>
-                  <p className={`text-white/80 line-clamp-2 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 font-light ${index === 0 ? 'text-base' : 'text-xs'}`}>
-                    {item.description}
-                  </p>
-                </div>
-
-                {/* Click icon */}
-                <div className={`absolute backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 ${index === 0 ? 'right-10 bottom-10 w-12 h-12 rounded-full bg-white/10 group-hover:translate-x-0' : 'right-4 bottom-4 w-8 h-8 rounded-full bg-white/10'}`}>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                </div>
-              </div>
+              </StandardButton>
             </Link>
-          ))}
+          </motion.div>
         </div>
 
+        {/* Bento Grid - Optimized for 5 items + 1 CTA (Total 6) */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-fr">
+          {loading ? (
+             Array(6).fill(0).map((_, i) => (
+                <div key={i} className="bg-slate-100 animate-pulse aspect-video md:aspect-auto h-64 md:h-80 col-span-4" />
+             ))
+          ) : (
+            <>
+              {/* Row 1 & 2 Combined Asymmetric Pattern */}
+              <ProjectCard key={items[0]?.id || 0} item={items[0]} index={0} className="md:col-span-8 md:row-span-2 h-[400px] md:h-auto" />
+              <ProjectCard key={items[1]?.id || 1} item={items[1]} index={1} className="md:col-span-4 md:row-span-1 h-64 md:h-auto" />
+              <ProjectCard key={items[2]?.id || 2} item={items[2]} index={2} className="md:col-span-4 md:row-span-1 h-64 md:h-auto" />
+              
+              {/* Row 3 */}
+              <ProjectCard key={items[3]?.id || 3} item={items[3]} index={3} className="md:col-span-4 md:row-span-1 h-64 md:h-auto" />
+              <ProjectCard key={items[4]?.id || 4} item={items[4]} index={4} className="md:col-span-4 md:row-span-1 h-64 md:h-auto" />
+              
+              {/* Perspective CTA Card */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="md:col-span-4 md:row-span-1 bg-slate-900 flex flex-col justify-between p-10 relative overflow-hidden group h-64 md:h-auto"
+              >
+                 <div className="absolute inset-0 bg-brand-gradient opacity-10 group-hover:opacity-20 transition-opacity duration-700" />
+                 <div className="relative z-10">
+                    <span className="text-primary text-[9px] font-black uppercase tracking-[0.4em] mb-4 block">
+                      Next Chapter
+                    </span>
+                    <h3 className="text-2xl font-bold text-white tracking-tight leading-tight mb-4">
+                      Transform your space?
+                    </h3>
+                 </div>
+                 <Link href="/contact" className="relative z-10">
+                    <button className="text-white text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-4 hover:gap-6 transition-all duration-300">
+                      Consultation
+                      <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </button>
+                 </Link>
+              </motion.div>
+            </>
+          )}
+        </div>
       </div>
     </section>
   );
 };
 
-export default Gallery;
+export default RecentWorks;

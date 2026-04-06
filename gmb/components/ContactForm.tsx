@@ -102,10 +102,10 @@ const ContactFormContent = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Tab Selection - Elite Scale */}
-          <div className="flex p-1.5 bg-slate-100 rounded-2xl mb-6 max-w-lg mx-auto shadow-inner">
+          <div className="flex p-1.5 bg-slate-100 rounded-none mb-6 max-w-lg mx-auto shadow-inner">
             <button
               onClick={() => setFormType('general')}
-              className={`flex-1 py-3 px-8 text-sm md:text-base rounded-xl font-bold transition-all duration-300 ${
+              className={`flex-1 py-3 px-8 text-sm md:text-base rounded-none font-bold transition-all duration-300 ${
                 formType === 'general' 
                   ? 'bg-primary text-white scale-[1.02]' 
                   : 'text-slate-500 hover:text-slate-800'
@@ -115,7 +115,7 @@ const ContactFormContent = () => {
             </button>
             <button
               onClick={() => setFormType('quote')}
-              className={`flex-1 py-3 px-8 text-sm md:text-base rounded-xl font-bold transition-all duration-300 ${
+              className={`flex-1 py-3 px-8 text-sm md:text-base rounded-none font-bold transition-all duration-300 ${
                 formType === 'quote' 
                   ? 'bg-primary text-white scale-[1.02]' 
                   : 'text-slate-500 hover:text-slate-800'
@@ -131,13 +131,13 @@ const ContactFormContent = () => {
             </h2>
             
             {status === 'success' && (
-              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl text-green-600 font-bold text-center animate-bounce text-sm">
+              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-none text-green-600 font-bold text-center animate-bounce text-sm">
                 ✨ Thank you! Your request has been sent successfully.
               </div>
             )}
 
             {status === 'error' && (
-              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-500 font-bold text-center text-sm">
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-none text-red-500 font-bold text-center text-sm">
                 ❌ Something went wrong. Please try again later.
               </div>
             )}
@@ -152,7 +152,7 @@ const ContactFormContent = () => {
                     value={formData.name}
                     onChange={e => setFormData({...formData, name: e.target.value})}
                     placeholder="John Doe"
-                    className="w-full px-4 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800 placeholder:text-slate-400" 
+                    className="w-full px-4 py-2.5 text-sm rounded-none border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800 placeholder:text-slate-400" 
                   />
                 </div>
                 <div className="space-y-1">
@@ -163,7 +163,7 @@ const ContactFormContent = () => {
                     value={formData.phone}
                     onChange={e => setFormData({...formData, phone: e.target.value})}
                     placeholder="+1 (234) 567-890"
-                    className="w-full px-4 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800 placeholder:text-slate-400" 
+                    className="w-full px-4 py-2.5 text-sm rounded-none border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800 placeholder:text-slate-400" 
                   />
                 </div>
               </div>
@@ -177,7 +177,7 @@ const ContactFormContent = () => {
                     value={formData.email}
                     onChange={e => setFormData({...formData, email: e.target.value})}
                     placeholder="john@example.com"
-                    className="w-full px-4 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800 placeholder:text-slate-400" 
+                    className="w-full px-4 py-2.5 text-sm rounded-none border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800 placeholder:text-slate-400" 
                   />
                 </div>
                 <div className="space-y-1">
@@ -188,7 +188,7 @@ const ContactFormContent = () => {
                     value={formData.address}
                     onChange={e => setFormData({...formData, address: e.target.value})}
                     placeholder="123 Luxury Ave, Suite 456"
-                    className="w-full px-4 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800 placeholder:text-slate-400" 
+                    className="w-full px-4 py-2.5 text-sm rounded-none border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800 placeholder:text-slate-400" 
                   />
                 </div>
               </div>
@@ -201,12 +201,12 @@ const ContactFormContent = () => {
                   </div>
                   
                   <div className="relative group">
-                    <div className={`relative border-2 border-dashed rounded-xl p-5 transition-all duration-500 text-center overflow-hidden ${
+                    <div className={`relative border-2 border-dashed rounded-none p-5 transition-all duration-500 text-center overflow-hidden ${
                       pdfFile ? 'border-primary bg-primary/5' : 'border-slate-200 hover:border-primary/50 bg-slate-50/50'
                     }`}>
                       {isScanning && (
                         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm animate-pulse">
-                          <div className="relative w-full max-w-[200px] h-1 bg-slate-100 rounded-full overflow-hidden mb-2">
+                          <div className="relative w-full max-w-[200px] h-1 bg-slate-100 rounded-none overflow-hidden mb-2">
                             <div className="absolute inset-0 bg-primary w-1/3 animate-[scan_2s_ease-in-out_infinite]" />
                           </div>
                           <p className="text-primary text-sm font-bold animate-bounce">Scanning File Content...</p>
@@ -221,7 +221,7 @@ const ContactFormContent = () => {
                       />
 
                       <div className="flex flex-col items-center gap-3">
-                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${pdfFile ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
+                        <div className={`w-12 h-12 rounded-none flex items-center justify-center transition-colors ${pdfFile ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
                           {pdfFile ? (
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -252,7 +252,7 @@ const ContactFormContent = () => {
                     <button 
                       type="button"
                       onClick={addProduct}
-                      className="bg-primary/10 text-primary px-3 py-1.5 rounded-lg hover:bg-primary/20 transition-colors flex items-center gap-1.5 text-xs font-bold"
+                      className="bg-primary/10 text-primary px-3 py-1.5 rounded-none hover:bg-primary/20 transition-colors flex items-center gap-1.5 text-xs font-bold"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -262,13 +262,13 @@ const ContactFormContent = () => {
                   </div>
                   
                   {products.map((product, index) => (
-                    <div key={index} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-3 items-end bg-slate-50 p-4 rounded-xl border border-slate-100 relative group">
+                    <div key={index} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-3 items-end bg-slate-50 p-4 rounded-none border border-slate-100 relative group">
                       <div className="md:col-span-4 space-y-1">
                         <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Product Category</label>
                         <select 
                           value={product.category}
                           onChange={(e) => updateProduct(index, 'category', e.target.value)}
-                          className="w-full px-4 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800"
+                          className="w-full px-4 py-2 text-sm rounded-none border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800"
                         >
                           <option>Curtains</option>
                           <option>Blinds</option>
@@ -283,7 +283,7 @@ const ContactFormContent = () => {
                           min="1"
                           value={product.count}
                           onChange={(e) => updateProduct(index, 'count', parseInt(e.target.value))}
-                          className="w-full px-4 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800" 
+                          className="w-full px-4 py-2 text-sm rounded-none border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800" 
                         />
                       </div>
                       <div className="md:col-span-3 space-y-1">
@@ -293,7 +293,7 @@ const ContactFormContent = () => {
                           placeholder="e.g. 120cm"
                           value={product.width || ''}
                           onChange={(e) => updateProduct(index, 'width', e.target.value)}
-                          className="w-full px-4 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800" 
+                          className="w-full px-4 py-2 text-sm rounded-none border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800" 
                         />
                       </div>
                       <div className="md:col-span-2 space-y-1">
@@ -303,7 +303,7 @@ const ContactFormContent = () => {
                           placeholder="e.g. 200cm"
                           value={product.height || ''}
                           onChange={(e) => updateProduct(index, 'height', e.target.value)}
-                          className="w-full px-4 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800" 
+                          className="w-full px-4 py-2 text-sm rounded-none border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800" 
                         />
                       </div>
                       <div className="md:col-span-1 flex justify-center sm:justify-start md:justify-center pb-1">
@@ -332,16 +332,16 @@ const ContactFormContent = () => {
                   value={formData.message}
                   onChange={e => setFormData({...formData, message: e.target.value})}
                   placeholder="How can we help you today?"
-                  className="w-full px-4 py-3 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800 placeholder:text-slate-400"
+                  className="w-full px-4 py-3 text-sm rounded-none border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800 placeholder:text-slate-400"
                 ></textarea>
               </div>
 
               <button 
                 type="submit"
                 disabled={loading || isScanning}
-                className="w-full bg-[var(--accent-yellow)] text-white py-3.5 rounded-xl font-bold text-base hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
+                className="w-full bg-[var(--accent-yellow)] text-white py-3.5 rounded-none font-bold text-base hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
               >
-                {loading && <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />}
+                {loading && <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-none animate-spin" />}
                 {isScanning ? 'Scanning File...' : (formType === 'general' ? 'Send Message' : 'Request Free Measurement')}
               </button>
             </form>

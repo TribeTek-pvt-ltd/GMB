@@ -39,7 +39,8 @@
       "category": "Panel Blind",
       "location": "Balcony",
       "description": "Our latest luxurious balcony treatment, blending privacy with high-end silk textures.",
-      "image": "/images/curtain8.png"
+      "image": "/images/curtain8.png",
+      "beforeImage": "/images/curtain1.png"
     },
     {
       "id": "s23",
@@ -47,7 +48,8 @@
       "category": "Motorized Blinds",
       "location": "Kitchen",
       "description": "Freshly engineered automated solution for the modern kitchen environment.",
-      "image": "/images/curtain6.png"
+      "image": "/images/curtain6.png",
+      "beforeImage": "/images/curtain2.png"
     },
     {
       "id": "s22",
@@ -55,7 +57,8 @@
       "category": "Curtains",
       "location": "Dining Area",
       "description": "A recent addition to our dining collection, reimagining classic elegance for 2026.",
-      "image": "/images/curtain2.png"
+      "image": "/images/curtain2.png",
+      "beforeImage": "/images/curtain1.png"
     },
     {
       "id": "s21",
@@ -63,7 +66,8 @@
       "category": "Sheers",
       "location": "Office",
       "description": "The newest iteration of our office collection, designed for diffused lighting.",
-      "image": "/images/curtain4.png"
+      "image": "/images/curtain4.png",
+      "beforeImage": "/images/curtain2.png"
     },
     {
       "id": "s20",
@@ -71,7 +75,8 @@
       "category": "Motorized Blinds",
       "location": "Bedroom",
       "description": "Our latest flagship motorized unit, now with enhanced velvet dampening.",
-      "image": "/images/curtain5.png"
+      "image": "/images/curtain5.png",
+      "beforeImage": "/images/curtain3.png"
     },
     {
       "id": "s19",
@@ -79,7 +84,8 @@
       "category": "Sheers",
       "location": "Living Room",
       "description": "A fresh take on sunrise filtration, newly added to the Spring 2026 line.",
-      "image": "/images/curtain8.png"
+      "image": "/images/curtain8.png",
+      "beforeImage": "/images/curtain4.png"
     },
     {
       "id": "g1",
@@ -87,7 +93,8 @@
       "category": "Wave Fold Curtain",
       "location": "Living Room",
       "description": "A stunning continuous wave effect perfect for wide living room windows.",
-      "image": "/images/curtain1.png"
+      "image": "/images/curtain1.png",
+      "beforeImage": "/images/curtain8.png"
     },
     {
       "id": "g2",
@@ -95,7 +102,8 @@
       "category": "Wave Fold Curtain",
       "location": "Bedroom",
       "description": "Soft and flowing wave folds creating a serene bedroom atmosphere.",
-      "image": "/images/curtain2.png"
+      "image": "/images/curtain2.png",
+      "beforeImage": "/images/curtain7.png"
     },
     {
       "id": "g3",
@@ -103,7 +111,8 @@
       "category": "S-Fold Curtain",
       "location": "Dining Area",
       "description": "Elegant S-Fold curtains filtering light exactly where you need it.",
-      "image": "/images/curtain3.png"
+      "image": "/images/curtain3.png",
+      "beforeImage": "/images/curtain6.png"
     },
     {
       "id": "g4",
@@ -111,7 +120,8 @@
       "category": "S-Fold Curtain",
       "location": "Living Room",
       "description": "Crisp and structured S-Folds bringing architectural beauty to the space.",
-      "image": "/images/curtain4.png"
+      "image": "/images/curtain4.png",
+      "beforeImage": "/images/curtain5.png"
     },
     {
       "id": "g5",
@@ -119,7 +129,8 @@
       "category": "Pinched Pleats Curtain",
       "location": "Bedroom",
       "description": "Timeless pinched pleat styling offering a classic, tailored look.",
-      "image": "/images/curtain5.png"
+      "image": "/images/curtain5.png",
+      "beforeImage": "/images/curtain1.png"
     },
     {
       "id": "g6",
@@ -127,7 +138,8 @@
       "category": "Pinched Pleats Curtain",
       "location": "Office",
       "description": "Professional and refined pinched pleats perfect for an executive office.",
-      "image": "/images/curtain6.png"
+      "image": "/images/curtain6.png",
+      "beforeImage": "/images/curtain3.png"
     },
     {
       "id": "g7",
@@ -135,7 +147,8 @@
       "category": "Pocket Curtain",
       "location": "Kitchen",
       "description": "Simple, relaxed pocket curtains ideal for casual kitchen windows.",
-      "image": "/images/curtain7.png"
+      "image": "/images/curtain7.png",
+      "beforeImage": "/images/curtain2.png"
     },
     {
       "id": "g8",
@@ -143,7 +156,8 @@
       "category": "Pocket Curtain",
       "location": "Balcony",
       "description": "Softly gathered pocket curtains welcoming the morning breeze.",
-      "image": "/images/curtain8.png"
+      "image": "/images/curtain8.png",
+      "beforeImage": "/images/curtain4.png"
     }
   ],
   "categories": [

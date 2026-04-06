@@ -3,7 +3,7 @@ const AboutIntro = () => {
     <section className="py-12 bg-transparent">
       <div className="container max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="relative h-[500px] rounded-xl overflow-hidden shadow-2xl premium-card">
+          <div className="relative h-[500px] rounded-none overflow-hidden shadow-2xl premium-card">
             <img
               src="/images/curtain1.png"
               alt="Company Introduction"

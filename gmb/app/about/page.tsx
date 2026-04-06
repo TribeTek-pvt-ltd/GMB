@@ -4,6 +4,7 @@ import AboutIntro from '@/components/AboutIntro';
 import AboutStory from '@/components/AboutStory';
 import AboutMission from '@/components/AboutMission';
 import WhyChooseUs from '@/components/WhyChooseUs';
+import ArtisanJourney from '@/components/ArtisanJourney';
 // import AboutProcess from '@/components/AboutProcess';
 import AboutTeam from '@/components/AboutTeam';
 import AboutStats from '@/components/AboutStats';
@@ -22,6 +23,7 @@ export default function AboutPage() {
       <ScrollReveal><AboutStats /></ScrollReveal>
       {/* <ScrollReveal><AboutMission /></ScrollReveal> */}
       <ScrollReveal><AboutTeam /></ScrollReveal>
+      <ScrollReveal><ArtisanJourney /></ScrollReveal>
       <ScrollReveal><WhyChooseUs /></ScrollReveal>
       <ScrollReveal><QuoteCTA /></ScrollReveal>
       <Footer />

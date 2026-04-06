@@ -73,10 +73,10 @@ const Testimonials = () => {
   const active = testimonials[activeIndex];
 
   return (
-    <section className="py-20 md:py-28 bg-transparent overflow-hidden">
+    <section className="py-24 md:py-32 bg-transparent overflow-hidden">
       <div className="container max-w-7xl mx-auto">
         {/* Carousel Showcase */}
-        <div className="relative w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden bg-slate-900 shadow-[0_20px_50px_-15px_rgba(31,46,90,0.25)] border border-slate-800">
+        <div className="relative w-full rounded-none overflow-hidden bg-slate-900 shadow-[0_20px_50px_-15px_rgba(31,46,90,0.25)] border border-slate-800">
           
           <div className={`grid grid-cols-1 lg:grid-cols-2 transition-all duration-500 ease-in-out ${isAnimating ? 'opacity-0 scale-[0.98]' : 'opacity-100 scale-100'}`}>
             
@@ -94,8 +94,8 @@ const Testimonials = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-black/30 pointer-events-none" />
               
               {/* Floating tag on image */}
-              <div className="absolute bottom-6 left-6 lg:bottom-10 lg:left-10 bg-white/90 backdrop-blur-md px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest text-slate-800 shadow-xl flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <div className="absolute bottom-6 left-6 lg:bottom-10 lg:left-10 bg-white/90 backdrop-blur-md px-5 py-2.5 rounded-none text-xs font-bold uppercase tracking-widest text-slate-800 shadow-xl flex items-center gap-2">
+                <span className="w-2 h-2 rounded-none bg-primary animate-pulse" />
                 Featured Project
               </div>
             </div>
@@ -103,8 +103,8 @@ const Testimonials = () => {
             {/* Right Box: Review Content */}
             <div className="relative flex flex-col justify-center p-8 sm:p-10 lg:p-12 bg-slate-900 overflow-hidden">
               {/* Ambient Glows */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent-yellow/10 rounded-full blur-[80px] pointer-events-none translate-y-1/2 -translate-x-1/2" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-none blur-[80px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent-yellow/10 rounded-none blur-[80px] pointer-events-none translate-y-1/2 -translate-x-1/2" />
 
               <div className="relative z-10">
                 {/* Star Rating */}
@@ -123,7 +123,7 @@ const Testimonials = () => {
 
                 {/* Client Profile */}
                 <div className="flex items-center gap-5">
-                  <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white text-xl font-bold shadow-[0_0_20px_rgba(76,175,80,0.4)] border-2 border-white/20 shrink-0">
+                  <div className="w-14 h-14 rounded-none bg-primary flex items-center justify-center text-white text-xl font-bold shadow-[0_0_20px_rgba(76,175,80,0.4)] border-2 border-white/20 shrink-0">
                     {active.initials}
                   </div>
                   <div>
@@ -138,7 +138,7 @@ const Testimonials = () => {
 
           {/* Controls & Pagination */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 lg:left-auto lg:right-12 lg:translate-x-0 flex items-center gap-6 z-20">
-            <button onClick={handlePrev} aria-label="Previous testimonial" className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-300 focus:outline-none">
+            <button onClick={handlePrev} aria-label="Previous testimonial" className="w-10 h-10 rounded-none bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-300 focus:outline-none">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" /></svg>
             </button>
             <div className="flex items-center gap-3">
@@ -154,11 +154,11 @@ const Testimonials = () => {
                     }, 400);
                   }}
                   aria-label={`Go to slide ${idx + 1}`}
-                  className={`transition-all duration-500 rounded-full h-2 ${idx === activeIndex ? 'w-8 bg-primary' : 'w-2 bg-white/30 hover:bg-white/60'}`}
+                  className={`transition-all duration-500 rounded-none h-2 ${idx === activeIndex ? 'w-8 bg-primary' : 'w-2 bg-white/30 hover:bg-white/60'}`}
                 />
               ))}
             </div>
-            <button onClick={handleNext} aria-label="Next testimonial" className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-300 focus:outline-none">
+            <button onClick={handleNext} aria-label="Next testimonial" className="w-10 h-10 rounded-none bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-300 focus:outline-none">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" /></svg>
             </button>
           </div>

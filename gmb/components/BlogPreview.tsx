@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import StandardButton from './StandardButton';
 
 const posts = [
   {
@@ -27,26 +28,25 @@ const posts = [
 
 const BlogPreview = () => {
   return (
-    <section className="py-16 bg-transparent">
+    <section className="py-24 md:py-32 bg-transparent">
       <div className="container max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
           <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-4">Latest from our <span className="gradient-text italic">Blog</span></h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-4">Curated <span className="gradient-text italic">Knowledge</span></h2>
             <p className="text-slate-500 text-lg">
               Explore our latest articles on interior design, fabric care, and window treatment trends.
             </p>
           </div>
           <div className="shrink-0 pb-1">
-            <Link
-              href="/blog"
-              className="group inline-flex items-center gap-2 text-slate-900 font-bold text-sm uppercase tracking-widest hover:text-primary transition-colors whitespace-nowrap"
-            >
-              <span className="relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:origin-right group-hover:after:origin-left group-hover:after:scale-x-100 after:transition-transform after:duration-300">
-                View All Articles
-              </span>
-              <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+            <Link href="/blog">
+              <StandardButton variant="outline" className="!px-6 !py-3 !text-[10px] !text-slate-900 !border-slate-200">
+                <div className="flex items-center gap-2">
+                  View All Articles
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+              </StandardButton>
             </Link>
           </div>
         </div>
@@ -54,14 +54,14 @@ const BlogPreview = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {posts.map((post, index) => (
             <article key={index} className="group cursor-pointer">
-              <div className="relative h-64 rounded-xl overflow-hidden mb-4 premium-card">
+              <div className="relative h-64 rounded-none overflow-hidden mb-4 premium-card">
                 <Image
                   src={post.image}
                   alt={post.title}
                   fill
                   className="object-cover transition-transform duration-500 "
                 />
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-xl text-xs font-bold text-primary">
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-none text-xs font-bold text-primary">
                   {post.category}
                 </div>
               </div>

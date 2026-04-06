@@ -33,10 +33,10 @@ export default function StoreListingPage() {
           </h1>
 
           {/* Toggle Ribbon */}
-          <div className="bg-white p-1.5 rounded-full border border-slate-200 shadow-sm flex items-center w-full max-w-[300px]">
+          <div className="bg-white p-1.5 rounded-none border border-slate-200 shadow-sm flex items-center w-full max-w-[300px]">
             <button
               onClick={() => setActiveTab('blinds')}
-              className={`flex-1 py-3 px-6 rounded-full text-sm font-bold transition-all duration-300 ${
+              className={`flex-1 py-3 px-6 rounded-none text-sm font-bold transition-all duration-300 ${
                 activeTab === 'blinds' 
                   ? 'bg-[#1F2E5A] text-white shadow-md' 
                   : 'text-slate-500 hover:text-[#1F2E5A]'
@@ -46,7 +46,7 @@ export default function StoreListingPage() {
             </button>
             <button
               onClick={() => setActiveTab('curtains')}
-              className={`flex-1 py-3 px-6 rounded-full text-sm font-bold transition-all duration-300 ${
+              className={`flex-1 py-3 px-6 rounded-none text-sm font-bold transition-all duration-300 ${
                 activeTab === 'curtains' 
                   ? 'bg-[#1F2E5A] text-white shadow-md' 
                   : 'text-slate-500 hover:text-[#1F2E5A]'
@@ -65,7 +65,7 @@ export default function StoreListingPage() {
               href={`/store/${product.id}`}
               className="group block"
             >
-              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-slate-100 shadow-sm transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-1">
+              <div className="relative aspect-[4/3] rounded-none overflow-hidden bg-slate-100 shadow-sm transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-1">
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -75,7 +75,7 @@ export default function StoreListingPage() {
                 <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
                 
                 {/* Visual Label (Pill) */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[85%] bg-white/95 backdrop-blur-md px-6 py-4 rounded-2xl shadow-lg border border-white/50 text-center flex items-center justify-between">
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[85%] bg-white/95 backdrop-blur-md px-6 py-4 rounded-none shadow-lg border border-white/50 text-center flex items-center justify-between">
                   <span className="font-bold text-[#1F2E5A] text-sm md:text-base truncate pr-2">
                     {product.name}
                   </span>
@@ -92,7 +92,7 @@ export default function StoreListingPage() {
                   <span className="text-slate-400 text-xs font-bold uppercase tracking-widest block mb-1">Starting From</span>
                   <span className="text-2xl font-black text-[#1F2E5A]">${product.price}.00</span>
                 </div>
-                <div className="bg-slate-100 text-slate-500 text-xs font-bold px-3 py-1.5 rounded-full inline-flex self-start md:self-auto items-center gap-2">
+                <div className="bg-slate-100 text-slate-500 text-xs font-bold px-3 py-1.5 rounded-none inline-flex self-start md:self-auto items-center gap-2">
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   {product.leadTime}
                 </div>

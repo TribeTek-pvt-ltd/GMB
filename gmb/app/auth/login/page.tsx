@@ -48,7 +48,7 @@ export default function LoginPage() {
           </div>
 
            {error && (
-            <div className="mb-6 p-4 bg-red-500/10 border border-red-500/50 rounded-xl text-red-500 text-sm font-bold text-center">
+            <div className="mb-6 p-4 bg-red-500/10 border border-red-500/50 rounded-none text-red-500 text-sm font-bold text-center">
               {error}
             </div>
           )}
@@ -62,7 +62,7 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="admin@curtainmaster.com"
                 required
-                className="w-full bg-white/5 px-4 py-2 rounded-xl border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-slate-600"
+                className="w-full bg-white/5 px-4 py-2 rounded-none border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-slate-600"
               />
             </div>
             <div>
@@ -76,17 +76,17 @@ export default function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 required
-                className="w-full bg-white/5 px-4 py-2 rounded-xl border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-slate-600"
+                className="w-full bg-white/5 px-4 py-2 rounded-none border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-slate-600"
               />
             </div>
             
             <button 
               type="submit"
               disabled={loading}
-              className="w-full bg-primary text-white py-4 rounded-xl font-bold mt-4 hover:shadow-lg hover:shadow-primary/20 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full bg-primary text-white py-4 rounded-none font-bold mt-4 hover:shadow-lg hover:shadow-primary/20 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {loading ? (
-                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-none animate-spin" />
               ) : (
                 'Login Account'
               )}

@@ -97,14 +97,14 @@ const LegalModal = ({ isOpen, onClose, title, type }: LegalModalProps) => {
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            className="relative w-full max-w-2xl bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[80vh] border border-slate-100"
+            className="relative w-full max-w-2xl bg-white rounded-none shadow-2xl overflow-hidden flex flex-col max-h-[80vh] border border-slate-100"
           >
             {/* Header */}
             <div className="p-8 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
               <h3 className="text-2xl font-bold text-slate-800">{title}</h3>
               <button
                 onClick={onClose}
-                className="w-10 h-10 rounded-full bg-slate-200/50 flex items-center justify-center hover:bg-slate-200 transition-colors group"
+                className="w-10 h-10 rounded-none bg-slate-200/50 flex items-center justify-center hover:bg-slate-200 transition-colors group"
               >
                 <svg className="w-6 h-6 text-slate-500 group-hover:text-slate-800 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -124,7 +124,7 @@ const LegalModal = ({ isOpen, onClose, title, type }: LegalModalProps) => {
             <div className="p-6 bg-slate-50/50 border-t border-slate-100 flex justify-center">
               <button
                 onClick={onClose}
-                className="px-10 py-2 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 transition-all"
+                className="px-10 py-2 bg-primary text-white font-bold rounded-none shadow-lg shadow-primary/20 transition-all"
               >
                 I Understand
               </button>

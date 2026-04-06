@@ -95,7 +95,7 @@ function ProductsContent() {
    if (loading) {
       return (
          <div className="min-h-[70vh] bg-white flex items-center justify-center">
-            <div className="w-12 h-12 border-4 border-[#4CAF50]/20 border-t-[#4CAF50] rounded-full animate-spin" />
+            <div className="w-12 h-12 border-4 border-[#4CAF50]/20 border-t-[#4CAF50] rounded-none animate-spin" />
          </div>
       );
    }
@@ -140,11 +140,11 @@ function ProductsContent() {
                                return (
                                   <div 
                                      key={style} 
-                                     className="group flex flex-col xl:flex-row gap-6 lg:gap-8 bg-white/70 backdrop-blur-xl border border-slate-200 p-6 md:p-8 rounded-[3rem] hover:border-primary/40 transition-all duration-700 shadow-xl shadow-slate-200 relative overflow-hidden"
+                                     className="group flex flex-col xl:flex-row gap-6 lg:gap-8 bg-white/70 backdrop-blur-xl border border-slate-200 p-6 md:p-8 rounded-none hover:border-primary/40 transition-all duration-700 shadow-xl shadow-slate-200 relative overflow-hidden"
                                      onClick={() => router.push(`/gallery?category=${encodeURIComponent(style)}`)}
                                   >
                                      {/* Image Section */}
-                                     <div className="w-full xl:w-[45%] aspect-square relative rounded-[2.2rem] overflow-hidden shadow-lg ring-1 ring-slate-100">
+                                     <div className="w-full xl:w-[45%] aspect-square relative rounded-none overflow-hidden shadow-lg ring-1 ring-slate-100">
                                         <Image
                                            src={styleImage}
                                            alt={style}
@@ -184,7 +184,7 @@ function ProductsContent() {
                ) : (
                   <>
                      {/* Tiered Filters + Search (Floating UI) when deep inside a Style */}
-                     <div className="sticky top-20 z-30 mb-10 rounded-xl py-4 px-2 border-transparent transition-all">
+                     <div className="sticky top-20 z-30 mb-10 rounded-none py-4 px-2 border-transparent transition-all">
                         <div className="flex flex-col gap-4">
 
                            <div className="flex flex-col xl:flex-row items-center gap-3 justify-between">
@@ -194,7 +194,7 @@ function ProductsContent() {
                                     placeholder="Search elements..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full bg-white/80 backdrop-blur-md border border-slate-200 rounded-xl py-2 pl-12 pr-4 text-xs font-bold tracking-widest focus:outline-none focus:ring-2 focus:ring-[#4CAF50]/20 transition-all shadow-sm"
+                                    className="w-full bg-white/80 backdrop-blur-md border border-slate-200 rounded-none py-2 pl-12 pr-4 text-xs font-bold tracking-widest focus:outline-none focus:ring-2 focus:ring-[#4CAF50]/20 transition-all shadow-sm"
                                  />
                                  <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#4CAF50] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -203,7 +203,7 @@ function ProductsContent() {
                               <div className="flex flex-wrap gap-4 justify-center items-center">
                                  <button
                                     onClick={() => { setActiveStyle('All'); setActiveRoom('All'); }}
-                                    className="px-6 py-2 rounded-full text-[9px] font-bold uppercase tracking-widest transition-all bg-transparent text-slate-500 border border-slate-200 hover:text-[#4CAF50] hover:border-[#4CAF50]/30 shadow-sm bg-white/80 backdrop-blur-md"
+                                    className="px-6 py-2 rounded-none text-[9px] font-bold uppercase tracking-widest transition-all bg-transparent text-slate-500 border border-slate-200 hover:text-[#4CAF50] hover:border-[#4CAF50]/30 shadow-sm bg-white/80 backdrop-blur-md"
                                  >
                                     Back To All Styles
                                  </button>
@@ -214,7 +214,7 @@ function ProductsContent() {
                                     <div className="relative">
                                        <button
                                           onClick={() => setIsRoomDropdownOpen(!isRoomDropdownOpen)}
-                                          className="flex items-center gap-3 px-6 py-2 bg-white/80 backdrop-blur-md border border-slate-200 rounded-xl text-[9px] font-bold uppercase tracking-widest text-slate-600 hover:border-[#4CAF50]/30 transition-all shadow-sm"
+                                          className="flex items-center gap-3 px-6 py-2 bg-white/80 backdrop-blur-md border border-slate-200 rounded-none text-[9px] font-bold uppercase tracking-widest text-slate-600 hover:border-[#4CAF50]/30 transition-all shadow-sm"
                                        >
                                           <span>{activeRoom === 'All' ? 'All Rooms' : activeRoom}</span>
                                           <svg className={`w-3 h-3 text-slate-400 transition-transform duration-300 ${isRoomDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -225,7 +225,7 @@ function ProductsContent() {
                                        {isRoomDropdownOpen && (
                                           <>
                                              <div className="fixed inset-0 z-40" onClick={() => setIsRoomDropdownOpen(false)} />
-                                             <div className="absolute top-full right-0 mt-2 w-56 bg-white/95 backdrop-blur-xl border border-slate-100 rounded-2xl shadow-2xl py-3 z-50 animate-in fade-in slide-in-from-top-2 duration-300">
+                                             <div className="absolute top-full right-0 mt-2 w-56 bg-white/95 backdrop-blur-xl border border-slate-100 rounded-none shadow-2xl py-3 z-50 animate-in fade-in slide-in-from-top-2 duration-300">
                                                 <div className="px-5 py-2 mb-1 border-b border-slate-50">
                                                    <span className="text-[8px] font-bold text-slate-300 uppercase tracking-[0.2em]">Select Room</span>
                                                 </div>
@@ -260,7 +260,7 @@ function ProductsContent() {
                               style={{ animationDelay: `${idx * 50}ms` }}
                               onClick={() => setLightboxIndex(idx)}
                            >
-                              <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm transition-all duration-700 hover:shadow-2xl ">
+                              <div className="relative aspect-[3/4] rounded-none overflow-hidden shadow-sm transition-all duration-700 hover:shadow-2xl ">
                                  <Image
                                     src={p.image}
                                     alt={p.name}
@@ -270,10 +270,10 @@ function ProductsContent() {
                                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent flex flex-col justify-end p-4">
                                     <h3 className="text-white text-sm font-bold mb-2 truncate">{p.name}</h3>
                                     <div className="flex items-center gap-2">
-                                       <span className="px-2 py-1 rounded-md bg-white/20 text-white text-[8px] font-bold uppercase tracking-widest backdrop-blur-sm truncate">
+                                       <span className="px-2 py-1 rounded-none bg-white/20 text-white text-[8px] font-bold uppercase tracking-widest backdrop-blur-sm truncate">
                                           {p.category}
                                        </span>
-                                       <span className="px-2 py-1 rounded-md bg-[#4CAF50]/80 text-white text-[8px] font-bold uppercase tracking-widest backdrop-blur-sm truncate">
+                                       <span className="px-2 py-1 rounded-none bg-[#4CAF50]/80 text-white text-[8px] font-bold uppercase tracking-widest backdrop-blur-sm truncate">
                                           {p.room}
                                        </span>
                                     </div>
@@ -290,10 +290,10 @@ function ProductsContent() {
                            <p className="text-slate-400 italic mb-10">We're curating pieces for this unique style. Check back soon.</p>
                            <button
                               onClick={() => { setActiveStyle('All'); setActiveRoom('All'); setSearchQuery(''); }}
-                              className="px-8 py-3 bg-[#4CAF50] text-white rounded-full font-bold text-[10px] uppercase tracking-widest shadow-xl shadow-[#4CAF50]/20 hover:bg-[#1F2E5A] transition-all relative overflow-hidden group"
+                              className="px-8 py-3 bg-[#4CAF50] text-white rounded-none font-bold text-[10px] uppercase tracking-widest shadow-xl shadow-[#4CAF50]/20 hover:bg-[#1F2E5A] transition-all relative overflow-hidden group"
                            >
                               <span className="relative z-10">View Entire Collection</span>
-                              <div className="absolute inset-0 h-full w-full bg-white/20 scale-x-0 x-100 transition-transform origin-left rounded-full" />
+                              <div className="absolute inset-0 h-full w-full bg-white/20 scale-x-0 x-100 transition-transform origin-left rounded-none" />
                            </button>
                         </div>
                      )}
@@ -343,9 +343,9 @@ function ProductsContent() {
                      <h2 className="text-slate-900 text-3xl font-bold mb-2">{filteredProducts[lightboxIndex].name}</h2>
                      <p className="text-slate-500 tracking-widest uppercase text-xs md:text-sm font-bold flex items-center justify-center gap-3">
                         <span>{filteredProducts[lightboxIndex].category}</span>
-                        <span className="w-1 h-1 rounded-full bg-[#4CAF50]"></span>
+                        <span className="w-1 h-1 rounded-none bg-[#4CAF50]"></span>
                         <span>{filteredProducts[lightboxIndex].style}</span>
-                        <span className="w-1 h-1 rounded-full bg-[#4CAF50]"></span>
+                        <span className="w-1 h-1 rounded-none bg-[#4CAF50]"></span>
                         <span>{filteredProducts[lightboxIndex].room}</span>
                      </p>
                   </div>
@@ -362,7 +362,7 @@ export default function CategoryPage() {
    return (
       <Suspense fallback={
          <div className="min-h-[70vh] bg-white flex items-center justify-center">
-            <div className="w-12 h-12 border-4 border-[#4CAF50]/20 border-t-[#4CAF50] rounded-full animate-spin" />
+            <div className="w-12 h-12 border-4 border-[#4CAF50]/20 border-t-[#4CAF50] rounded-none animate-spin" />
          </div>
       }>
          <ProductsContent />
