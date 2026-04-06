@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import AnimatedSection, { itemVariants } from './AnimatedSection';
 
 const faqData = [
   {
@@ -29,47 +31,75 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-16 bg-transparent">
+    <section className="py-24 md:py-32 bg-transparent">
       <div className="container mx-auto max-w-4xl">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
+          <div className="inline-flex items-center gap-2 mb-4">
+            <div className="w-6 h-px bg-primary" />
+            <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-primary">Got Questions</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-normal text-slate-900 mb-4">
             Frequently Asked <span className="gradient-text italic">Questions</span>
           </h2>
-          <p className="text-slate-500 text-lg">
+          <p className="text-slate-500 text-lg font-light leading-relaxed max-w-xl mx-auto">
             Everything you need to know about our premium window treatments and services.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="space-y-3">
+        <AnimatedSection className="space-y-3" staggerDelay={0.07}>
           {faqData.map((faq, index) => (
-            <div
+            <motion.div
               key={index}
-              className="glassmorphism rounded-xl border border-white/40 overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md"
+              variants={itemVariants}
+              className="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:border-slate-200 hover:shadow-md transition-all duration-300"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-4 sm:p-6 text-left focus:outline-none group"
+                className="w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group"
               >
-                <span className="text-base sm:text-lg font-bold text-slate-700 group-hover:text-primary transition-colors">
+                <span className="text-base sm:text-lg font-medium text-slate-800 group-hover:text-primary transition-colors pr-4">
                   {faq.question}
                 </span>
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${openIndex === index ? 'bg-primary text-white rotate-180' : 'bg-slate-100 text-slate-400 group-hover:bg-primary/10 group-hover:text-primary'}`}>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <motion.div
+                  animate={{ rotate: openIndex === index ? 180 : 0 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300 ${
+                    openIndex === index
+                      ? 'bg-primary text-white'
+                      : 'bg-slate-100 text-slate-400 group-hover:bg-primary/10 group-hover:text-primary'
+                  }`}
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                   </svg>
-                </div>
+                </motion.div>
               </button>
 
-              <div
-                className={`transition-all duration-500 ease-in-out ${openIndex === index ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}
-              >
-                <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100/50 bg-white/30 backdrop-blur-sm">
-                  {faq.answer}
-                </div>
-              </div>
-            </div>
+              <AnimatePresence initial={false}>
+                {openIndex === index && (
+                  <motion.div
+                    key="answer"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-6 pt-1 text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50 text-sm md:text-base">
+                      {faq.answer}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

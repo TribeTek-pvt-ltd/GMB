@@ -44,7 +44,7 @@ const Gallery = () => {
   };
 
   return (
-    <section className="py-20 md:py-28 bg-transparent relative overflow-hidden" id="recent-works">
+    <section className="py-24 md:py-32 bg-transparent relative overflow-hidden" id="recent-works">
       {/* Decorative Blur Backgrounds */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
@@ -58,7 +58,7 @@ const Gallery = () => {
               <div className="w-6 h-px bg-primary" />
               <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-primary">Portfolio</span>
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-2">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-normal text-slate-900 mb-2">
               Our <span className="gradient-text"><span className="italic">Recent</span> Works</span>
             </h2>
             <p className="mt-2 text-slate-500 text-base md:text-lg leading-relaxed font-light">
@@ -69,7 +69,7 @@ const Gallery = () => {
           <div className="shrink-0 pb-1">
             <Link
               href="/gallery"
-              className="group inline-flex items-center gap-2 text-slate-900 font-bold text-sm uppercase tracking-widest hover:text-primary transition-colors whitespace-nowrap"
+              className="group inline-flex items-center gap-2 text-slate-900 font-medium text-sm uppercase tracking-widest hover:text-primary transition-colors whitespace-nowrap"
             >
               <span className="relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:origin-right group-hover:after:origin-left group-hover:after:scale-x-100 after:transition-transform after:duration-300">
                 View All Projects
@@ -98,17 +98,17 @@ const Gallery = () => {
                 className="object-cover transition-transform duration-700 ease-out"
               />
               {/* Overlays */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/10 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500" />
-              <div className="absolute inset-0 bg-primary/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-primary/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Content */}
               <div className={`absolute bottom-0 left-0 w-full flex flex-col justify-end transition-transform duration-500 ${index === 0 ? 'p-6 md:p-8' : 'p-4 md:p-5'}`}>
                 <div className="mb-3">
-                  <span className="px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-white text-[9px] font-bold uppercase tracking-[0.2em] shadow-sm">
+                  <span className="px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-white text-[9px] font-medium uppercase tracking-[0.2em] shadow-sm">
                     {item.category}
                   </span>
                 </div>
-                <h3 className={`${index === 0 ? 'text-2xl md:text-4xl' : 'text-lg md:text-xl'} font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300 drop-shadow-md`}>
+                <h3 className={`${index === 0 ? 'text-2xl md:text-4xl' : 'text-lg md:text-xl'} font-semibold text-white mb-2 group-hover:text-white transition-colors duration-300 drop-shadow-sm`}>
                   {item.title}
                 </h3>
 

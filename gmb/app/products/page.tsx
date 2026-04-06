@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, Suspense } from 'react';
+import { useState } from 'react';
 import Navbar from '@/components/Navbar';
+import { AnimatePresence, motion } from 'framer-motion';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
 import Image from 'next/image';

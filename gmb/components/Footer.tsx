@@ -7,8 +7,8 @@ const Footer = () => {
   const { openTrackModal, openTermsModal, openPrivacyModal } = useModal();
 
   return (
-    <footer className="bg-slate-950 text-white border-t border-white/5">
-      <div className="container max-w-7xl mx-auto py-16">
+    <footer className="bg-[#1F2E5A] text-white border-t border-[#1F2E5A]/5">
+      <div className="container max-w-7xl mx-auto py-24">
 
         {/* Main Grid: Brand | Links | Contact */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
@@ -33,9 +33,10 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/60 mb-4">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="text-xs font-medium uppercase tracking-[0.2em] text-white/80 mb-6">Quick Links</h4>
+            <ul className="space-y-4">
               <li><Link href="/" className="text-white/40 hover:text-primary text-sm transition-colors">Home</Link></li>
+              <li><Link href="/gallery" className="text-white/40 hover:text-primary text-sm transition-colors">Gallery</Link></li>
               <li><Link href="/about" className="text-white/40 hover:text-primary text-sm transition-colors">About Us</Link></li>
               <li><Link href="/products" className="text-white/40 hover:text-primary text-sm transition-colors">Products</Link></li>
               <li><Link href="/contact" className="text-white/40 hover:text-primary text-sm transition-colors">Contact</Link></li>
@@ -44,8 +45,8 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/60 mb-4">Contact</h4>
-            <ul className="space-y-2">
+            <h4 className="text-xs font-medium uppercase tracking-[0.2em] text-white/80 mb-6">Contact</h4>
+            <ul className="space-y-4">
               <li>
                 <a href="mailto:info@curtainmaster.com" className="text-white/40 hover:text-primary text-sm transition-colors flex items-center gap-2">
                   <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
@@ -69,11 +70,11 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="h-px bg-white/10 mb-8" />
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-white/30 text-xs">&copy; 2026 GMB. All rights reserved to TribeTek.</p>
+          <p className="text-white/40 text-xs">&copy; 2026 GMB. All rights reserved to TribeTek.</p>
           <div className="flex items-center gap-4">
-            <button onClick={openTermsModal} className="text-white/30 hover:text-primary text-[10px] uppercase tracking-widest font-bold transition-colors bg-transparent border-none p-0 cursor-pointer">Terms</button>
-            <button onClick={openPrivacyModal} className="text-white/30 hover:text-primary text-[10px] uppercase tracking-widest font-bold transition-colors bg-transparent border-none p-0 cursor-pointer">Privacy</button>
-            <button onClick={openTrackModal} className="text-white/30 hover:text-primary text-[10px] uppercase tracking-widest font-bold transition-colors bg-transparent border-none p-0 cursor-pointer">Track Order</button>
+            <button onClick={openTermsModal} className="text-white/40 hover:text-primary text-[10px] uppercase tracking-widest font-medium transition-colors bg-transparent border-none p-0 cursor-pointer">Terms</button>
+            <button onClick={openPrivacyModal} className="text-white/40 hover:text-primary text-[10px] uppercase tracking-widest font-medium transition-colors bg-transparent border-none p-0 cursor-pointer">Privacy</button>
+            <button onClick={openTrackModal} className="text-white/40 hover:text-primary text-[10px] uppercase tracking-widest font-medium transition-colors bg-transparent border-none p-0 cursor-pointer">Track Order</button>
           </div>
         </div>
       </div>
