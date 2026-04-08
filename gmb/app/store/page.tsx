@@ -1,12 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import ScrollReveal from '@/components/ScrollReveal';
+import ScrollReveal from '@/components/shared/ScrollReveal';
 
 const STORE_DATA = {
   blinds: [
@@ -25,115 +25,118 @@ export default function StoreListingPage() {
   const [activeTab, setActiveTab] = useState<'blinds' | 'curtains'>('blinds');
 
   return (
-    <main className="min-h-screen bg-[#f8f7f4] pt-20">
+    <main className="min-h-screen bg-[#f8fafc] flex flex-col">
       <Navbar />
 
-      <section className="container max-w-7xl mx-auto px-6 py-16">
-        <ScrollReveal>
-          <div className="flex flex-col items-center justify-center text-center space-y-8 mb-16">
-            <div className="inline-flex items-center gap-2">
-              <div className="w-6 h-px bg-primary" />
-              <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-primary">Our Store</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-semibold text-[#1F2E5A]">
-              Shop Blinds & Curtains
-            </h1>
-            <p className="text-slate-500 text-lg font-light leading-relaxed max-w-md">
-              Bespoke, made-to-measure window treatments crafted with precision and care.
-            </p>
+      <div className="flex-1 pt-32 pb-24">
+        <section className="container max-w-7xl mx-auto px-6 sm:px-10 xl:px-16">
+          
+          <ScrollReveal delay={0.1}>
+            <div className="flex flex-col items-center justify-center text-center mb-16">
+              <div className="flex items-center justify-center gap-3 mb-5">
+                <div className="w-6 h-px bg-[#3d9e41]" />
+                <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-[#3d9e41]">Online Store</span>
+                <div className="w-6 h-px bg-[#3d9e41]" />
+              </div>
+              <h1 className="font-display font-bold text-[#0f172a] text-4xl md:text-5xl lg:text-6xl tracking-tight mb-10">
+                Shop Configurations.
+              </h1>
 
-            {/* Tab Toggle */}
-            <div className="relative bg-white p-1.5 rounded-full border border-slate-200 shadow-sm flex items-center w-full max-w-[280px]">
-              {/* Sliding indicator */}
-              <motion.div
-                className="absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-[#1F2E5A] rounded-full shadow-md"
-                animate={{ x: activeTab === 'blinds' ? 0 : '100%' }}
-                transition={{ type: 'spring', stiffness: 380, damping: 36 }}
-                style={{ left: '6px' }}
-              />
-              <button
-                onClick={() => setActiveTab('blinds')}
-                className={`relative flex-1 py-3 px-6 rounded-full text-sm font-medium transition-colors duration-300 z-10 ${
-                  activeTab === 'blinds' ? 'text-white' : 'text-slate-500 hover:text-[#1F2E5A]'
-                }`}
-              >
-                Blinds
-              </button>
-              <button
-                onClick={() => setActiveTab('curtains')}
-                className={`relative flex-1 py-3 px-6 rounded-full text-sm font-medium transition-colors duration-300 z-10 ${
-                  activeTab === 'curtains' ? 'text-white' : 'text-slate-500 hover:text-[#1F2E5A]'
-                }`}
-              >
-                Curtains
-              </button>
+              {/* Minimal Toggle Ribbon */}
+              <div className="bg-white p-1.5 rounded-full border border-slate-200/60 shadow-sm flex items-center w-full max-w-xs relative z-10">
+                <button
+                  onClick={() => setActiveTab('blinds')}
+                  className={`flex-1 py-3 px-6 rounded-full text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300 ${activeTab === 'blinds'
+                      ? 'bg-[#1756a0] text-white shadow-md'
+                      : 'text-slate-500 hover:text-[#1756a0]'
+                    }`}
+                >
+                  Blinds
+                </button>
+                <button
+                  onClick={() => setActiveTab('curtains')}
+                  className={`flex-1 py-3 px-6 rounded-full text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300 ${activeTab === 'curtains'
+                      ? 'bg-[#1756a0] text-white shadow-md'
+                      : 'text-slate-500 hover:text-[#1756a0]'
+                    }`}
+                >
+                  Curtains
+                </button>
+              </div>
             </div>
-          </div>
-        </ScrollReveal>
+          </ScrollReveal>
 
-        {/* Product Grid with AnimatePresence */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            {STORE_DATA[activeTab].map((product, i) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <Link href={`/store/${product.id}`} className="group block">
-                  <motion.div
-                    className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-slate-100 shadow-sm"
-                    whileHover={{ y: -6 }}
-                    transition={{ duration: 0.3, ease: 'easeOut' }}
+          {/* Minimal Bento Product Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <AnimatePresence mode="popLayout">
+              {STORE_DATA[activeTab].map((product, idx) => (
+                <motion.div
+                   key={`${activeTab}-${product.id}`}
+                   initial={{ opacity: 0, y: 20 }}
+                   animate={{ opacity: 1, y: 0 }}
+                   exit={{ opacity: 0, scale: 0.95 }}
+                   transition={{ duration: 0.4, delay: idx * 0.05 }}
+                   className="h-full"
+                >
+                  <Link
+                    href={`/store/${product.id}`}
+                    className="group flex flex-col h-full bg-white rounded-3xl border border-slate-100 overflow-hidden hover:shadow-[0_16px_40px_-12px_rgba(23,86,160,0.08)] hover:border-[#1756a0]/30 transition-all duration-400"
                   >
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+                    {/* Image Top Half */}
+                    <div className="relative w-full aspect-[4/3] overflow-hidden bg-slate-50 border-b border-slate-100">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
+                      
+                      {/* Lead Time Badge replacing Pill */}
+                      <div className="absolute top-5 left-5 z-10">
+                        <span className="bg-white/95 backdrop-blur-md text-slate-600 text-[8px] font-bold uppercase tracking-[0.2em] px-3.5 py-1.5 rounded-full shadow-sm flex items-center gap-2">
+                           <div className="w-1.5 h-1.5 rounded-full bg-[#3d9e41]" />
+                           {product.leadTime}
+                        </span>
+                      </div>
+                    </div>
 
-                    {/* Label inside card */}
-                    <div className="absolute bottom-5 left-1/2 -translate-x-1/2 w-[85%] bg-white/95 backdrop-blur-md px-5 py-4 rounded-2xl shadow-md border border-white/50 flex items-center justify-between">
-                      <span className="font-medium text-[#1F2E5A] text-sm md:text-base truncate pr-2">
-                        {product.name}
-                      </span>
-                      <div className="flex items-center gap-1 text-primary text-xs font-medium uppercase tracking-wide shrink-0">
-                        <span>Shop</span>
-                        <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                    {/* Text Details Container */}
+                    <div className="p-6 sm:p-8 flex flex-col flex-1">
+                      <div className="flex justify-between items-start mb-4">
+                        <div>
+                          <span className="text-slate-400 text-[9px] font-bold uppercase tracking-[0.2em] block mb-1">Custom Made</span>
+                          <h3 className="font-display font-bold text-[#0f172a] text-2xl tracking-tight group-hover:text-[#1756a0] transition-colors duration-300">
+                            {product.name}
+                          </h3>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-slate-400 text-[9px] font-bold uppercase tracking-[0.2em] block mb-1">From</span>
+                          <span className="font-display font-bold text-[#3d9e41] text-2xl tracking-tight">
+                            ${product.price}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Call to action arrow */}
+                      <div className="flex items-center gap-3 mt-auto border-t border-slate-100 pt-5">
+                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#1756a0] group-hover:text-[#3d9e41] transition-colors duration-300">
+                           Shop & Configure
+                        </span>
+                        <svg className="w-4 h-4 text-[#1756a0] group-hover:text-[#3d9e41] transition-colors duration-300 transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                       </div>
                     </div>
-                  </motion.div>
 
-                  {/* Text Info Below */}
-                  <div className="mt-5 flex flex-col md:flex-row md:items-center justify-between gap-2 px-2">
-                    <div>
-                      <span className="text-slate-400 text-xs font-medium uppercase tracking-widest block mb-1">Starting From</span>
-                      <span className="text-2xl font-semibold text-[#1F2E5A]">${product.price}.00</span>
-                    </div>
-                    <div className="bg-slate-100 text-slate-500 text-xs font-medium px-3 py-1.5 rounded-full inline-flex self-start md:self-auto items-center gap-2">
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      {product.leadTime}
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-      </section>
+                  </Link>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+
+        </section>
+      </div>
 
       <Footer />
     </main>

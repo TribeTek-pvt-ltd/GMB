@@ -1,14 +1,14 @@
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import ProductCategories from '@/components/ProductCategories';
-import RecentWorks from '@/components/RecentWorks';
-import WhyChooseUs from '@/components/WhyChooseUs';
-import Testimonials from '@/components/Testimonials';
-import FAQ from '@/components/FAQ';
-import BlogPreview from '@/components/BlogPreview';
-import QuoteCTA from '@/components/QuoteCTA';
-import Footer from '@/components/Footer';
-import ScrollReveal from '@/components/ScrollReveal';
+import Navbar from '@/components/layout/Navbar';
+import Hero from '@/components/home/Hero';
+import ProductCategories from '@/components/home/ProductCategories';
+import RecentWorks from '@/components/home/RecentWorks';
+import WhyChooseUs from '@/components/home/WhyChooseUs';
+import Testimonials from '@/components/home/Testimonials';
+import FAQ from '@/components/home/FAQ';
+import BlogPreview from '@/components/home/BlogPreview';
+import QuoteCTA from '@/components/home/QuoteCTA';
+import Footer from '@/components/layout/Footer';
+import ScrollReveal from '@/components/shared/ScrollReveal';
 
 export default function Home() {
   return (

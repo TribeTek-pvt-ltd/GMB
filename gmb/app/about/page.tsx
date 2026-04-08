@@ -1,16 +1,16 @@
-import Navbar from '@/components/Navbar';
-import AboutHero from '@/components/AboutHero';
-import AboutIntro from '@/components/AboutIntro';
-import AboutStory from '@/components/AboutStory';
-import AboutMission from '@/components/AboutMission';
-import WhyChooseUs from '@/components/WhyChooseUs';
-// import AboutProcess from '@/components/AboutProcess';
-import AboutTeam from '@/components/AboutTeam';
-import AboutStats from '@/components/AboutStats';
-import ScrollReveal from '@/components/ScrollReveal';
+import Navbar from '@/components/layout/Navbar';
+import AboutHero from '@/components/about/AboutHero';
+import AboutIntro from '@/components/about/AboutIntro';
+import AboutStory from '@/components/about/AboutStory';
+import AboutMission from '@/components/about/AboutMission';
+import WhyChooseUs from '@/components/home/WhyChooseUs';
+// import AboutProcess from '@/components/about/AboutProcess';
+import AboutTeam from '@/components/about/AboutTeam';
+import AboutStats from '@/components/about/AboutStats';
+import ScrollReveal from '@/components/shared/ScrollReveal';
 
-import QuoteCTA from '@/components/QuoteCTA';
-import Footer from '@/components/Footer';
+import QuoteCTA from '@/components/home/QuoteCTA';
+import Footer from '@/components/layout/Footer';
 
 export default function AboutPage() {
   return (

@@ -1,12 +1,12 @@
 'use client';
 
-import Navbar from '@/components/Navbar';
-import ContactHero from '@/components/ContactHero';
-import ContactInfo from '@/components/ContactInfo';
-import ContactForm from '@/components/ContactForm';
-import ScrollReveal from '@/components/ScrollReveal';
+import Navbar from '@/components/layout/Navbar';
+import ContactHero from '@/components/contact/ContactHero';
+import ContactInfo from '@/components/contact/ContactInfo';
+import ContactForm from '@/components/contact/ContactForm';
+import ScrollReveal from '@/components/shared/ScrollReveal';
 
-import Footer from '@/components/Footer';
+import Footer from '@/components/layout/Footer';
 
 export default function ContactPage() {
   return (

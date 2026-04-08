@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import ScrollReveal from '@/components/ScrollReveal';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import ScrollReveal from '@/components/shared/ScrollReveal';
 import Image from 'next/image';
 import Link from 'next/link';
 import { PRODUCT_CATEGORIES } from '@/lib/categories';
