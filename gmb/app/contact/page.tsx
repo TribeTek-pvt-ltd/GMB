@@ -1,17 +1,14 @@
 'use client';
 
-import Navbar from '@/components/layout/Navbar';
 import ContactHero from '@/components/contact/ContactHero';
 import ContactInfo from '@/components/contact/ContactInfo';
 import ContactForm from '@/components/contact/ContactForm';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 
-import Footer from '@/components/layout/Footer';
 
 export default function ContactPage() {
   return (
-    <main className="min-h-[70vh]">
-      <Navbar />
+    <div className="min-h-[70vh]">
       <ContactHero />
       <ScrollReveal delay={0.1}>
         <div className="pt-2 md:pt-4 pb-2">
@@ -24,7 +21,6 @@ export default function ContactPage() {
         </div>
       </ScrollReveal>
 
-      <Footer />
-    </main>
+    </div>
   );
 }

@@ -1,4 +1,3 @@
-import Navbar from '@/components/layout/Navbar';
 import AboutHero from '@/components/about/AboutHero';
 import AboutIntro from '@/components/about/AboutIntro';
 import AboutStory from '@/components/about/AboutStory';
@@ -10,12 +9,10 @@ import AboutStats from '@/components/about/AboutStats';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 
 import QuoteCTA from '@/components/home/QuoteCTA';
-import Footer from '@/components/layout/Footer';
 
 export default function AboutPage() {
   return (
-    <main className="min-h-[70vh]">
-      <Navbar />
+    <div className="min-h-[70vh]">
       <AboutHero />
       <ScrollReveal><AboutIntro /></ScrollReveal>
       {/* <ScrollReveal><AboutStory /></ScrollReveal> */}
@@ -24,7 +21,6 @@ export default function AboutPage() {
       <ScrollReveal><AboutTeam /></ScrollReveal>
       <ScrollReveal><WhyChooseUs /></ScrollReveal>
       <ScrollReveal><QuoteCTA /></ScrollReveal>
-      <Footer />
-    </main>
+    </div>
   );
 }

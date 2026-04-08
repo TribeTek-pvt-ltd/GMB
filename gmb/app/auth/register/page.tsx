@@ -1,12 +1,10 @@
 "use client";
 
 import Link from 'next/link';
-import Navbar from '@/components/layout/Navbar';
 
 export default function RegisterPage() {
   return (
-    <main className="min-h-screen bg-slate-900/20 flex items-center justify-center p-4">
-      <Navbar />
+    <div className="min-h-screen bg-slate-900/20 flex items-center justify-center p-4">
       <div className="w-full max-w-md pt-20">
         <div className="premium-card p-10 bg-transparent">
           <div className="text-center mb-8">
@@ -54,6 +52,6 @@ export default function RegisterPage() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

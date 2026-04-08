@@ -1,8 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -28,8 +26,7 @@ export default function CollectionsPage() {
    }, []);
 
    return (
-      <main className="min-h-screen bg-[#f8f7f4] transition-colors duration-1000 overflow-x-hidden">
-         <Navbar />
+      <div className="min-h-screen bg-[#f8f7f4] transition-colors duration-1000 overflow-x-hidden">
 
          {/* Sticky Chapter Indicator (Desktop) */}
          <div className="fixed left-12 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-10 items-center">
@@ -213,7 +210,6 @@ export default function CollectionsPage() {
             </ScrollReveal>
          </section>
 
-         <Footer />
-      </main>
+      </div>
    );
 }

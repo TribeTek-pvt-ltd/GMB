@@ -3,7 +3,8 @@ import { Inter, Playfair_Display, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { ModalProvider } from "@/lib/ModalContext";
 import { CartProvider } from "@/context/CartContext";
-
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -45,8 +46,12 @@ export default function RootLayout({
       >
         <ModalProvider>
           <CartProvider>
-            <div className=" mx-auto w-full relative" >
-              {children}
+            <div className="mx-auto w-full relative flex flex-col min-h-screen">
+              <Navbar />
+              <main className="flex-1 w-full">
+                {children}
+              </main>
+              <Footer />
             </div>
           </CartProvider>
         </ModalProvider>

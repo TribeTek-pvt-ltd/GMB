@@ -3,8 +3,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useModal } from '@/lib/ModalContext';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
 
 export default function TrackOrderPage() {
   const { openTrackModal } = useModal();
@@ -16,8 +14,7 @@ export default function TrackOrderPage() {
   }, [openTrackModal]);
 
   return (
-    <main className="min-h-[70vh] bg-transparent">
-      <Navbar />
+    <div className="min-h-[70vh] bg-transparent">
       <div className="pt-48 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-4xl font-bold mb-6 text-slate-900">Track Your <span className="gradient-text">Order</span></h1>
         <p className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto">
@@ -40,7 +37,6 @@ export default function TrackOrderPage() {
           </button>
         </div>
       </div>
-      <Footer />
-    </main>
+    </div>
   );
 }

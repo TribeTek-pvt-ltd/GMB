@@ -2,9 +2,8 @@
 
 import { useState, useEffect, Suspense, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import Navbar from '@/components/layout/Navbar';
 import ScrollReveal from '@/components/shared/ScrollReveal';
-import Footer from '@/components/layout/Footer';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { ALL_PRODUCTS, PRODUCT_CATEGORIES } from '@/lib/categories';
@@ -101,8 +100,7 @@ function ProductsContent() {
    }
 
    return (
-      <main className="min-h-[70vh] bg-transparent">
-         <Navbar onProductHover={handleMouseEnter} onProductLeave={handleMouseLeave} />
+      <div className="min-h-[70vh] bg-transparent">
 
          <ScrollReveal delay={0.1}>
             <div className="pt-16 pb-6 mt-8">
@@ -353,8 +351,7 @@ function ProductsContent() {
             )
          }
 
-         <Footer />
-      </main >
+      </div>
    );
 }
 

@@ -1,8 +1,6 @@
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
@@ -85,8 +83,7 @@ function GalleryContent() {
   const headerTitle = initialCategory === 'All' ? 'Full' : initialCategory;
 
   return (
-    <main className="min-h-[70vh] bg-[#f8f7f4]">
-      <Navbar />
+    <div className="min-h-[70vh] bg-[#f8f7f4]">
 
       <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -318,8 +315,7 @@ function GalleryContent() {
         </div>
       )}
 
-      <Footer />
-    </main>
+    </div>
   );
 }
 
