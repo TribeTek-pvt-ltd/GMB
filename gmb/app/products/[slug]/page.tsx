@@ -7,6 +7,7 @@ import ScrollReveal from '@/components/shared/ScrollReveal';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ALL_PRODUCTS, PRODUCT_CATEGORIES } from '@/lib/categories';
+import Hero from '@/components/ui/Hero';
 
 function ProductsContent() {
    const params = useParams();
@@ -107,21 +108,14 @@ function ProductsContent() {
             </div>
 
             {/* --- REFINED EDITORIAL HEADER --- */}
-            <div className="max-w-7xl mx-auto px-6 mb-20 mt-12 text-center relative z-10">
-               <div className="inline-flex items-center gap-3 mb-4">
-                  <div className="w-12 h-px bg-primary/30" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">
-                     Signature Collections
-                  </span>
-                  <div className="w-12 h-px bg-primary/30" />
-               </div>
-               <h1 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight text-[#1F2E5A] mb-6 font-serif">
-                  The <span className="gradient-text italic font-medium pr-3">{activeSubcategory.title}</span> Collection
-               </h1>
-               <p className="max-w-3xl mx-auto text-slate-500 text-lg md:text-xl leading-relaxed font-light">
-                  {activeSubcategory.description || "Expertly curated for modern architectural spaces, defining the intersection of light and geometry."}
-               </p>
-            </div>
+            <Hero 
+               centered
+               eyebrow="Signature Collections"
+               title={<>The <span className="gradient-text italic font-medium pr-3">{activeSubcategory.title}</span> Collection</>}
+               description={activeSubcategory.description || "Expertly curated for modern architectural spaces, defining the intersection of light and geometry."}
+               accentColor="#1F2E5A"
+               className="!pt-12 !pb-6"
+            />
 
             {/* --- MAIN CONTENT SECTON --- */}
             <section className="max-w-[1600px] mx-auto px-6 py-2 md:px-8 md:py-4">

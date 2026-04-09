@@ -34,23 +34,19 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
 
 const AboutStats = () => {
   return (
-    <section className="py-12 bg-transparent relative overflow-hidden border-y border-primary/10 backdrop-blur-sm">
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-white/5 rounded-xl blur-3xl" />
-      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-96 h-96 bg-black/10 rounded-xl blur-3xl" />
-
-      <div className="container max-w-7xl mx-auto relative z-10">
+    <section className="py-20 bg-white">
+      <div className="container max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              className="space-y-2"
+              className="space-y-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="text-4xl md:text-5xl font-semibold text-[#1F2E5A]">
+              <div className="text-4xl md:text-5xl font-medium text-[#1F2E5A]">
                 <CountUp target={stat.value} suffix={stat.suffix} />
               </div>
               <div className="text-slate-500 font-medium uppercase tracking-widest text-xs">{stat.label}</div>

@@ -72,7 +72,12 @@ body {
 }
 
 /* ─── Typography Scale ─── */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -81,9 +86,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ─── Utility Classes ─── */
-.font-display   { font-family: var(--font-display) !important; }
-.font-editorial { font-family: var(--font-editorial) !important; }
-.font-sans-ui   { font-family: var(--font-sans) !important; }
+.font-display {
+  font-family: var(--font-display) !important;
+}
+
+.font-editorial {
+  font-family: var(--font-editorial) !important;
+}
+
+.font-sans-ui {
+  font-family: var(--font-sans) !important;
+}
 
 /* ─── Selection ─── */
 ::selection {
@@ -103,11 +116,17 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   @media (min-width: 640px) {
-    .container { padding-left: 2.5rem; padding-right: 2.5rem; }
+    .container {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
   }
 
   @media (min-width: 1280px) {
-    .container { padding-left: 4rem; padding-right: 4rem; }
+    .container {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
   }
 
   /* ─── Card System ─── */
@@ -116,12 +135,13 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 2rem;
     border: 1px solid rgba(232, 230, 225, 0.7);
     transition: box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-                transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-                border-color 0.3s ease;
+      transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+      border-color 0.3s ease;
   }
 
   .card-base:hover {
-    box-shadow: 0 10px 40px -20px rgba(26, 38, 71, 0.08); /* Much softer shadow */
+    box-shadow: 0 10px 40px -20px rgba(26, 38, 71, 0.08);
+    /* Much softer shadow */
     border-color: rgba(61, 158, 65, 0.2);
   }
 
@@ -224,7 +244,8 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(255, 255, 255, 1);
     border-radius: 1.5rem;
     border: 1px solid rgba(232, 230, 225, 0.8);
-    box-shadow: 0 4px 20px -10px rgba(0, 0, 0, 0.03); /* Flat soft shadow */
+    box-shadow: 0 4px 20px -10px rgba(0, 0, 0, 0.03);
+    /* Flat soft shadow */
     transition: border-color 0.4s ease;
   }
 
@@ -259,8 +280,13 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(135deg, #3d9e41 0%, #1a2647 100%);
 }
 
-.text-accent-yellow { color: #F4A300; }
-.bg-accent-yellow   { background: #F4A300; }
+.text-accent-yellow {
+  color: #F4A300;
+}
+
+.bg-accent-yellow {
+  background: #F4A300;
+}
 
 /* ─── Divider ─── */
 .divider {
@@ -271,22 +297,46 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── Animations ─── */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position:  200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.animate-float    { animation: float 7s ease-in-out infinite; }
-.animate-fade-up  { animation: fade-up 0.6s ease both; }
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease both;
+}
 
 /* ─── Skeleton ─── */
 .skeleton {
@@ -296,7 +346,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ─── Scrollbar ─── */
-::-webkit-scrollbar       { width: 5px; }
-::-webkit-scrollbar-track { background: #ffffff; }
-::-webkit-scrollbar-thumb { background: rgba(61,158,65,0.3); border-radius: 99px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(61,158,65,0.55); }
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(61, 158, 65, 0.3);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(61, 158, 65, 0.55);
+}

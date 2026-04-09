@@ -3,124 +3,127 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ALL_PRODUCTS } from '@/lib/categories';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import Container from '../ui/Container';
 
-const tagColors: { [key: number]: { bg: string; text: string; label: string } } = {
-  0: { bg: 'bg-[#3d9e41]', text: 'text-white', label: 'Best Seller' },
-  2: { bg: 'bg-[#1756a0]', text: 'text-white', label: 'Premium' },
-  4: { bg: 'bg-[#0f172a]', text: 'text-white', label: 'New Arrival' },
+const TAGS: Record<number, { color: string; bg: string; label: string }> = {
+  0: { color: '#3d9e41', bg: 'rgba(61,158,65,0.1)', label: 'Best Seller' },
+  2: { color: '#1756a0', bg: 'rgba(23,86,160,0.1)', label: 'Premium' },
+  4: { color: '#0f172a', bg: 'rgba(15,23,42,0.08)', label: 'New Arrival' },
 };
 
 const ProductCategories = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-100px' });
+  const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
     <section className="py-24 md:py-32 bg-[#f8fafc]" id="categories" ref={ref}>
-      <div className="container max-w-7xl mx-auto px-6 sm:px-10 xl:px-16">
+      <Container>
 
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16"
+          initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55 }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
         >
           <div>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-8 h-px bg-[#3d9e41]" />
-              <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-[#3d9e41]">Our Products</span>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-7 h-px bg-[#3d9e41]" />
+              <span className="text-[9px] font-bold tracking-[0.28em] uppercase text-[#3d9e41]">Our Products</span>
             </div>
-            <h2 className="font-display font-bold text-[#0f172a] text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.04] tracking-tight">
+            <h2 className="font-display font-bold text-[#0f172a] text-4xl md:text-5xl tracking-tight leading-tight">
               Every Style.<br />Every Window.
             </h2>
           </div>
-          <Link href="/products">
-            <button className="border border-slate-300 text-slate-600 hover:border-[#3d9e41] hover:bg-[#3d9e41] hover:text-white px-7 py-3.5 rounded-full font-bold text-[10px] tracking-[0.2em] uppercase transition-all duration-300 whitespace-nowrap bg-white shadow-sm">
-              View All Products
-            </button>
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-2.5 shrink-0 border border-slate-200 bg-white hover:border-[#3d9e41]/50 hover:text-[#3d9e41] text-slate-600 px-7 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 shadow-sm"
+          >
+            View All Products
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </Link>
         </motion.div>
 
-        {/* Uniform Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {ALL_PRODUCTS.slice(0, 6).map((cat, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.55, delay: i * 0.08 }}
-              className="h-full"
+              initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.07 }}
             >
-              <Link href={`/products?category=${cat.slug}`} className="group flex flex-col h-full bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-[0_16px_40px_-12px_rgba(23,86,160,0.08)] hover:border-[#3d9e41]/30 transition-all duration-400">
-                
-                {/* Image Container */}
-                <div className="relative w-full aspect-[4/3] overflow-hidden bg-slate-50 border-b border-slate-100">
+              <Link
+                href={`/products?category=${cat.slug}`}
+                className="group flex flex-col h-full bg-white rounded-2xl border border-slate-100 overflow-hidden hover:border-slate-200 hover:shadow-[0_12px_40px_-16px_rgba(0,0,0,0.08)] transition-all duration-400"
+              >
+                {/* Image */}
+                <div className="relative w-full aspect-[4/3] overflow-hidden bg-slate-100">
                   <Image
                     src={cat.image} alt={cat.title} fill
-                    className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+                    className="object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.04]"
                   />
-                  {/* Subtle overlay to make tags pop if present */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
-
-                  {/* Tag */}
-                  {tagColors[i] && (
-                    <div className={`absolute top-4 left-4 px-3.5 py-1.5 rounded-full ${tagColors[i].bg} ${tagColors[i].text} text-[8px] font-bold uppercase tracking-[0.22em] shadow-sm z-10`}>
-                      {tagColors[i].label}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+                  {TAGS[i] && (
+                    <div
+                      className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full text-[8px] font-bold uppercase tracking-[0.2em] backdrop-blur-sm"
+                      style={{ color: TAGS[i].color, background: 'rgba(255,255,255,0.88)', border: `1px solid ${TAGS[i].color}30` }}
+                    >
+                      {TAGS[i].label}
                     </div>
                   )}
                 </div>
 
-                {/* Content Container */}
-                <div className="p-6 md:p-8 flex flex-col flex-1">
-                  <h3 className="font-display font-bold text-[#0f172a] text-xl md:text-2xl mb-3 tracking-tight group-hover:text-[#3d9e41] transition-colors duration-300">
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="font-display font-bold text-[#0f172a] text-lg md:text-xl mb-2.5 tracking-tight group-hover:text-[#1756a0] transition-colors duration-300">
                     {cat.title}
                   </h3>
-                  <p className="text-slate-500 text-sm font-light leading-relaxed mb-8 flex-1 line-clamp-2">
+                  <p className="text-slate-400 text-sm font-light leading-relaxed mb-5 flex-1 line-clamp-2">
                     {cat.description}
                   </p>
-
-                  {/* Call to action arrow */}
-                  <div className="flex items-center gap-3 mt-auto">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#1756a0] group-hover:text-[#3d9e41] transition-colors duration-300">
+                  <div className="flex items-center gap-2 mt-auto">
+                    <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#1756a0] group-hover:text-[#3d9e41] transition-colors duration-300">
                       Explore Collection
                     </span>
-                    <svg className="w-4 h-4 text-[#1756a0] group-hover:text-[#3d9e41] transition-colors duration-300 transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-3.5 h-3.5 text-[#1756a0] group-hover:text-[#3d9e41] group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </div>
                 </div>
-
               </Link>
             </motion.div>
           ))}
         </div>
 
-        {/* Bottom guidance banner */}
+        {/* Guidance Strip */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-12 lg:mt-16 bg-white rounded-2xl flex flex-col md:flex-row items-center justify-between gap-8 px-8 md:px-14 py-12 border border-slate-200 border-l-4 border-l-[#3d9e41] shadow-sm"
+          initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="mt-8 bg-white rounded-2xl border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6 px-8 py-8 shadow-sm"
         >
-          <div>
-            <p className="text-[#3d9e41] text-[10px] font-bold uppercase tracking-[0.2em] mb-2">Need advice?</p>
-            <h3 className="font-display font-bold text-[#0f172a] text-2xl md:text-3xl tracking-tight">Let our experts guide you.</h3>
+          <div className="flex items-center gap-5">
+            <div className="w-10 h-10 rounded-xl bg-[#3d9e41]/8 border border-[#3d9e41]/15 flex items-center justify-center shrink-0">
+              <svg className="w-5 h-5 text-[#3d9e41]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.8">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+              </svg>
+            </div>
+            <div>
+              <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#3d9e41] mb-1">Need advice?</p>
+              <h3 className="font-display font-bold text-[#0f172a] text-xl tracking-tight">Let our experts guide you to the perfect fit.</h3>
+            </div>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-            <Link href="/contact">
-              <button className="bg-[#3d9e41] hover:bg-[#2e7d31] text-white px-8 py-4 rounded-full font-bold text-[10px] tracking-[0.18em] uppercase transition-all duration-300 whitespace-nowrap shadow-sm shadow-green-200">
-                Book Free Consultation
-              </button>
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3d9e41] hover:bg-[#2e7d31] text-white px-7 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 shadow-sm shadow-green-200/60 whitespace-nowrap">
+              Book Free Consultation
             </Link>
-            <Link href="/products">
-              <button className="bg-white border border-slate-200 text-slate-600 hover:border-[#1756a0]/50 hover:text-[#1756a0] px-8 py-4 rounded-full font-bold text-[10px] tracking-[0.18em] uppercase transition-all duration-300 whitespace-nowrap shadow-sm">
-                Browse All
-              </button>
+            <Link href="/products" className="inline-flex items-center justify-center gap-2 bg-white border border-slate-200 hover:border-[#1756a0]/40 hover:text-[#1756a0] text-slate-600 px-7 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 whitespace-nowrap">
+              Browse All
             </Link>
           </div>
         </motion.div>
 
-      </div>
+      </Container>
     </section>
   );
 };

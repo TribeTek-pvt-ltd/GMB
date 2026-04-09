@@ -1,4 +1,4 @@
-import AboutHero from '@/components/about/AboutHero';
+import Hero from '@/components/ui/Hero';
 import AboutIntro from '@/components/about/AboutIntro';
 import AboutStory from '@/components/about/AboutStory';
 import AboutMission from '@/components/about/AboutMission';
@@ -13,7 +13,12 @@ import QuoteCTA from '@/components/home/QuoteCTA';
 export default function AboutPage() {
   return (
     <div className="min-h-[70vh]">
-      <AboutHero />
+      <Hero 
+        eyebrow="Our Legacy"
+        title={<>Crafting Elegance for Every Window</>}
+        description="Since 2005, GMB has been at the forefront of premium window treatments, combining traditional artistry with modern innovation."
+        accentColor="#1F2E5A"
+      />
       <ScrollReveal><AboutIntro /></ScrollReveal>
       {/* <ScrollReveal><AboutStory /></ScrollReveal> */}
       <ScrollReveal><AboutStats /></ScrollReveal>

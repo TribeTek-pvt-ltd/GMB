@@ -4,29 +4,7 @@ import Image from 'next/image';
 import AnimatedSection, { itemVariants } from '../shared/AnimatedSection';
 import { motion } from 'framer-motion';
 import ScrollReveal from '../shared/ScrollReveal';
-
-const team = [
-  {
-    name: "Alexander Reed",
-    role: "Founder & Creative Director",
-    image: "/images/team/person1.jpg"
-  },
-  {
-    name: "Elena Petrov",
-    role: "Master Artisan",
-    image: "/images/team/person2.jpg"
-  },
-  {
-    name: "David Sterling",
-    role: "Head of Installation",
-    image: "/images/team/person3.jpg"
-  },
-  {
-    name: "Sophia Martinez",
-    role: "Senior Designer",
-    image: "/images/team/person4.jpg"
-  }
-];
+import { team } from '@/lib/data/team';
 
 const AboutTeam = () => {
   return (
