@@ -1,6 +1,6 @@
 import Hero from '@/components/home/Hero';
 import ProductCategories from '@/components/home/ProductCategories';
-import RecentWorks from '@/components/home/RecentWorks';
+import HomeGallery from '@/components/home/HomeGallery';
 import WhyChooseUs from '@/components/home/WhyChooseUs';
 import Testimonials from '@/components/home/Testimonials';
 import FAQ from '@/components/home/FAQ';
@@ -14,7 +14,7 @@ export default function Home() {
       <Hero />
       <ScrollReveal><ProductCategories /></ScrollReveal>
       
-      <ScrollReveal><RecentWorks /></ScrollReveal>
+      <ScrollReveal><HomeGallery /></ScrollReveal>
       <ScrollReveal><Testimonials /></ScrollReveal>
       <ScrollReveal><WhyChooseUs /></ScrollReveal>
       
