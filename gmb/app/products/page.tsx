@@ -8,6 +8,7 @@ import Link from 'next/link';
 import ProductCard from '@/components/products/ProductCard';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PRODUCT_CATEGORIES } from '@/lib/categories';
+import Hero from '@/components/ui/Hero';
 
 export default function ProductsOverviewPage() {
    const [activeGroupIndex, setActiveGroupIndex] = useState(0);
@@ -15,39 +16,31 @@ export default function ProductsOverviewPage() {
    const activeGroup = PRODUCT_CATEGORIES[activeGroupIndex];
 
    return (
-      <div className="bg-[#f8fafc] w-full min-h-screen flex flex-col">
+      <div className="bg-white w-full min-h-screen flex flex-col relative">
 
-         <div className="flex-1 pt-32 pb-24">
-            <div className="container max-w-7xl mx-auto px-6 sm:px-10 xl:px-16">
-               
-               {/* Header Section */}
-               <ScrollReveal delay={0.1}>
-                  <div className="max-w-3xl mb-16">
-                     <div className="flex items-center gap-3 mb-5">
-                        <div className="w-8 h-px bg-[#1756a0]" />
-                        <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-[#1756a0]">Our Collection</span>
-                     </div>
-                     <h1 className="font-display font-bold text-[#0f172a] text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
-                        Premium Window<br />Treatments.
-                     </h1>
-                     <p className="text-slate-500 text-base md:text-lg leading-relaxed font-light max-w-2xl">
-                        Explore our complete collection of custom-made blinds, curtains, and shutters, expertly curated and engineered for modern architectural spaces.
-                     </p>
-                  </div>
-               </ScrollReveal>
+         <Hero
+            withGlow
+            eyebrow="Our Collection"
+            title={<>Refined Window<br />Treatments.</>}
+            description="Explore our complete collection of custom-made blinds, curtains, and shutters. Expertly curated and engineered to elevate modern architectural spaces with pristine elegance."
+            // accentColor="#1756a0"
+            className="!pt-32 !pb-12"
+         />
+
+         <div className="flex-1 pb-32 -mt-4">
+            <div className="container max-w-[1400px] mx-auto px-6 sm:px-10 xl:px-16 relative z-10">
 
                {/* Category Navigation Ribbon */}
                <ScrollReveal delay={0.2}>
-                  <div className="flex flex-wrap items-center gap-2 mb-14 border-b border-slate-200/60 pb-6">
+                  <div className="flex flex-wrap items-center gap-3 mb-16 border-b border-slate-100 pb-8 w-full">
                      {PRODUCT_CATEGORIES.map((group, idx) => (
                         <button
                            key={idx}
                            onClick={() => setActiveGroupIndex(idx)}
-                           className={`relative px-6 py-3 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] transition-all duration-300 ${
-                              activeGroupIndex === idx 
-                              ? 'bg-[#1756a0] text-white shadow-md shadow-blue-900/10' 
-                              : 'bg-white text-slate-500 border border-slate-200 hover:border-[#1756a0]/30 hover:text-[#1756a0]'
-                           }`}
+                           className={`relative px-8 py-3.5 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-500 ${activeGroupIndex === idx
+                                 ? 'bg-[#0f172a] text-white shadow-[0_10px_30px_rgba(15,23,42,0.15)] scale-105'
+                                 : 'bg-white text-slate-500 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 hover:text-[#0f172a] shadow-sm'
+                              }`}
                         >
                            {group.title}
                         </button>
@@ -56,7 +49,7 @@ export default function ProductsOverviewPage() {
                </ScrollReveal>
 
                {/* 3-Column Minimal Grid Layout */}
-               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
                   <AnimatePresence mode="popLayout">
                      {activeGroup.items.map((item, idx) => (
                         <motion.div
@@ -90,6 +83,6 @@ export default function ProductsOverviewPage() {
             </div>
          </div>
 
-       </div>
+      </div>
    );
 }

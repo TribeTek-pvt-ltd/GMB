@@ -13,11 +13,12 @@ import QuoteCTA from '@/components/home/QuoteCTA';
 export default function AboutPage() {
   return (
     <div className="min-h-[70vh]">
-      <Hero 
+      <Hero
+        withGlow
         eyebrow="Our Legacy"
-        title={<>Crafting Elegance for Every Window</>}
+        title={<>Crafting Elegance<br />for Every Window.</>}
         description="Since 2005, GMB has been at the forefront of premium window treatments, combining traditional artistry with modern innovation."
-        accentColor="#1F2E5A"
+      // accentColor="#1756a0"
       />
       <ScrollReveal><AboutIntro /></ScrollReveal>
       {/* <ScrollReveal><AboutStory /></ScrollReveal> */}

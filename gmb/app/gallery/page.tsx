@@ -81,8 +81,8 @@ function GalleryContent() {
     return (
       <div className="min-h-[70vh] flex items-center justify-center bg-white">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-slate-100 border-t-[#1F2E5A] rounded-full animate-spin"></div>
-          <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400">Loading Portfolio</span>
+          <div className="w-12 h-12 border-4 border-slate-100 border-t-[#1756a0] rounded-full animate-spin"></div>
+          <span className="text-[10px] uppercase font-bold tracking-[0.25em] text-slate-400">Loading Portfolio</span>
         </div>
       </div>
     );
@@ -90,23 +90,24 @@ function GalleryContent() {
 
   return (
     <div className="min-h-[70vh] bg-white">
-      <Hero 
+      <Hero
+        withGlow
         eyebrow="Portfolio"
-        title={<>Our <span className="text-[#1F2E5A]">{headerTitle}</span> Collection</>}
+        title={<>Our {headerTitle}Collection.</>}
         description={`Discover our ${initialCategory === 'All' ? 'complete range of' : `curated selection of ${initialCategory}`} bespoke window treatments, designed and installed with meticulous care.`}
-        accentColor="#1F2E5A"
+      // accentColor="#1756a0"
       />
-      
-      <GalleryFilters 
-        locations={availableLocations} 
-        activeLocation={activeLocation} 
+
+      <GalleryFilters
+        locations={availableLocations}
+        activeLocation={activeLocation}
         onFilterChange={(loc) => {
           setActiveLocation(loc);
           setSelectedIdx(null);
         }}
       />
 
-      <GalleryGrid 
+      <GalleryGrid
         items={filteredItems}
         isSaved={isSaved}
         onSelect={(idx) => setSelectedIdx(idx)}
@@ -116,7 +117,7 @@ function GalleryContent() {
 
       <AnimatePresence>
         {selectedIdx !== null && (
-          <GalleryLightbox 
+          <GalleryLightbox
             item={filteredItems[selectedIdx]}
             currentIndex={selectedIdx}
             totalItems={filteredItems.length}
@@ -136,7 +137,7 @@ export default function GalleryPage() {
   return (
     <Suspense fallback={
       <div className="min-h-[70vh] flex items-center justify-center bg-white">
-        <div className="w-12 h-12 border-4 border-slate-100 border-t-[#1F2E5A] rounded-full animate-spin"></div>
+        <div className="w-12 h-12 border-4 border-slate-100 border-t-[#1756a0] rounded-full animate-spin"></div>
       </div>
     }>
       <GalleryContent />

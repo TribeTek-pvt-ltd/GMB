@@ -8,24 +8,30 @@ import Hero from '@/components/ui/Hero';
 
 export default function ContactPage() {
   return (
-    <div className="min-h-[70vh]">
-      <Hero 
-        eyebrow="Inquiry"
-        title={<>Get in <span className="gradient-text">Touch</span></>}
-        description="Whether you have a question about our products or want to schedule a professional measurement, our team is ready to assist you."
-        accentColor="#3d9e41"
+    <div className="bg-white min-h-screen flex flex-col relative overflow-hidden">
+      
+      {/* Dynamic Hero Section */}
+      <Hero
+        withGlow
+        eyebrow="Direct Connection"
+        title={<>Elevate Your<br /><span className="text-[#1756a0] italic font-serif opacity-90">Living Space.</span></>}
+        description="Our design consultants are ready to help you navigate our bespoke collections and find the perfect architectural fit for your home."
+        accentColor="#1756a0"
       />
-      <ScrollReveal delay={0.1}>
-        <div className="pt-2 md:pt-4 pb-2">
-          <ContactForm />
-        </div>
-      </ScrollReveal>
-      <ScrollReveal delay={0.2}>
-        <div className="pt-4 md:pt-8 pb-8">
-          <ContactInfo />
-        </div>
-      </ScrollReveal>
 
+      <div className="relative z-10 -mt-20 md:-mt-32 pb-24">
+         <ScrollReveal delay={0.1}>
+            <div className="container max-w-[1400px] mx-auto px-6">
+               <ContactForm />
+            </div>
+         </ScrollReveal>
+
+         <ScrollReveal delay={0.2}>
+            <div className="container max-w-[1400px] mx-auto px-6 mt-12">
+               <ContactInfo />
+            </div>
+         </ScrollReveal>
+      </div>
     </div>
   );
 }

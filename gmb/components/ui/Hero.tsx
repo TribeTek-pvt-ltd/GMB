@@ -13,6 +13,7 @@ interface HeroProps {
   className?: string;
   children?: React.ReactNode; // Extra content below description
   eyebrowLine?: boolean;
+  withGlow?: boolean;
 }
 
 const Hero = ({
@@ -20,16 +21,25 @@ const Hero = ({
   title,
   description,
   centered = false,
-  accentColor = '#3d9e41',
+  accentColor = '#1756a0',
   className = '',
   children,
   eyebrowLine = true,
+  withGlow = false,
 }: HeroProps) => {
   return (
-    <section className={`relative pt-32 pb-20 md:pt-40 md:pb-28 bg-white overflow-hidden ${className}`}>
-      <Container>
+    <section className={`relative pt-32 pb-20 md:pt-40 md:pb-28 bg-transparent overflow-hidden ${className}`}>
+
+      {withGlow && (
+        <div className="absolute top-0 left-0 w-full h-[800px] pointer-events-none overflow-hidden z-0">
+          <div className="absolute top-[-10%] -left-[10%] w-[60%] h-[60%] rounded-full bg-[#1756a0]/[0.012] blur-[120px]" />
+          <div className="absolute top-[20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[#3d9e41]/[0.010] blur-[120px]" />
+        </div>
+      )}
+
+      <Container className="relative z-10">
         <div className={`flex flex-col ${centered ? 'items-center text-center' : 'items-start text-left'} max-w-4xl ${centered ? 'mx-auto' : ''}`}>
-          
+
           {/* Eyebrow */}
           {eyebrow && (
             <motion.div
@@ -38,14 +48,14 @@ const Hero = ({
               transition={{ duration: 0.5 }}
               className={`flex items-center gap-3 mb-6 ${centered ? 'justify-center' : ''}`}
             >
-              {eyebrowLine && !centered && <div className="w-8 h-px" style={{ backgroundColor: accentColor }} />}
-              <span 
-                className="text-[10px] font-bold tracking-[0.3em] uppercase"
+              {eyebrowLine && <div className="w-8 h-px" style={{ backgroundColor: `${accentColor}cc` }} />}
+              <span
+                className="text-[10px] font-bold tracking-[0.25em] uppercase"
                 style={{ color: accentColor }}
               >
                 {eyebrow}
               </span>
-              {eyebrowLine && centered && <div className="w-8 h-px" style={{ backgroundColor: accentColor }} />}
+              {eyebrowLine && centered && <div className="w-8 h-px" style={{ backgroundColor: `${accentColor}cc` }} />}
             </motion.div>
           )}
 
@@ -54,7 +64,7 @@ const Hero = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.1 }}
-            className={`font-display font-bold text-[#0f172a] text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight mb-7`}
+            className={`font-display font-medium text-[#0f172a] text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] leading-[1.05] tracking-tight mb-8`}
           >
             {title}
           </motion.h1>
@@ -65,7 +75,7 @@ const Hero = ({
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.2 }}
-              className="text-slate-500 text-base md:text-lg lg:text-xl font-light leading-relaxed max-w-2xl mb-8"
+              className={`text-slate-500 text-lg md:text-xl font-light leading-[1.7] max-w-2xl ${centered ? 'mx-auto' : ''} mb-8`}
             >
               {description}
             </motion.p>
@@ -77,7 +87,7 @@ const Hero = ({
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="w-full"
+              className={`w-full ${centered ? 'flex justify-center' : ''}`}
             >
               {children}
             </motion.div>
