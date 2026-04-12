@@ -9,10 +9,14 @@ const QuoteCTA = () => {
   return (
     <section className="py-24 md:py-32 bg-white border-t border-slate-100">
       <Container>
-        <div className="bg-[#0f172a] rounded-2xl overflow-hidden relative">
+        <div className="bg-[#1a2647] rounded-[2.5rem] overflow-hidden relative shadow-[0_30px_60px_-20px_rgba(26,38,71,0.5)]">
+
+          {/* Ethereal Glow Elements */}
+          <div className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle_at_center,rgba(61,158,65,0.12)_0,transparent_60%)] pointer-events-none -translate-y-1/2 animate-float-slow" />
+          <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle_at_center,rgba(23,86,160,0.15)_0,transparent_60%)] pointer-events-none translate-y-1/2 animate-float-slow" style={{ animationDelay: '3s' }} />
 
           {/* Subtle top accent line */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#3d9e41]/50 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#3d9e41]/50 to-transparent" />
 
           <div className="px-10 py-20 md:py-24 text-center max-w-2xl mx-auto">
 
@@ -37,9 +41,9 @@ const QuoteCTA = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: 0.07 }}
-              className="font-display font-bold text-white text-4xl sm:text-5xl md:text-[3.25rem] leading-[1.06] tracking-tight mb-5"
+              className="font-display font-medium text-white text-4xl sm:text-5xl md:text-[3.5rem] leading-[1.1] tracking-tight mb-5"
             >
-              Ready to Transform<br />Your Home?
+              Ready to transform<br />your home?
             </motion.h2>
 
             {/* Body */}
@@ -64,7 +68,7 @@ const QuoteCTA = () => {
             >
               <Link
                 href="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#3d9e41] hover:bg-[#2e7d31] text-white px-10 py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 shadow-sm shadow-green-900/40"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#3d9e41] hover:bg-[#2e7d31] text-white px-10 py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 shadow-xl shadow-[#3d9e41]/20 animate-pulse-glow hover:animate-none"
               >
                 Request Free Quote
               </Link>

@@ -94,8 +94,8 @@ export default function HomeGallery() {
             <div className="w-6 h-px bg-[#1F2E5A]" />
             <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-[#1F2E5A]">Our Portfolio</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-slate-900 mb-6 leading-tight">
-            Featured <span className="text-[#1F2E5A]">Masterpieces</span>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] font-medium tracking-tight text-[#0f172a] mb-6 leading-[1.1]">
+            Featured masterpieces.
           </h2>
           <p className="text-slate-600 leading-relaxed font-light text-sm md:text-base">
             A curated selection of our finest installations — precision crafted and immaculately installed.

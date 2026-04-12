@@ -37,16 +37,16 @@ const RecentWorks = () => {
 
   const displayedItems = allGalleryItems.slice(0, 5);
 
-  if (loading) {
-    return (
-      <div className="py-24 bg-white flex flex-col items-center justify-center min-h-[480px]">
-        <div className="w-7 h-7 rounded-full border-2 border-slate-100 border-t-[#1756a0] animate-spin mb-4" />
-        <span className="text-slate-400 font-bold uppercase tracking-[0.2em] text-[9px]">Loading Portfolio…</span>
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="py-24 bg-white flex flex-col items-center justify-center min-h-[480px]">
+  //       <div className="w-7 h-7 rounded-full border-2 border-slate-100 border-t-[#1756a0] animate-spin mb-4" />
+  //       <span className="text-slate-400 font-bold uppercase tracking-[0.2em] text-[9px]">Loading Portfolio…</span>
+  //     </div>
+  //   );
+  // }
 
-  if (!displayedItems.length) return null;
+  // if (!displayedItems.length) return null;
 
   return (
     <section className="py-24 md:py-32 bg-white" id="recent-works" ref={ref}>
@@ -54,8 +54,8 @@ const RecentWorks = () => {
 
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55 }}
+          initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ type: 'spring', stiffness: 80, damping: 20 }}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
         >
           <div className="max-w-xl">
@@ -63,8 +63,8 @@ const RecentWorks = () => {
               <div className="w-7 h-px bg-[#1756a0]" />
               <span className="text-[9px] font-bold tracking-[0.28em] uppercase text-[#1756a0]">Our Portfolio</span>
             </div>
-            <h2 className="font-display font-bold text-[#0f172a] text-4xl md:text-5xl tracking-tight leading-tight mb-3">
-              Featured Projects.
+            <h2 className="font-display font-medium text-[#0f172a] text-4xl md:text-5xl lg:text-[3.5rem] tracking-tight leading-[1.1] mb-3">
+              Featured projects.
             </h2>
             <p className="text-slate-400 text-sm font-light leading-relaxed">
               A curated selection of our finest installations — precision crafted and immaculately installed.
@@ -81,15 +81,15 @@ const RecentWorks = () => {
 
         {/* Bento Grid */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          initial={{ opacity: 0, y: 30, filter: 'blur(5px)' }} animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+          transition={{ type: 'spring', stiffness: 70, damping: 20, delay: 0.1 }}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[620px]"
         >
           {displayedItems.map((item: any, index: number) => (
             <Link
               href="/gallery"
               key={`${item.id}-${index}`}
-              className={`group relative rounded-2xl overflow-hidden block bg-slate-100 hover:shadow-xl transition-all duration-500 ${getBentoClass(index)}`}
+              className={`group relative rounded-[2rem] overflow-hidden block bg-white border border-slate-100 hover:border-[#1756a0]/30 hover:shadow-[0_20px_60px_-15px_rgba(23,86,160,0.15)] transition-all duration-500 ${getBentoClass(index)}`}
               style={{ minHeight: '240px' }}
             >
               <Image
@@ -97,32 +97,31 @@ const RecentWorks = () => {
                 alt={item.title}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                className="object-cover transition-transform duration-[1.6s] ease-out group-hover:scale-[1.05]"
+                className="object-cover transition-transform duration-[1.6s] ease-out group-hover:scale-[1.03]"
               />
 
-              {/* Dark overlay on hover */}
-              <div className="absolute inset-0 bg-[#0f172a]/55 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* Content on hover */}
-              <div className={`absolute inset-0 flex flex-col justify-end opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ${index === 0 ? 'p-9' : 'p-6'}`}>
-                <div className="mb-3">
-                  <span className="px-3 py-1 rounded-full bg-white/15 border border-white/25 text-white text-[8px] font-bold uppercase tracking-[0.2em] backdrop-blur-sm">
-                    {item.category}
-                  </span>
-                </div>
-                <h3 className={`font-display font-bold text-white tracking-tight ${index === 0 ? 'text-2xl md:text-3xl' : 'text-base md:text-lg'}`}>
-                  {item.title}
-                </h3>
-                {index === 0 && item.description && (
-                  <p className="text-white/65 text-sm font-light mt-2 line-clamp-2 max-w-sm">{item.description}</p>
-                )}
+              {/* Minimal Category Pill (Always visible) */}
+              <div className="absolute top-5 left-5 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md shadow-sm border border-white/50 text-[8px] font-bold uppercase tracking-[0.2em] text-[#1756a0]">
+                {item.category}
               </div>
 
-              {/* Arrow icon on hover */}
-              <div className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/15 border border-white/20 flex items-center justify-center opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 transition-all duration-400 backdrop-blur-sm">
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+              {/* Elegant White Frosted Glass Overlay on Hover */}
+              <div className="absolute bottom-5 left-5 right-5 bg-white/90 backdrop-blur-2xl rounded-[1.5rem] p-5 border border-white translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out shadow-[0_10px_30px_-10px_rgba(23,86,160,0.15)] flex items-center justify-between gap-4">
+                <div className="flex-1 min-w-0">
+                  <h3 className={`font-display font-medium text-[#0f172a] tracking-tight truncate ${index === 0 ? 'text-2xl' : 'text-lg'}`}>
+                    {item.title}
+                  </h3>
+                  {index === 0 && item.description && (
+                    <p className="text-slate-500 text-sm font-light mt-1 truncate">{item.description}</p>
+                  )}
+                </div>
+                
+                {/* Green Arrow Button */}
+                <div className="w-10 h-10 rounded-full bg-[#3d9e41] text-white flex items-center justify-center shrink-0 shadow-md shadow-[#3d9e41]/20 group-hover:scale-100 scale-75 transition-transform duration-500 delay-100">
+                  <svg className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
               </div>
             </Link>
           ))}

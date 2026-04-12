@@ -47,8 +47,8 @@ const WhyChooseUs = () => {
 
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55 }}
+          initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ type: 'spring', stiffness: 80, damping: 20 }}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
         >
           <div className="max-w-xl">
@@ -56,8 +56,8 @@ const WhyChooseUs = () => {
               <div className="w-7 h-px bg-[#1756a0]" />
               <span className="text-[9px] font-bold tracking-[0.28em] uppercase text-[#1756a0]">Why GMB</span>
             </div>
-            <h2 className="font-display font-bold text-[#0f172a] text-4xl md:text-5xl tracking-tight leading-tight">
-              The GMB Difference —<br />First Visit to Final Finish.
+            <h2 className="font-display font-medium text-[#0f172a] text-4xl md:text-5xl lg:text-[3.5rem] tracking-tight leading-[1.1]">
+              The GMB difference —<br />first visit to final finish.
             </h2>
           </div>
           <p className="text-slate-400 text-sm font-light leading-relaxed max-w-xs md:pb-1">
@@ -71,8 +71,8 @@ const WhyChooseUs = () => {
             <motion.div
               key={r.num}
               initial={{ opacity: 0, y: 28 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.09 }}
-              className="group relative bg-white border border-slate-100 rounded-2xl p-7 overflow-hidden hover:border-slate-200 hover:shadow-[0_8px_32px_-12px_rgba(0,0,0,0.07)] transition-all duration-400"
+              transition={{ type: 'spring', stiffness: 70, damping: 20, delay: i * 0.1 }}
+              className="group relative bg-white border border-slate-100 rounded-[2rem] p-8 md:p-10 overflow-hidden hover:border-[#1756a0]/20 hover:shadow-[0_20px_60px_-15px_rgba(23,86,160,0.08)] transition-all duration-500"
             >
               {/* Watermark number */}
               <div
@@ -97,10 +97,9 @@ const WhyChooseUs = () => {
                 {r.body}
               </p>
 
-              {/* Bottom color line on hover */}
+              {/* Bottom color line on hover - enhanced to subtle gradient */}
               <div
-                className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-500 rounded-b-2xl"
-                style={{ background: r.color }}
+                className="absolute bottom-0 left-0 h-[3px] w-0 group-hover:w-full transition-all duration-500 rounded-b-2xl bg-gradient-to-r from-[#1756a0] to-[#3d9e41]"
               />
             </motion.div>
           ))}
@@ -110,7 +109,7 @@ const WhyChooseUs = () => {
         <motion.div
           initial={{ opacity: 0, y: 14 }} animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.45 }}
-          className="flex flex-col sm:flex-row items-center justify-between gap-6 px-8 py-6 bg-[#f8fafc] rounded-2xl border border-slate-100"
+          className="flex flex-col sm:flex-row items-center justify-between gap-6 px-8 py-8 bg-white rounded-[2rem] border border-slate-100/80"
         >
           <div className="flex flex-wrap items-center gap-6">
             {TRUST.map((t, i) => (

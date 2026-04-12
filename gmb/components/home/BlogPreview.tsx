@@ -38,7 +38,7 @@ const BlogPreview = () => {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section className="py-24 md:py-32 bg-[#f8fafc]" ref={ref}>
+    <section className="py-24 md:py-32 bg-white" ref={ref}>
       <Container>
 
         {/* Header */}
@@ -52,8 +52,8 @@ const BlogPreview = () => {
               <div className="w-7 h-px bg-[#3d9e41]" />
               <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-[#3d9e41]">Journal</span>
             </div>
-            <h2 className="font-display font-bold text-[#0f172a] text-4xl md:text-5xl tracking-tight leading-tight mb-3">
-              Inside the Studio.
+            <h2 className="font-display font-medium text-[#0f172a] text-4xl md:text-5xl lg:text-[3.5rem] tracking-tight leading-[1.1] mb-3">
+              Inside the studio.
             </h2>
             <p className="text-slate-400 text-sm font-light leading-relaxed">
               Design methodology, fabric care tips, and the latest in window treatment innovations.
@@ -75,7 +75,7 @@ const BlogPreview = () => {
               key={i}
               initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:border-slate-200 hover:shadow-[0_12px_40px_-16px_rgba(0,0,0,0.08)] transition-all duration-400 cursor-pointer"
+              className="group bg-white rounded-[2rem] border border-slate-100 overflow-hidden hover:border-slate-200 hover:shadow-[0_12px_40px_-16px_rgba(0,0,0,0.06)] transition-all duration-400 cursor-pointer"
             >
               {/* Image */}
               <div className="relative h-56 overflow-hidden bg-slate-100">

@@ -13,15 +13,15 @@ const FAQ = () => {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section className="py-24 md:py-32 bg-[#f8fafc]" ref={ref}>
+    <section className="py-24 md:py-32 bg-white" ref={ref}>
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 items-start">
 
           {/* ── Left sidebar (sticky) ── */}
           <div className="lg:col-span-4 lg:sticky lg:top-28">
             <motion.div
-              initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.55 }}
+              initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ type: 'spring', stiffness: 80, damping: 20 }}
             >
               {/* Eyebrow */}
               <div className="flex items-center gap-3 mb-4">
@@ -30,8 +30,8 @@ const FAQ = () => {
               </div>
 
               {/* Title */}
-              <h2 className="font-display font-bold text-[#0f172a] text-3xl md:text-4xl leading-tight tracking-tight mb-4">
-                Questions We<br />Hear Every Day.
+              <h2 className="font-display font-medium text-[#0f172a] text-4xl md:text-5xl lg:text-[3rem] leading-[1.1] tracking-tight mb-4">
+                Questions we<br />hear every day.
               </h2>
 
               <p className="text-slate-400 text-sm font-light leading-relaxed mb-8">
@@ -93,12 +93,12 @@ const FAQ = () => {
               {faqs.map((faq, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 14 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.4, delay: i * 0.06 }}
-                  className={`rounded-xl border overflow-hidden transition-all duration-300 ${
+                  initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ type: 'spring', stiffness: 80, damping: 20, delay: i * 0.05 }}
+                  className={`rounded-[1.5rem] border overflow-hidden transition-all duration-500 ${
                     open === i
-                      ? 'border-[#1756a0]/15 bg-white shadow-[0_4px_20px_-8px_rgba(23,86,160,0.09)]'
-                      : 'border-slate-200/70 bg-white hover:border-slate-200'
+                      ? 'border-[#1756a0]/30 bg-[#1756a0]/[0.02] shadow-inner'
+                      : 'border-slate-200/70 bg-white hover:border-[#3d9e41]/30 hover:shadow-[0_10px_30px_-10px_rgba(61,158,65,0.05)]'
                   }`}
                 >
                   <button

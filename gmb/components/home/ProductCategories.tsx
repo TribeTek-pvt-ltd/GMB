@@ -18,13 +18,13 @@ const ProductCategories = () => {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section className="py-24 md:py-32 bg-[#f8fafc]" id="categories" ref={ref}>
+    <section className="py-24 md:py-32 bg-white" id="categories" ref={ref}>
       <Container>
 
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55 }}
+          initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ type: 'spring', stiffness: 80, damping: 20 }}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
         >
           <div>
@@ -32,8 +32,8 @@ const ProductCategories = () => {
               <div className="w-7 h-px bg-[#3d9e41]" />
               <span className="text-[9px] font-bold tracking-[0.28em] uppercase text-[#3d9e41]">Our Products</span>
             </div>
-            <h2 className="font-display font-bold text-[#0f172a] text-4xl md:text-5xl tracking-tight leading-tight">
-              Every Style.<br />Every Window.
+            <h2 className="font-display font-medium text-[#0f172a] text-4xl md:text-5xl lg:text-[3.5rem] tracking-tight leading-[1.1]">
+              Every style.<br />Every window.
             </h2>
           </div>
           <Link
@@ -55,7 +55,7 @@ const ProductCategories = () => {
             >
               <Link
                 href={`/products?category=${cat.slug}`}
-                className="group flex flex-col h-full bg-white rounded-2xl border border-slate-100 overflow-hidden hover:border-slate-200 hover:shadow-[0_12px_40px_-16px_rgba(0,0,0,0.08)] transition-all duration-400"
+                className="group flex flex-col h-full bg-white rounded-[2rem] border border-slate-100 overflow-hidden hover:border-[#1756a0]/20 hover:shadow-[0_20px_60px_-15px_rgba(23,86,160,0.08)] transition-all duration-500"
               >
                 {/* Image */}
                 <div className="relative w-full aspect-[4/3] overflow-hidden bg-slate-100">
@@ -98,9 +98,9 @@ const ProductCategories = () => {
 
         {/* Guidance Strip */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-8 bg-white rounded-2xl border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6 px-8 py-8 shadow-sm"
+          initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.3 }}
+          className="mt-8 bg-white/70 backdrop-blur-xl rounded-2xl border border-[#3d9e41]/10 flex flex-col md:flex-row items-center justify-between gap-6 px-8 py-8 shadow-[0_10px_40px_-10px_rgba(61,158,65,0.05)]"
         >
           <div className="flex items-center gap-5">
             <div className="w-10 h-10 rounded-xl bg-[#3d9e41]/8 border border-[#3d9e41]/15 flex items-center justify-center shrink-0">

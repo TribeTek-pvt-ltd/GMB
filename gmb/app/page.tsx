@@ -7,17 +7,18 @@ import FAQ from '@/components/home/FAQ';
 import BlogPreview from '@/components/home/BlogPreview';
 import QuoteCTA from '@/components/home/QuoteCTA';
 import ScrollReveal from '@/components/shared/ScrollReveal';
+import RecentWorks from '@/components/home/RecentWorks';
 
 export default function Home() {
   return (
     <div className="min-h-[70vh]">
       <Hero />
       <ScrollReveal><ProductCategories /></ScrollReveal>
-      
-      <ScrollReveal><HomeGallery /></ScrollReveal>
+
+      <RecentWorks />
       <ScrollReveal><Testimonials /></ScrollReveal>
       <ScrollReveal><WhyChooseUs /></ScrollReveal>
-      
+
       <ScrollReveal><FAQ /></ScrollReveal>
       <ScrollReveal><BlogPreview /></ScrollReveal>
       <ScrollReveal><QuoteCTA /></ScrollReveal>
