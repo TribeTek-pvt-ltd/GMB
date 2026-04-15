@@ -118,7 +118,7 @@ const AboutStory = () => {
                       {item.title}
                     </h3>
                     <p className="text-lg text-slate-600 leading-relaxed italic">
-                      "{item.description}"
+                      &quot;{item.description}&quot;
                     </p>
 
                     <div className="mt-6 flex gap-4">

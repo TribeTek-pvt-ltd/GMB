@@ -30,7 +30,7 @@ const QuoteCTA = () => {
             >
               <div className="w-6 h-px bg-[#3d9e41]/60" />
               <span className="text-[9px] text-[#3d9e41] font-bold uppercase tracking-[0.28em]">
-                Start Today — It's Free
+                Start Today — It&apos;s Free
               </span>
               <div className="w-6 h-px bg-[#3d9e41]/60" />
             </motion.div>

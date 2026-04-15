@@ -29,7 +29,7 @@ const LegalModal = ({ isOpen, onClose, title, type }: LegalModalProps) => {
         <section>
           <h4 className="text-lg font-bold text-slate-800 mb-3">3. Professional Measurement</h4>
           <p className="text-slate-600 leading-relaxed">
-            For the best results, we recommend our "Request a Professional Measurement" service. GMB is not responsible for fitting issues arising from customer-provided measurements.
+            For the best results, we recommend our &quot;Request a Professional Measurement&quot; service. GMB is not responsible for fitting issues arising from customer-provided measurements.
           </p>
         </section>
         <section>

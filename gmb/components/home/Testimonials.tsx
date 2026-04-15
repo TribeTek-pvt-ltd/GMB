@@ -82,9 +82,9 @@ const Testimonials = () => {
                   </div>
 
                   <p className="font-display text-[#0f172a] text-2xl md:text-3xl lg:text-[2.25rem] leading-[1.4] md:leading-[1.5] tracking-tight mb-12 relative z-10">
-                    <span className="text-[#1756a0] text-6xl md:text-7xl absolute -top-5 -left-6 md:-top-7 md:-left-8 opacity-10 font-serif leading-none">"</span>
+                    <span className="text-[#1756a0] text-6xl md:text-7xl absolute -top-5 -left-6 md:-top-7 md:-left-8 opacity-10 font-serif leading-none">&quot;</span>
                     {t.quote}
-                    <span className="text-[#1756a0] text-6xl md:text-7xl absolute -bottom-10 md:-bottom-12 ml-2 opacity-10 font-serif leading-none">"</span>
+                    <span className="text-[#1756a0] text-6xl md:text-7xl absolute -bottom-10 md:-bottom-12 ml-2 opacity-10 font-serif leading-none">&quot;</span>
                   </p>
 
                   <div className="flex items-center gap-5">

@@ -22,7 +22,7 @@ const GalleryGrid = ({ items, isSaved, onSelect, onSave, onClearFilters }: Galle
         >
           <span className="text-5xl font-medium text-slate-200 block mb-6 select-none">No Projects Found</span>
           <p className="text-slate-500 font-light mb-8 max-w-sm mx-auto">
-            We couldn't find any projects matching your current filters.
+            We couldn&apos;t find any projects matching your current filters.
           </p>
           <button
             onClick={onClearFilters}
