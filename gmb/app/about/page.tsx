@@ -12,8 +12,9 @@ import QuoteCTA from '@/components/home/QuoteCTA';
 
 export default function AboutPage() {
   return (
-    <div className="min-h-[70vh]">
+    <div className="bg-white">
       <Hero
+        compact
         withGlow
         eyebrow="Our Legacy"
         title={<>Crafting Elegance<br />for Every Window.</>}

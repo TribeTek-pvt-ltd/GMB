@@ -3,44 +3,55 @@
 import { useState } from 'react';
 
 import ScrollReveal from '@/components/shared/ScrollReveal';
-import Image from 'next/image';
-import Link from 'next/link';
 import ProductCard from '@/components/products/ProductCard';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PRODUCT_CATEGORIES } from '@/lib/categories';
-import Hero from '@/components/ui/Hero';
 
 export default function ProductsOverviewPage() {
    const [activeGroupIndex, setActiveGroupIndex] = useState(0);
-
    const activeGroup = PRODUCT_CATEGORIES[activeGroupIndex];
 
    return (
-      <div className="bg-white w-full min-h-screen flex flex-col relative">
+      <div className="bg-[#f8f7f4] w-full min-h-screen flex flex-col relative">
 
-         <Hero
-            withGlow
-            eyebrow="Our Collection"
-            title={<>Refined Window<br />Treatments.</>}
-            description="Explore our complete collection of custom-made blinds, curtains, and shutters. Expertly curated and engineered to elevate modern architectural spaces with pristine elegance."
-            // accentColor="#1756a0"
-            className="!pt-32 !pb-12"
-         />
+         {/* Unified container — hero + filters + grid all share the same alignment */}
+         <div className="flex-1 pt-24 pb-20">
+            <div className="max-w-[1400px] mx-auto px-6 sm:px-10 xl:px-16">
 
-         <div className="flex-1 pb-32 -mt-4">
-            <div className="container max-w-[1400px] mx-auto px-6 sm:px-10 xl:px-16 relative z-10">
+               {/* ── Page Header ─────────────────────────────────────────── */}
+               <ScrollReveal delay={0.05}>
+                  <div className="mb-8 border-b border-slate-200 pb-8">
+                     <div className="flex items-center gap-3 mb-4">
+                        <div className="w-6 h-px bg-[#1756a0]" />
+                        <span className="text-[10px] font-bold tracking-[0.28em] uppercase text-[#1756a0]">
+                           Our Collection
+                        </span>
+                     </div>
 
-               {/* Category Navigation Ribbon */}
-               <ScrollReveal delay={0.2}>
-                  <div className="flex flex-wrap items-center gap-3 mb-16 border-b border-slate-100 pb-8 w-full">
+                     <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+                        <h1 className="font-display font-bold text-[#0f172a] text-5xl md:text-6xl lg:text-[4.5rem] leading-[1] tracking-tight">
+                           Refined Window<br />
+                           <span className="font-medium italic text-[#1756a0]">Treatments.</span>
+                        </h1>
+                        <p className="text-slate-500 text-base md:text-lg font-light leading-relaxed max-w-md lg:text-right">
+                           Custom-made blinds, curtains &amp; shutters — engineered to elevate every architectural space.
+                        </p>
+                     </div>
+                  </div>
+               </ScrollReveal>
+
+               {/* ── Category Filter Tabs ─────────────────────────────────── */}
+               <ScrollReveal delay={0.15}>
+                  <div className="flex flex-wrap items-center gap-2.5 mb-8">
                      {PRODUCT_CATEGORIES.map((group, idx) => (
                         <button
                            key={idx}
                            onClick={() => setActiveGroupIndex(idx)}
-                           className={`relative px-8 py-3.5 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-500 ${activeGroupIndex === idx
-                                 ? 'bg-[#0f172a] text-white shadow-[0_10px_30px_rgba(15,23,42,0.15)] scale-105'
+                           className={`relative px-7 py-3 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.22em] transition-all duration-400 ${
+                              activeGroupIndex === idx
+                                 ? 'bg-[#0f172a] text-white shadow-[0_8px_24px_rgba(15,23,42,0.18)] scale-[1.04]'
                                  : 'bg-white text-slate-500 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 hover:text-[#0f172a] shadow-sm'
-                              }`}
+                           }`}
                         >
                            {group.title}
                         </button>
@@ -48,8 +59,8 @@ export default function ProductsOverviewPage() {
                   </div>
                </ScrollReveal>
 
-               {/* 3-Column Minimal Grid Layout */}
-               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+               {/* ── Product Grid ─────────────────────────────────────────── */}
+               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                   <AnimatePresence mode="popLayout">
                      {activeGroup.items.map((item, idx) => (
                         <motion.div
@@ -57,7 +68,7 @@ export default function ProductsOverviewPage() {
                            initial={{ opacity: 0, y: 20 }}
                            animate={{ opacity: 1, y: 0 }}
                            exit={{ opacity: 0, scale: 0.95 }}
-                           transition={{ duration: 0.4, delay: idx * 0.05 }}
+                           transition={{ duration: 0.35, delay: idx * 0.05 }}
                            className="h-full"
                         >
                            <ProductCard

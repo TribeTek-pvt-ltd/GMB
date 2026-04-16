@@ -89,8 +89,9 @@ function GalleryContent() {
   }
 
   return (
-    <div className="min-h-[70vh] bg-white">
+    <div className="bg-white pb-20">
       <Hero
+        compact
         withGlow
         eyebrow="Portfolio"
         title={<>Our {headerTitle}Collection.</>}

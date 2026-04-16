@@ -48,31 +48,30 @@ export default function CollectionsPage() {
          </div>
 
          {/* Hero Section */}
-         <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-6">
-            <div className="absolute inset-0 z-0">
+         <section className="pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden px-6">
+            <div className="absolute inset-0 z-0 pointer-events-none">
                <div className="absolute top-[10%] right-[-5%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]" />
                <div className="absolute bottom-[20%] left-[-10%] w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[100px]" />
             </div>
             
-            <ScrollReveal delay={0.1}>
-               <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-20">
-                  <div className="max-w-xl">
-                     <div className="inline-flex items-center gap-2 mb-2">
-                        <div className="w-6 h-px bg-primary" />
-                        <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-primary">Masterpiece Collections</span>
+            <div className="container max-w-7xl mx-auto relative z-10">
+               <ScrollReveal delay={0.1}>
+                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                     <div className="max-w-xl">
+                        <div className="inline-flex items-center gap-2 mb-2">
+                           <div className="w-6 h-px bg-primary" />
+                           <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-primary">Masterpiece Collections</span>
+                        </div>
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] text-[#1F2E5A] mb-4 font-serif">
+                           Signature <span className="gradient-text italic font-medium pr-2">Collections</span>
+                        </h1>
+                        <p className="mt-4 text-slate-500 text-lg md:text-xl leading-relaxed font-light">
+                           Explore our complete collection of premium window treatments, expertly curated for modern architectural spaces.
+                        </p>
                      </div>
-                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] text-[#1F2E5A] mb-4 font-serif">
-                        Signature <span className="gradient-text italic font-medium pr-2">Collections</span>
-                     </h1>
-                     <p className="mt-4 text-slate-500 text-lg md:text-xl leading-relaxed font-light">
-                        Explore our complete collection of premium window treatments, expertly curated for modern architectural spaces.
-                     </p>
                   </div>
-               </div>
-               <div className="mt-16 animate-bounce">
-                  <div className="w-px h-20 bg-gradient-to-b from-primary to-transparent mx-auto" />
-               </div>
-            </ScrollReveal>
+               </ScrollReveal>
+            </div>
          </section>
 
          {/* CHAPTER 01: Soft Treatments (Airy & Light) */}

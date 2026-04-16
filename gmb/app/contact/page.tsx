@@ -12,6 +12,7 @@ export default function ContactPage() {
 
       {/* Dynamic Hero Section */}
       <Hero
+        compact
         withGlow
         eyebrow="Direct Connection"
         title={<>Elevate Your Living Space.</>}
@@ -19,7 +20,7 @@ export default function ContactPage() {
       // accentColor="#1756a0"
       />
 
-      <div className="relative z-10 -mt-20 md:-mt-32 pb-24">
+      <div className="relative z-10 pt-4 md:pt-8 pb-24">
         <ScrollReveal delay={0.1}>
           <div className="container max-w-[1400px] mx-auto px-6">
             <ContactForm />

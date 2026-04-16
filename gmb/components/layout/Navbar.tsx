@@ -49,7 +49,7 @@ const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
                 </Link>
 
                 {/* Dropdown Container */}
-                <div className="absolute top-full left-1/2 -translate-x-[45%] pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 w-[950px]">
+                {/* <div className="absolute top-full left-1/2 -translate-x-[45%] pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 w-[950px]">
                   <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-slate-200/50 border border-slate-100 p-8 grid grid-cols-3 gap-x-10 gap-y-8">
                     {PRODUCT_CATEGORIES.map((group) => (
                       <div key={group.title} className="space-y-5">
@@ -75,7 +75,7 @@ const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
                       </div>
                     ))}
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <Link href="/gallery" className="text-[#64748b] hover:text-[#1a2647] transition-colors font-medium text-sm tracking-wide">Gallery</Link>
