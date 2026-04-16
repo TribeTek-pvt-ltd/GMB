@@ -30,7 +30,7 @@ const Hero = ({
   compact = false,
 }: HeroProps) => {
   return (
-    <section className={`relative ${compact ? 'pt-20 pb-8 md:pt-24 md:pb-12' : 'pt-32 pb-20 md:pt-40 md:pb-28'} bg-transparent overflow-hidden ${className}`}>
+    <section className={`relative pt-16 pb-20 md:pt-20 md:pb-28 bg-transparent overflow-hidden ${className}`}>
 
       {withGlow && (
         <div className="absolute top-0 left-0 w-full h-[800px] pointer-events-none overflow-hidden z-0">

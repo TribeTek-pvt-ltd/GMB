@@ -31,7 +31,7 @@ export default function StoreListingPage() {
       <Hero
         withGlow
         eyebrow="Online Store"
-        title={<>Shop & Configure<br /><span className="text-[#1756a0]">Window Coverings.</span></>}
+        title={<>Shop & Configure Window Coverings.</>}
         description="Custom-made blinds and curtains, measured to your window. Choose a style, configure your size, and we handle the rest."
         className="!pb-12"
       >
@@ -52,9 +52,8 @@ export default function StoreListingPage() {
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
-                className={`relative z-10 min-w-[120px] py-2.5 px-7 rounded-full text-[10px] font-bold uppercase tracking-[0.18em] transition-colors duration-300 ${
-                  activeTab === tab.key ? 'text-white' : 'text-slate-500 hover:text-[#1756a0]'
-                }`}
+                className={`relative z-10 min-w-[120px] py-2.5 px-7 rounded-full text-[10px] font-bold uppercase tracking-[0.18em] transition-colors duration-300 ${activeTab === tab.key ? 'text-white' : 'text-slate-500 hover:text-[#1756a0]'
+                  }`}
               >
                 {tab.label}
               </button>

@@ -79,6 +79,7 @@ const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
               </div>
 
               <Link href="/gallery" className="text-[#64748b] hover:text-[#1a2647] transition-colors font-medium text-sm tracking-wide">Gallery</Link>
+              <Link href="/measure-and-install" className="text-[#64748b] hover:text-[#1a2647] transition-colors font-medium text-sm tracking-wide">Measure/Install</Link>
               <Link href="/about" className="text-[#64748b] hover:text-[#1a2647] transition-colors font-medium text-sm tracking-wide">About</Link>
               <Link href="/contact" className="text-[#64748b] hover:text-[#1a2647] transition-colors font-medium text-sm tracking-wide">Contact</Link>
             </div>
@@ -177,6 +178,13 @@ const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
               className="block px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-slate-50 hover:text-primary transition-colors"
             >
               Gallery
+            </Link>
+            <Link
+              href="/measure-and-install"
+              onClick={closeMenu}
+              className="block px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-slate-50 hover:text-primary transition-colors"
+            >
+              Measure/Install
             </Link>
             <Link
               href="/about"
