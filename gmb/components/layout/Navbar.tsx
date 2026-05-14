@@ -1,8 +1,9 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '@/context/CartContext';
 import { useModal } from '@/lib/ModalContext';
 import { PRODUCT_CATEGORIES } from '@/lib/categories';
@@ -18,6 +19,13 @@ const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
   const { openTrackModal } = useModal();
   const { cartCount, cartItems, cartTotal, updateQuantity, removeFromCart, isCartOpen, setIsCartOpen } = useCart();
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const closeMenu = () => setIsOpen(false);
   const openCart = () => setIsCartOpen(true);
@@ -26,129 +34,152 @@ const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
 
   return (
     <>
-      <nav className="sticky top-0 w-full z-50 bg-white/96 backdrop-blur-2xl border-b border-[#e8e6e1]/80 transition-all">
+      <nav 
+        className={`sticky top-0 w-full z-50 transition-all duration-500 ease-in-out ${
+          scrolled 
+            ? 'bg-white/90 backdrop-blur-xl border-b border-[#e8e6e1]/50 py-2 shadow-[0_4px_30px_-10px_rgba(15,23,42,0.05)]' 
+            : 'bg-white/96 backdrop-blur-2xl border-b border-[#e8e6e1]/80 py-0'
+        }`}
+      >
         <div className="container">
           <div className="flex justify-between h-[72px] items-center">
 
             {/* Logo */}
-            <Link href="/" className="font-display font-black text-[#1a2647] text-2xl tracking-[0.02em] flex-shrink-0 flex items-center gap-0.5">
-              GMB<span className="text-[#3d9e41] text-3xl leading-none">.</span>
+            <Link href="/" className="font-display font-black text-[#1a2647] text-2xl tracking-[0.02em] flex-shrink-0 flex items-center gap-0.5 group">
+              GMB<span className="text-[#3d9e41] text-3xl leading-none group-hover:scale-125 transition-transform duration-500">.</span>
             </Link>
 
             {/* Desktop Nav Links */}
-            <div className="hidden md:flex flex-1 items-center justify-center space-x-9">
-              <Link href="/" className="text-[#64748b] hover:text-[#1a2647] transition-colors font-medium text-sm tracking-wide">Home</Link>
+            <div className="hidden md:flex flex-1 items-center justify-center space-x-12">
+              <Link 
+                href="/" 
+                className={`text-[#0f172a]/70 hover:text-[#0f172a] transition-all duration-300 font-medium text-[13px] tracking-[0.15em] uppercase relative group ${pathname === '/' ? 'text-[#0f172a]' : ''}`}
+              >
+                Home
+                <span className={`absolute -bottom-1 left-0 w-full h-px bg-[#0f172a] transition-transform duration-500 origin-left ${pathname === '/' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
+              </Link>
 
-              {/* Products with Mega Menu */}
-              <div className="relative group h-full flex items-center">
-                <Link href="/products" className="text-[#64748b] hover:text-[#1a2647] transition-colors font-medium text-sm tracking-wide flex items-center gap-1">
-                  Products
-                  <svg className="w-4 h-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </Link>
+              <Link 
+                href="/products" 
+                className={`text-[#0f172a]/70 hover:text-[#0f172a] transition-all duration-300 font-medium text-[13px] tracking-[0.15em] uppercase relative group ${pathname === '/products' ? 'text-[#0f172a]' : ''}`}
+              >
+                Products
+                <span className={`absolute -bottom-1 left-0 w-full h-px bg-[#0f172a] transition-transform duration-500 origin-left ${pathname === '/products' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
+              </Link>
 
-                {/* Dropdown Container */}
-                {/* <div className="absolute top-full left-1/2 -translate-x-[45%] pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 w-[950px]">
-                  <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-slate-200/50 border border-slate-100 p-8 grid grid-cols-3 gap-x-10 gap-y-8">
-                    {PRODUCT_CATEGORIES.map((group) => (
-                      <div key={group.title} className="space-y-5">
-                        <h3 className="text-sm font-bold text-primary tracking-wider uppercase border-b border-slate-100 pb-2">{group.title}</h3>
-                        <div className="space-y-4">
-                          {group.items.map((item) => (
-                            <Link key={item.slug} href={`/products/${item.slug}`} className="flex items-center gap-4 group/item">
-                              <div className={`relative w-12 h-12 rounded-xl overflow-hidden shrink-0 shadow-sm border border-slate-100 ${item.isNew ? 'ring-2 ring-[#F4A300]/50' : ''}`}>
-                                <Image src={item.image} alt={item.title} fill sizes="48px" className="object-cover group-hover/item:scale-110 transition-transform duration-500" />
-                              </div>
-                              <div>
-                                <div className="flex items-center gap-2">
-                                  <div className="text-slate-700 font-bold group-hover/item:text-primary transition-colors text-sm">{item.title}</div>
-                                  {item.isNew && (
-                                    <span className="bg-[#F4A300]/10 text-[#F4A300] text-[9px] px-1.5 py-0.5 rounded-full font-bold">NEW</span>
-                                  )}
-                                </div>
-                                <p className="text-slate-500 text-[11px] mt-0.5 leading-tight">{item.description}</p>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div> */}
-              </div>
+              <Link 
+                href="/gallery" 
+                className={`text-[#0f172a]/70 hover:text-[#0f172a] transition-all duration-300 font-medium text-[13px] tracking-[0.15em] uppercase relative group ${pathname === '/gallery' ? 'text-[#0f172a]' : ''}`}
+              >
+                Gallery
+                <span className={`absolute -bottom-1 left-0 w-full h-px bg-[#0f172a] transition-transform duration-500 origin-left ${pathname === '/gallery' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
+              </Link>
 
-              <Link href="/gallery" className="text-[#64748b] hover:text-[#1a2647] transition-colors font-medium text-sm tracking-wide">Gallery</Link>
-              <Link href="/measure-and-install" className="text-[#64748b] hover:text-[#1a2647] transition-colors font-medium text-sm tracking-wide">Measure/Install</Link>
-              <Link href="/about" className="text-[#64748b] hover:text-[#1a2647] transition-colors font-medium text-sm tracking-wide">About</Link>
-              <Link href="/contact" className="text-[#64748b] hover:text-[#1a2647] transition-colors font-medium text-sm tracking-wide">Contact</Link>
+              <Link 
+                href="/measure-and-install" 
+                className={`text-[#0f172a]/70 hover:text-[#0f172a] transition-all duration-300 font-medium text-[13px] tracking-[0.15em] uppercase relative group ${pathname === '/measure-and-install' ? 'text-[#0f172a]' : ''}`}
+              >
+                Service
+                <span className={`absolute -bottom-1 left-0 w-full h-px bg-[#0f172a] transition-transform duration-500 origin-left ${pathname === '/measure-and-install' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
+              </Link>
             </div>
 
             {/* Right side utilities (Desktop + Mobile Toggle) */}
-            <div className="flex items-center gap-3">
-              <div className="hidden md:flex items-center gap-3">
-                <Link href="/store" className="bg-slate-100 text-slate-600 p-2.5 rounded-xl hover:bg-slate-200 transition-colors flex items-center justify-center group" title="Store">
-                  <svg className="w-5 h-5 group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72L4.318 3.44A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72m-13.5 8.65h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .415.336.75.75.75Z" />
+            <div className="flex items-center gap-4">
+              <div className="hidden md:flex items-center gap-4">
+                <Link
+                  href="/store"
+                  className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all duration-500 font-bold text-[9px] tracking-[0.2em] uppercase shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+                  title="GMB Store"
+                >
+                  <svg className="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24">
+                    <path d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72L4.318 3.44A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72m-13.5 8.65h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .415.336.75.75.75Z" />
                   </svg>
+                  <span>Store</span>
                 </Link>
-                <button
-                  onClick={openTrackModal}
-                  className="bg-slate-100 text-slate-600 p-2.5 rounded-xl hover:bg-slate-200 transition-colors flex items-center justify-center"
-                  title="Track Order"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
-                  </svg>
-                </button>
-                <button
-                  onClick={() => setIsCartOpen(true)}
-                  className="relative bg-slate-100 text-slate-600 p-2.5 rounded-xl hover:bg-slate-200 transition-colors flex items-center justify-center"
-                  title="Your Cart"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                  {cartCount > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-lg animate-in zoom-in duration-300">
-                      {cartCount}
-                    </span>
-                  )}
-                </button>
+                
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={openTrackModal}
+                    className="text-slate-400 hover:text-slate-900 p-2 transition-all duration-300 hover:scale-110"
+                    title="Track Order"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1-1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                    </svg>
+                  </button>
+                  
+                  <AnimatePresence mode="wait">
+                    {showCart && (
+                      <motion.button
+                        key="cart-desktop"
+                        initial={{ opacity: 0, scale: 0.8, x: 10 }}
+                        animate={{ opacity: 1, scale: 1, x: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, x: 10 }}
+                        transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+                        onClick={() => setIsCartOpen(true)}
+                        className="relative text-slate-400 hover:text-slate-900 p-2 transition-all duration-300 hover:scale-110"
+                        title="Your Cart"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        {cartCount > 0 && (
+                          <motion.span 
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            className="absolute top-1 right-0 bg-[#3d9e41] text-white text-[8px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm"
+                          >
+                            {cartCount}
+                          </motion.span>
+                        )}
+                      </motion.button>
+                    )}
+                  </AnimatePresence>
+                </div>
+
                 <Link href="/contact?form=quote">
-                  <button className="bg-[#3d9e41] hover:bg-[#2e7d31] text-white px-5 py-2.5 rounded-full font-bold transition-all duration-300 whitespace-nowrap text-[11px] tracking-[0.14em] uppercase shadow-sm">
-                    Request Quote
+                  <button className="bg-white border border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white px-7 py-2.5 rounded-full font-bold transition-all duration-500 whitespace-nowrap text-[9px] tracking-[0.2em] uppercase shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0">
+                    Free Consultation
                   </button>
                 </Link>
               </div>
 
-              <button
-                onClick={() => setIsCartOpen(true)}
-                className="md:hidden relative bg-slate-100 text-slate-600 p-2.5 rounded-xl hover:bg-slate-200 transition-colors"
-                title="Your Cart"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-primary text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-md">
-                    {cartCount}
-                  </span>
+              <AnimatePresence>
+                {showCart && (
+                  <motion.button
+                    key="cart-mobile"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    onClick={() => setIsCartOpen(true)}
+                    className="md:hidden relative text-slate-600 p-2 transition-colors"
+                    title="Your Cart"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    {cartCount > 0 && (
+                      <span className="absolute top-1 right-0 bg-[#3d9e41] text-white text-[8px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-md">
+                        {cartCount}
+                      </span>
+                    )}
+                  </motion.button>
                 )}
-              </button>
+              </AnimatePresence>
 
               {/* Mobile menu button */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden bg-slate-100 text-slate-600 p-2.5 rounded-xl hover:bg-slate-200 transition-colors"
+                className="md:hidden text-slate-600 p-2 transition-colors"
                 aria-expanded={isOpen}
               >
                 <span className="sr-only">Open main menu</span>
                 {isOpen ? (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2" d="M6 18L18 6M6 6l12 12" /></svg>
                 ) : (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2" d="M4 6h16M4 12h16M4 18h16" /></svg>
                 )}
               </button>
             </div>
@@ -156,75 +187,38 @@ const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-white ${isOpen ? 'max-h-[600px] opacity-100 border-t border-slate-100' : 'max-h-0 opacity-0'}`}>
-          <div className="px-4 py-3 space-y-1">
-            <Link
-              href="/"
-              onClick={closeMenu}
-              className="block px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-slate-50 hover:text-primary transition-colors"
-            >
-              Home
-            </Link>
-            <Link
-              href="/products"
-              onClick={closeMenu}
-              className="block px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-slate-50 hover:text-primary transition-colors"
-            >
-              Products
-            </Link>
-            <Link
-              href="/gallery"
-              onClick={closeMenu}
-              className="block px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-slate-50 hover:text-primary transition-colors"
-            >
-              Gallery
-            </Link>
-            <Link
-              href="/measure-and-install"
-              onClick={closeMenu}
-              className="block px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-slate-50 hover:text-primary transition-colors"
-            >
-              Measure/Install
-            </Link>
-            <Link
-              href="/about"
-              onClick={closeMenu}
-              className="block px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-slate-50 hover:text-primary transition-colors"
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              onClick={closeMenu}
-              className="block px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-slate-50 hover:text-primary transition-colors"
-            >
-              Contact
-            </Link>
+        <div className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out bg-white ${isOpen ? 'max-h-[800px] opacity-100 border-t border-slate-50' : 'max-h-0 opacity-0'}`}>
+          <div className="px-6 py-8 space-y-6 text-center">
+            <Link href="/" onClick={closeMenu} className="block text-2xl font-display font-medium text-[#0f172a] hover:text-[#1756a0] transition-colors">Home</Link>
+            <Link href="/products" onClick={closeMenu} className="block text-2xl font-display font-medium text-[#0f172a] hover:text-[#1756a0] transition-colors">Products</Link>
+            <Link href="/gallery" onClick={closeMenu} className="block text-2xl font-display font-medium text-[#0f172a] hover:text-[#1756a0] transition-colors">Gallery</Link>
+            <Link href="/measure-and-install" onClick={closeMenu} className="block text-2xl font-display font-medium text-[#0f172a] hover:text-[#1756a0] transition-colors">Service</Link>
+            
             <Link
               href="/store"
               onClick={closeMenu}
-              className="block px-4 py-3 rounded-xl text-slate-700 font-medium hover:bg-slate-50 hover:text-primary transition-colors flex items-center gap-2"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-slate-900 text-white font-bold transition-all duration-300 shadow-lg shadow-slate-200"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72L4.318 3.44A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72m-13.5 8.65h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .415.336.75.75.75Z" />
+              <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
+                <path d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72L4.318 3.44A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72m-13.5 8.65h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .415.336.75.75.75Z" />
               </svg>
-              Store
+              <span className="text-xs uppercase tracking-[0.2em]">GMB Store</span>
             </Link>
 
-            <div className="pt-2 pb-2 space-y-2">
+            <div className="pt-8 border-t border-slate-50 space-y-4">
               <button
                 onClick={() => { closeMenu(); openTrackModal(); }}
-                className="w-full bg-slate-100 text-slate-600 px-6 py-3 rounded-xl font-bold hover:bg-slate-200 transition-colors text-center flex items-center justify-center gap-2"
+                className="w-full bg-slate-50 text-slate-600 px-6 py-4 rounded-xl font-bold hover:bg-slate-100 transition-colors text-center flex items-center justify-center gap-2 text-xs uppercase tracking-widest"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
                 </svg>
                 Track Order
               </button>
               <Link href="/contact?form=quote" onClick={closeMenu} className="block w-full">
-                <button className="w-full bg-primary text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-opacity text-center">
-                  Request Quote
+                <button className="w-full bg-slate-900 text-white px-6 py-4 rounded-xl font-bold hover:bg-slate-800 transition-colors text-center text-xs uppercase tracking-widest">
+                  Free Consultation
                 </button>
               </Link>
             </div>
