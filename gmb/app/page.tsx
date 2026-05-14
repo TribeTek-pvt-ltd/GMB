@@ -1,30 +1,27 @@
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import ProductCategories from '@/components/ProductCategories';
-import RecentWorks from '@/components/RecentWorks';
-import WhyChooseUs from '@/components/WhyChooseUs';
-import Testimonials from '@/components/Testimonials';
-import FAQ from '@/components/FAQ';
-import BlogPreview from '@/components/BlogPreview';
-import QuoteCTA from '@/components/QuoteCTA';
-import Footer from '@/components/Footer';
-import ScrollReveal from '@/components/ScrollReveal';
+import Hero from '@/components/home/Hero';
+import ProductCategories from '@/components/home/ProductCategories';
+import HomeGallery from '@/components/home/HomeGallery';
+import WhyChooseUs from '@/components/home/WhyChooseUs';
+import Testimonials from '@/components/home/Testimonials';
+import FAQ from '@/components/home/FAQ';
+import BlogPreview from '@/components/home/BlogPreview';
+import QuoteCTA from '@/components/home/QuoteCTA';
+import ScrollReveal from '@/components/shared/ScrollReveal';
+import RecentWorks from '@/components/home/RecentWorks';
 
 export default function Home() {
   return (
-    <main className="min-h-[70vh]">
-      <Navbar />
+    <div className="min-h-[70vh]">
       <Hero />
       <ScrollReveal><ProductCategories /></ScrollReveal>
-      
-      <ScrollReveal><RecentWorks /></ScrollReveal>
+
+      <RecentWorks />
       <ScrollReveal><Testimonials /></ScrollReveal>
       <ScrollReveal><WhyChooseUs /></ScrollReveal>
-      
+
       <ScrollReveal><FAQ /></ScrollReveal>
       <ScrollReveal><BlogPreview /></ScrollReveal>
       <ScrollReveal><QuoteCTA /></ScrollReveal>
-      <Footer />
-    </main>
+    </div>
   );
 }

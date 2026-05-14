@@ -1,8 +1,8 @@
 'use client';
 
 import React, { createContext, useContext, useState, useCallback } from 'react';
-import TrackOrderModal from '@/components/TrackOrderModal';
-import LegalModal from '@/components/LegalModal';
+import TrackOrderModal from '@/components/modals/TrackOrderModal';
+import LegalModal from '@/components/modals/LegalModal';
 
 interface ModalContextType {
   openTrackModal: () => void;

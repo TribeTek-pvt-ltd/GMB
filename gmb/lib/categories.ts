@@ -11,15 +11,14 @@ export type CategoryGroup = {
     title: string;
     items: CategoryItem[];
 };
-
 export const PRODUCT_CATEGORIES: CategoryGroup[] = [
     {
-        title: "Soft Treatments",
+        title: "Curtains",
         items: [
             {
-                title: "Curtains",
-                slug: "Curtains",
-                description: "Timeless elegance and privacy.",
+                title: "Blockout Curtains",
+                slug: "BlockoutCurtains",
+                description: "Timeless elegance and privacy with premium fabric.",
                 image: "/images/curtain1.png",
                 subCategories: [
                     "Wave Fold Curtain",
@@ -29,9 +28,9 @@ export const PRODUCT_CATEGORIES: CategoryGroup[] = [
                 ]
             },
             {
-                title: "Sheers",
-                slug: "Sheers",
-                description: "Soft, diffused natural light.",
+                title: "Sheer Curtains",
+                slug: "SheerCurtains",
+                description: "Soft, diffused natural light with a delicate touch.",
                 image: "/images/curtain2.png",
                 subCategories: [
                     "Wave Fold Sheer",
@@ -40,38 +39,16 @@ export const PRODUCT_CATEGORIES: CategoryGroup[] = [
                     "Pencil Pleats Sheer",
                     "Pocket Sheer"
                 ]
-            },
-            {
-                title: "Pelmets",
-                slug: "Pelmets",
-                description: "Structured finish for windows.",
-                image: "/images/curtain3.png",
-                subCategories: [
-                    "Standard Pelmets",
-                    "Plain Boxed Pelmets",
-                    "Designer Boxed Pelmets",
-                    "Plain Padded Pelmets",
-                    "Designer Padded Pelmets",
-                    "Plain Double Padded Pelmets",
-                    "Designer Double Padded Pelmets"
-                ]
-            },
-            {
-                title: "Swags & tails",
-                slug: "SwagsTails",
-                description: "Classic and luxurious valances.",
-                image: "/images/curtain4.png",
-                subCategories: []
             }
         ]
     },
     {
-        title: "Blinds & Hard Covers",
+        title: "Blinds",
         items: [
             {
                 title: "Blinds",
                 slug: "Blinds",
-                description: "Modern and versatile styles.",
+                description: "Modern and versatile styles for every space.",
                 image: "/images/curtain5.png",
                 subCategories: [
                     "Roman Blind",
@@ -85,18 +62,23 @@ export const PRODUCT_CATEGORIES: CategoryGroup[] = [
             {
                 title: "Roller Blinds",
                 slug: "RollerBlinds",
-                description: "Sleek, practical light control.",
+                description: "Elegant and functional roller blinds for complete privacy, UV reduction, or soft diffused glow.",
                 image: "/images/curtain1.png",
                 subCategories: [
-                    "Blackout Roller Blind / Holland Blind",
-                    "See-Through Roller Blind / Screen Blind",
-                    "Light Filtering Blind / Translucent Blind"
+                    "Blockout",
+                    "See-Through",
+                    "Light Filtering"
                 ]
-            },
+            }
+        ]
+    },
+    {
+        title: "Shutters",
+        items: [
             {
                 title: "Plantation Shutters",
                 slug: "PlantationShutters",
-                description: "Premium wooden aesthetics.",
+                description: "Premium wooden aesthetics with timeless appeal.",
                 image: "/images/curtain2.png",
                 subCategories: [
                     "PVC Shutters",
@@ -106,38 +88,71 @@ export const PRODUCT_CATEGORIES: CategoryGroup[] = [
                     "Stain Shutters",
                     "Painted Shutters"
                 ]
-            },
-            {
-                title: "Films",
-                slug: "Films",
-                description: "Protective window films.",
-                image: "/images/curtain3.png",
-                subCategories: [
-                    "Solar Control Films",
-                    "UV Protection Films",
-                    "Privacy Films (One-way Tint)",
-                    "Frosted & Decorative Films",
-                    "Low-E (Low Emissivity) Films",
-                    "Safety & Security Films"
-                ]
             }
         ]
     },
     {
-        title: "Systems & Smart Tech",
+        title: "Smart Curtains & Styles",
         items: [
+            {
+                title: "Swags & Tails",
+                slug: "SwagsTails",
+                description: "Classic and luxurious draping valances.",
+                image: "/images/curtain4.png",
+                subCategories: []
+            },
+            {
+                title: "Motorised Curtains",
+                slug: "MotorisedCurtains",
+                description: "Fully automated curtains operable via app, remote, or voice.",
+                image: "/images/curtain4.png",
+                isNew: true,
+                subCategories: [
+                    "Wi-Fi Smart Curtains",
+                    "Remote Control Curtains",
+                    "Voice Control Curtains",
+                    "Timer Scheduled Curtains"
+                ]
+            },
             {
                 title: "Smart Sheers",
                 slug: "SmartSheers",
-                description: "Automated light diffusion.",
-                image: "/images/curtain4.png",
+                description: "Automated light diffusion for effortless ambiance control.",
+                image: "/images/curtain5.png",
                 isNew: true,
-                subCategories: []
+                subCategories: [
+                    "Motorised Sheer",
+                    "App-Controlled Sheer",
+                    "Sensor-Based Sheer"
+                ]
+            },
+            {
+                title: "Day & Night Curtains",
+                slug: "DayNightCurtains",
+                description: "Dual-layer fabric for seamless light control day and night.",
+                image: "/images/curtain1.png",
+                subCategories: [
+                    "Blackout Layer",
+                    "Sheer Layer",
+                    "Combined Track System"
+                ]
+            },
+            {
+                title: "Special Tracks & Systems",
+                slug: "SpecialTracks",
+                description: "Custom track solutions for curved, bay, or skylight windows.",
+                image: "/images/curtain2.png",
+                subCategories: [
+                    "Curved Tracks",
+                    "Bay Window Tracks",
+                    "Ceiling-Mounted Tracks",
+                    "Fully Wrapped System"
+                ]
             },
             {
                 title: "Motor",
                 slug: "Motor",
-                description: "Reliable motors for smart homes.",
+                description: "Reliable motorised systems for smart homes.",
                 image: "/images/curtain5.png",
                 subCategories: [
                     "DC Motors",
@@ -148,16 +163,38 @@ export const PRODUCT_CATEGORIES: CategoryGroup[] = [
             {
                 title: "Fully Wrapped System",
                 slug: "FullyWrappedSystem",
-                description: "Complete framing integrations.",
+                description: "Complete framing integrations for a seamless finish.",
                 image: "/images/curtain1.png",
                 subCategories: []
             },
             {
-                title: "Special Tracks",
-                slug: "SpecialTracks",
-                description: "Custom hardware solutions.",
-                image: "/images/curtain2.png",
-                subCategories: []
+                title: "Films",
+                slug: "Films",
+                description: "Protective window films for UV control and privacy.",
+                image: "/images/curtain3.png",
+                subCategories: [
+                    "Solar Control Films",
+                    "UV Protection Films",
+                    "Privacy Films (One-way Tint)",
+                    "Frosted & Decorative Films",
+                    "Low-E (Low Emissivity) Films",
+                    "Safety & Security Films"
+                ]
+            },
+            {
+                title: "Pelmets",
+                slug: "Pelmets",
+                description: "Structured finish for a polished window look.",
+                image: "/images/curtain3.png",
+                subCategories: [
+                    "Standard Pelmets",
+                    "Plain Boxed Pelmets",
+                    "Designer Boxed Pelmets",
+                    "Plain Padded Pelmets",
+                    "Designer Padded Pelmets",
+                    "Plain Double Padded Pelmets",
+                    "Designer Double Padded Pelmets"
+                ]
             }
         ]
     }

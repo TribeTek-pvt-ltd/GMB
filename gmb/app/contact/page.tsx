@@ -1,26 +1,38 @@
 'use client';
 
-import Navbar from '@/components/Navbar';
-import ContactHero from '@/components/ContactHero';
-import ContactInfo from '@/components/ContactInfo';
-import ContactForm from '@/components/ContactForm';
-import ScrollReveal from '@/components/ScrollReveal';
+import ContactInfo from '@/components/contact/ContactInfo';
+import ContactForm from '@/components/contact/ContactForm';
+import ScrollReveal from '@/components/shared/ScrollReveal';
+import Hero from '@/components/ui/Hero';
 
-import Footer from '@/components/Footer';
 
 export default function ContactPage() {
   return (
-    <main className="min-h-[70vh]">
-      <Navbar />
-      <ContactHero />
-      <ScrollReveal delay={0.1}><ContactForm /></ScrollReveal>
-      <ScrollReveal delay={0.2}>
-        <div className="pt-16 md:pt-24 pb-12">
-          <ContactInfo />
-        </div>
-      </ScrollReveal>
+    <div className="bg-white min-h-screen flex flex-col relative overflow-hidden">
 
-      <Footer />
-    </main>
+      {/* Dynamic Hero Section */}
+      <Hero
+        compact
+        withGlow
+        eyebrow="Direct Connection"
+        title={<>Elevate Your Living Space.</>}
+        description="Our design consultants are ready to help you navigate our bespoke collections and find the perfect architectural fit for your home."
+      // accentColor="#1756a0"
+      />
+
+      <div className="relative z-10 pt-4 md:pt-8 pb-24">
+        <ScrollReveal delay={0.1}>
+          <div className="container max-w-[1400px] mx-auto px-6">
+            <ContactForm />
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.2}>
+          <div className="container max-w-[1400px] mx-auto px-6 mt-12">
+            <ContactInfo />
+          </div>
+        </ScrollReveal>
+      </div>
+    </div>
   );
 }
